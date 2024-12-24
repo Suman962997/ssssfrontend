@@ -1,0 +1,28 @@
+@import '../../style/utils/Variables.scss';
+.custom-search-wrapper {
+  width: 100%;
+  max-width: max-content;
+  margin: 0 auto;
+  border-radius: $commonRadius;
+
+}
+
+.custom-search-wrapper .ant-input {
+  font-size: 16px;
+  border-radius: 4px;
+  align-self: center;
+
+}
+
+.custom-search-wrapper .ant-input-prefix {
+  font-size: 22px;
+  color: $textColor;
+  height: 34px;
+   padding: $commonPadding;
+
+}
+
+.custom-search-wrapper .ant-input-affix-wrapper {
+  padding: 0px;
+  width: 300px;
+}

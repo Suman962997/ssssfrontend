@@ -1,0 +1,142 @@
+@import '../../style/utils/Variables.scss';
+
+@media (max-width: 480px) {
+
+  .custom-table-container {
+    padding: 20px;
+    padding-left: 0px;
+    background-color: $bgColor;
+
+  }  
+
+  .search-bar{
+    display: $flex;
+    min-width:  $fullWidth;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+.custom-table-container {
+  // padding: 20px;
+  padding-left: 0px;
+  background-color: $bgColor;
+
+  .table-title {
+    font-size: 16px;
+    font-weight: $bold;
+    color: $primary;
+    margin-bottom: 16px;
+    display: $flex;
+    justify-self: flex-start;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .title-count {
+    font-size: 16px;
+    font-weight: $bold;
+    color: $textColor;
+  }
+
+  .search-bar{
+    display: $flex;
+    min-width:  $fullWidth;
+    justify-content: space-between;
+  }
+
+  .custom-table {
+    border: none;
+    padding-top:$commonPadding;
+
+    .ant-table {
+      border: none;
+    }
+
+    .ant-table-container {
+      overflow-x: auto; 
+    }
+
+    .ant-table-row {
+      background: $white;
+
+    }
+
+    .ant-table-cell {
+      padding: 12px;
+      font-size: 14px;
+      color: $textColor;
+      background-color: $bgColor;
+       &:hover {
+        background: $white;
+       }
+
+      &:first-child {
+        font-weight: $bold;
+      }
+    }
+
+    .ant-table-thead > tr > th {
+      background-color: $bgColor;
+      border-bottom: none;
+      font-weight: 700;
+      font-size: 14px;
+      color: $textColor;
+      text-align: left;
+
+      &:first-child {
+      font-weight: 700;
+
+      }
+    }
+
+    .ant-table-tbody > tr > td {
+      border-bottom: $border;
+      padding: 12px;
+    }
+
+    .ant-table-row {
+      &:hover {
+        background-color: $bgColor;
+      }
+    }
+
+    .ant-pagination {
+      justify-content: center;
+    }
+    .risk-high {
+      color: $primary;
+      font-weight: $bold;
+    }
+
+    .risk-medium {
+      color: $warning;
+      font-weight: $bold;
+    }
+
+    .risk-low {
+      color: $error;
+      font-weight: $bold;
+    }
+
+  }
+
+
+
+  .custom-sort-icon {
+    color: $secondary; 
+    font-size: 14px; 
+    margin-left: 5px;
+    transition: transform 0.2s;
+
+    &.active {
+      color: $primary; 
+      transform: scale(1.2);
+    }
+  }
+
+  .ant-table-column-sorter {
+    &:hover .custom-sort-icon {
+      color: $primary; 
+    }
+  }
+}

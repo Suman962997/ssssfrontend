@@ -1,0 +1,9 @@
+@import '../../style/utils/Variables.scss';
+
+.main-report {
+padding: $commonPadding;
+    .report-table{
+        margin-top: 25px;
+    }
+}
+
