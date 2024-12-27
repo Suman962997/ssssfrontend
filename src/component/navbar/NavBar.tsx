@@ -8,6 +8,7 @@ import { BellOutlined, LogoutOutlined, SettingFilled } from '@ant-design/icons';
 import CustomModal from '../popup/CustomModel';
 import { userInfo } from '../../utils/Options';
 import './NavBar.scss';
+import { bgColor } from '../../style/ColorCode';
 const NavBar: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate()
@@ -126,7 +127,7 @@ const NavBar: React.FC = () => {
                     <div className="nav-profile">
                         <BellOutlined />
                         <div className="settings-icon">
-                            <Tooltip color="#f8f8f8" title={setting}>
+                            <Tooltip color={bgColor} title={setting}>
                                 <SettingFilled />
                             </Tooltip>
                         </div>
@@ -137,7 +138,7 @@ const NavBar: React.FC = () => {
                         <span className="profile-role-out">{userInfo?.user}</span>
                     </div>
                     <div className="nav-profile-pic">
-                        <Tooltip color='#f8f8f8'
+                        <Tooltip color={bgColor}
                             placement="rightTop"
                             title={profile}>
                             <Avatar size={40} icon={<Profile />} />

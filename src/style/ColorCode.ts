@@ -20,3 +20,5 @@ export const error = "#FA4032";
 export const lightGrey = "#FAFAFA";
 
 export const grey = "#ECECEC";
+
+export const blue = "#4684EA";

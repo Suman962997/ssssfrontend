@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from 'antd';
-import './Table.scss';
+import { useLocation } from 'react-router-dom';
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 import CustomSearchInput from '../inputfield/CustomSearchInput';
-import { useLocation } from 'react-router-dom';
+import { Table } from 'antd';
+import './Table.scss';
 
 interface CustomTableProps {
   columns: any[];
@@ -62,7 +62,6 @@ const CustomTable: React.FC<CustomTableProps> = ({
       </>
     ),
   }));
-  console.log(currentLoc, 'currentPath')
   return (
     <div className="custom-table-container">
       {currentPath !== "benchmark-sustainability" && currentLoc !== "questionnaire" &&

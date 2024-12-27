@@ -6,6 +6,7 @@ import CircularChart from "../circlepercentagechart/CircleChart";
 import BarChart from "../barchart/BarChart";
 import MeterChart from "../meterchart/MeterChart";
 import { InfoCircleTwoTone } from "@ant-design/icons";
+import { bgColor } from "../../style/ColorCode";
 
 interface MeterCardProps {
   title: string;
@@ -37,7 +38,7 @@ const MeterCard: React.FC<MeterCardProps> = ({
 
             {(title === "Risk Meter" || title === "Aeiforo Score") && (
               <Tooltip
-                color="#f8f8f8"
+                color={bgColor}
                 title={
                   <div className="legend-content">
                     <div className="legend-item">

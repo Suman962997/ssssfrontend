@@ -23,6 +23,7 @@ import { fetchSupplierListData } from "../../features/action/SupplierAction";
 import { setSelectedRecord } from "../../features/slices/SupplierSlice";
 import { useDispatch } from "react-redux";
 import "./Dashboard.scss";
+import { bgColor } from "../../style/ColorCode";
 
 const Dashboard: React.FC = () => {
   const suppliers = useAppSelector((state) => state.suppliers?.data);
@@ -185,7 +186,7 @@ const Dashboard: React.FC = () => {
       key: "actions",
       render: (index: number, record: any) => (
         <Tooltip
-          color="#f8f8f8"
+          color={bgColor}
           placement="leftBottom"
           className="custom-tooltip"
           title={

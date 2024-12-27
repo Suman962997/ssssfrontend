@@ -1,15 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Tabs, Dropdown, Menu } from "antd";
+import { DownOutlined, ArrowLeftOutlined, CheckOutlined } from "@ant-design/icons";
 import AeiforoLogo from "../../assets/images/Aeiforo-logo.png";
 import CustomButton from "../buttons/CustomButton";
-import { ArrowLeftOutlined, CheckOutlined } from "@ant-design/icons";
-import {
-  GlobalIconComponent,
-  HomeIconComponent,
-  MailIconComponent,
-} from "../../utils/ContactIcons";
+import { GlobalIconComponent, HomeIconComponent, MailIconComponent } from "../../utils/ContactIcons";
 import { ShareComponent } from "../../component/sharesocial/ShareSocial";
-import { Tabs } from "antd";
 import "./DetailsNavBar.scss";
 
 interface NavBarProps {
@@ -27,6 +23,15 @@ interface TabItem {
 
 const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }) => {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const tabs: TabItem[] = [
     { name: "overview", label: "Overall Reports" },
@@ -57,7 +62,20 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
     console.log("Contact button clicked");
   };
 
+  const visibleTabs = isMobile ? tabs.slice(0, 3) : tabs.slice(0, 8);
+  const overflowTabs = isMobile ? tabs.slice(3) : tabs.slice(8);
 
+  const overflowMenu = (
+    <Menu>
+      {overflowTabs.map((tab) => (
+        <Menu.Item key={tab.name}>
+          <Link to={`/supplier/${id}/${tab.name}`} onClick={() => handleLinkClick(tab.name)}>
+            {tab.label}
+          </Link>
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
 
   return (
     <>
@@ -101,12 +119,18 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
         <Tabs
           activeKey={activeLink}
           onChange={(key) => handleLinkClick(key)}
-          tabBarGutter={12}
-          moreIcon={
-            <span className="more-tabs">More...</span>
+          tabBarExtraContent={
+            overflowTabs.length > 0 && (
+              <Dropdown overlay={overflowMenu} placement="bottomRight" trigger={["click"]}>
+                <span className="more-tabs">
+                  More <DownOutlined />
+                </span>
+              </Dropdown>
+            )
           }
+          tabBarGutter={12}
         >
-          {tabs.map((tab) => (
+          {visibleTabs.map((tab) => (
             <Tabs.TabPane
               tab={
                 <Link

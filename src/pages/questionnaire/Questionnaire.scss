@@ -13,6 +13,19 @@
   .question-card {
     width: 100% !important;
   }
+
+  .subbutton {
+    flex-wrap: wrap;
+    gap: $commonGap;
+    padding: $commonPadding;
+  }
+
+  .navigation-buttons {
+    flex-wrap: wrap;
+  }
+  .common-submit-btn {
+    flex-wrap: wrap;
+  }
 }
 .questionnaire-main {
     padding: 20px;
@@ -76,10 +89,11 @@
         background-color: $primary;
         border-radius: $commonRadius;
         color: $white;
-        padding: 5px 8px 8px 8px;
+        padding:8px;
         font-size: 13px;
         font-weight: $bold;
         cursor: pointer;
+        border: none;
       }
     }
 
@@ -135,13 +149,8 @@
   font-size: 14px;
   font-weight: $bold;
   color: $textColor;
-  // padding: 8px 10px;
   text-align: center; 
 }
-
-// .empty-cell {
-//   flex: 1;
-// }
 
 .total-label {
   flex: 7.4;
@@ -152,6 +161,11 @@
 flex:3.4;
 text-align: left;
 
+}
+
+.answe-bench {
+  flex:3.0;
+  text-align: left;
 }
 .percentage {
   flex: 3.5;
@@ -197,6 +211,7 @@ text-align: left;
 .remove-file-icon {
   color: $error;
   cursor: pointer;
+  border: none;
 }
 
 .question-options {
@@ -224,6 +239,7 @@ text-align: left;
   .current-section-text {
       font-size: 14px;
       font-weight: $bold;
+      color: $textColor;
   }
 }
 
@@ -238,3 +254,18 @@ text-align: left;
  }
 }
 
+.answered-icon {
+  color: green;
+  margin-left: 8px;
+}
+
+.common-submit-btn {
+  display: flex;
+  gap: 10px;
+}
+
+.copy-border {
+  border: none;
+  background: $cleanWhite;
+  cursor: pointer;
+}

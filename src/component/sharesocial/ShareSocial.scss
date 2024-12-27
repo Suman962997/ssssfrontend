@@ -10,6 +10,7 @@
     display: $flex;
     gap: 5px;
     position: relative; 
+    border: none;
   
     .share-options {
       position: absolute;
@@ -67,8 +68,10 @@
         align-items: center;
         font-size: 11px;
         gap: 5px; 
+        background: none;
         padding: 8px;
         border-radius: 4px;
+        border: none;
       }
       
       .icon {

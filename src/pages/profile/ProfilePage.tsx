@@ -1,50 +1,27 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Avatar, Card, Tabs } from "antd";
 import {
     SettingOutlined,
     HistoryOutlined,
     LogoutOutlined,
-    ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { ReactComponent as Profile } from '../../assets/images/profile.svg'
-import AeiforoLogo from "../../assets/images/Aeiforo-logo.png";
 import CustomButton from "../../component/buttons/CustomButton";
 import "./Profile.scss";
 import { userInfo } from "../../utils/Options";
+import NavBar from "../../component/navbar/NavBar";
 
 const { TabPane } = Tabs;
 
 const ProfilePage: React.FC = () => {
 
-    const navigate = useNavigate();
-
     const handleLogout = () => {
         console.log("User logged out");
     };
 
-    const goBackToContact = () => {
-        console.log("LogOut");
-    };
-
-    const goBackToDash = () => {
-        navigate("/dashboard");
-    };
-
     return (
         <div className="profile-main">
-            <div className="profile-navbar-top">
-                <div>
-                    <img width={180} src={AeiforoLogo} alt="AeiforoLogo" />
-                </div>
-                <CustomButton label="Contact" type="secondary" onClick={goBackToContact} />
-            </div>
-            <div className="profile-navbar">
-                <div className="profile-header">
-                    <ArrowLeftOutlined onClick={goBackToDash} />{" "}
-                    <div>{"Profile"}</div>
-                </div>
-            </div>
+            <NavBar />
             <div className="profile-page">
                 <Card className="profile-card">
                     <div className="profile-header">

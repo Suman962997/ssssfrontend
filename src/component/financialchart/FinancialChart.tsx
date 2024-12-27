@@ -15,6 +15,7 @@ import { Chart } from "react-chartjs-2";
 import "./FinancialChart.scss";
 import DropdownInput from "../dropdown/CustomDropDown";
 import { options as opt } from "../../utils/Options"
+import { bgColor, blue, primaryColor, secondaryColor } from '../../style/ColorCode';
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend);
 
 const FinancialChart: React.FC = () => {
@@ -25,8 +26,8 @@ const FinancialChart: React.FC = () => {
         type: "bar",
         label: "Sales Revenue",
         data: [20, 40, 60, 80, 100, 20, 40, 60, 80, 100],
-        backgroundColor: "#09B96D",
-        borderColor: "#09B96D",
+        backgroundColor: primaryColor,
+        borderColor: primaryColor,
         borderRadius: 4,
         borderSkipped: false,
       },
@@ -34,8 +35,8 @@ const FinancialChart: React.FC = () => {
         type: "bar",
         label: "Pre-Tax Profit",
         data: [15, 30, 50, 70, 90, 120, 20, 40, 60, 80, 100],
-        backgroundColor: "#0058EA",
-        borderColor: "#0058EA",
+        backgroundColor: secondaryColor,
+        borderColor: secondaryColor,
         borderRadius: 5,
         borderSkipped: false,
       },
@@ -43,10 +44,10 @@ const FinancialChart: React.FC = () => {
         type: "line",
         label: "Profit After Tax",
         data: [25, 45, 65, 85, 105, 145, 25, 45, 65, 85, 105, 145],
-        borderColor: "#4684EA",
-        backgroundColor: "#09B96D",
-        pointBackgroundColor: "#09B96D",
-        pointBorderColor: "#f8f8f8",
+        borderColor: blue,
+        backgroundColor: primaryColor,
+        pointBackgroundColor: primaryColor,
+        pointBorderColor: bgColor,
         tension: 0.5,
         pointRadius: 7,
       },

@@ -17,7 +17,6 @@
   }
 }
 .custom-table-container {
-  // padding: 20px;
   padding-left: 0px;
   background-color: $bgColor;
 
@@ -55,21 +54,22 @@
     .ant-table-container {
       overflow-x: auto; 
     }
-
-    .ant-table-row {
+    
+    .ant-table-row-cell {
       background: $white;
+      transition: background-color 0.9s ease;
 
+      &:hover {
+        background-color: $error;
+      }
     }
-
+    
+    
     .ant-table-cell {
       padding: 12px;
       font-size: 14px;
       color: $textColor;
       background-color: $bgColor;
-       &:hover {
-        background: $white;
-       }
-
       &:first-child {
         font-weight: $bold;
       }
@@ -92,12 +92,6 @@
     .ant-table-tbody > tr > td {
       border-bottom: $border;
       padding: 12px;
-    }
-
-    .ant-table-row {
-      &:hover {
-        background-color: $bgColor;
-      }
     }
 
     .ant-pagination {

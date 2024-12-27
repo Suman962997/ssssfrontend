@@ -1,40 +1,74 @@
 import React, { useState } from 'react';
-import { ReactComponent as ShareIcon } from '../../assets/icons/ShareIcon.svg';
+import { FaCopy, FaCheck } from "react-icons/fa";
 import {
     EmailShareButton,
     EmailIcon,
 } from 'react-share';
-import { FaCopy, FaCheck } from "react-icons/fa";
-import './ShareSocial.scss';
 import { Tooltip } from 'antd';
+import { ReactComponent as ShareIcon } from '../../assets/icons/ShareIcon.svg';
+import { bgColor } from '../../style/ColorCode';
+import './ShareSocial.scss';
 
 export const ShareComponent: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [copied, setCopied] = useState(false);
     const url = "http://192.168.2.72:3000/";
     const title = "Check out this amazing content!";
-    const link = "http://localhost:3001/"
+    const link = "http://192.168.2.72:3000/";
     const toggleModal = () => setIsModalOpen(!isModalOpen);
-    const handleCopy = async () => {
-        try {
-            await navigator.clipboard?.writeText(link);
-            setCopied(true);
 
-            setTimeout(() => setCopied(false), 2000);
-        } catch (err) {
-            console.error("Failed to copy text: ", err);
+    const handleCopy = async () => {
+        if (!link) {
+            console.error("Link is empty, nothing to copy.");
+            return;
+        }
+        if (navigator.clipboard) {
+            try {
+                console.log("Using Clipboard API to copy.");
+                await navigator.clipboard.writeText(link);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+                return;
+            } catch (err) {
+                console.error("Failed to copy using Clipboard API: ", err);
+            }
+        }
+        try {
+            console.log("Using fallback to copy.");
+            const textarea = document.createElement("textarea");
+            textarea.value = link;
+            textarea.style.position = "absolute";
+            textarea.style.opacity = "0";
+            document.body.appendChild(textarea);
+            textarea.select();
+            const successful = document.execCommand("copy");
+            document.body.removeChild(textarea);
+            if (successful) {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            } else {
+                console.error("Fallback copy method failed.");
+            }
+        } catch (fallbackErr) {
+            console.error("Fallback copy method encountered an error: ", fallbackErr);
         }
     };
+
+
     return (
         <div>
             <Tooltip
-                color="#f8f8f8"
+                color={bgColor}
                 title={
-                    <div className="modal-overlay" role='button' onClick={toggleModal}>
-                        <div className="modal-content" role='button' onClick={(e) => e.stopPropagation()}>
+                    <div className="modal-overlay" onClick={toggleModal}>
+                        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                             <div className='modal-header'>
                                 <div className='share'>Share</div>
-                                <div className="copy-link" role='button' onClick={handleCopy}>
+                                <button
+                                    className="copy-link"
+                                    onClick={handleCopy}
+                                    aria-label="Copy link"
+                                >
                                     {copied ? (
                                         <>
                                             <FaCheck className="icon" /> Copied
@@ -44,16 +78,16 @@ export const ShareComponent: React.FC = () => {
                                             <FaCopy className="icon" /> Copy Link
                                         </>
                                     )}
-                                </div>
+                                </button>
                             </div>
                             <div className="share-options">
                                 <div className='share-flex'>
                                     <div className='share-email'>
                                         <EmailShareButton url={url} title={title}>
-                                            <EmailIcon size={32} round />   <div>Email</div>
+                                            <EmailIcon size={32} round />
+                                            <div>Email</div>
                                         </EmailShareButton>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -62,12 +96,11 @@ export const ShareComponent: React.FC = () => {
                 placement="bottom"
                 className="custom-tooltip"
             >
-                <div className="shareIcon" onClick={toggleModal}>
+                <button className="shareIcon" onClick={toggleModal} aria-label="Share">
                     <ShareIcon />
                     <div>Share</div>
-                </div>
+                </button>
             </Tooltip>
-
         </div>
     );
 };

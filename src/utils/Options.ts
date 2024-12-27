@@ -21,8 +21,8 @@ export const allCategories = [
       {
         key: "company-overview",
         quesSection: "Company Overview",
-        questionsAnswer: "3/9",
-        percentComplete: "40%",
+        questionsAnswer: "0/9",
+        percentComplete: "0",
         question: [
           { text: "What is the legal name of the company?", choices: null },
           { text: "What year was the company founded?", choices: null },
@@ -41,8 +41,8 @@ export const allCategories = [
       {
         key: "business-operations",
         quesSection: "Business Operations",
-        questionsAnswer: "5/7",
-        percentComplete: "70%",
+        questionsAnswer: "0/7",
+        percentComplete: "0",
         question: [
           { text: "What are the primary markets/geographies the company serves?", choices: null },
           { text: "What is the company’s annual revenue or turnover?", choices: null },
@@ -56,8 +56,8 @@ export const allCategories = [
       {
         key: "clients-partnerships",
         quesSection: "Clients Partnerships",
-        questionsAnswer: "4/4",
-        percentComplete: "100%",
+        questionsAnswer: "0/4",
+        percentComplete: "0",
         question: [
           { text: "Who are the company’s main customers (B2B, B2C, etc.)?", choices: null },
           { text: "Does the company have strategic partnerships or collaborations?", choices: null },
@@ -68,8 +68,8 @@ export const allCategories = [
       {
         key: "technology-innovation",
         quesSection: "Technology Innovation",
-        questionsAnswer: "2/3",
-        percentComplete: "60%",
+        questionsAnswer: "0/3",
+        percentComplete: "0",
         question: [
           { text: "What key technologies does the company use to operate its business?", choices: null },
           { text: "Does the company invest in R&D (Research & Development)?", choices: ["Yes", "No"] },
@@ -79,8 +79,8 @@ export const allCategories = [
       {
         key: "company-growth",
         quesSection: "Company Growth",
-        questionsAnswer: "1/2",
-        percentComplete: "40%",
+        questionsAnswer: "0/2",
+        percentComplete: "0",
         question: [
           { text: "What has been the average revenue growth rate over the past 5 years?", choices: null },
           { text: "Are there plans for company expansion (new locations, products, etc.)?", choices: ["Yes", "No"] },
@@ -90,7 +90,7 @@ export const allCategories = [
         key: "workforce",
         quesSection: "Workforce",
         questionsAnswer: "0/3",
-        percentComplete: "0%",
+        percentComplete: "0",
         question: [
           { text: "How is the workforce divided by function (operations, sales, admin)?", choices: null },
           { text: "What is the company’s attrition rate for the past 3 years?", choices: null },
@@ -108,8 +108,8 @@ export const allCategories = [
       {
         key: "esg-policies-governance",
         quesSection: "ESG Policies Governance",
-        questionsAnswer: "3/4",
-        percentComplete: "70%",
+        questionsAnswer: "0/4",
+        percentComplete: "0",
         question: [
           { text: "Do you have a formal Environmental, Social, and Governance (ESG) policy?", choices: ["Yes", "No"] },
           { text: "Is your ESG policy aligned with global standards?", choices: ["Yes", "No"] },
@@ -120,8 +120,8 @@ export const allCategories = [
       {
         key: "risk-screening",
         quesSection: "Risk Screening",
-        questionsAnswer: "1/3",
-        percentComplete: "20%",
+        questionsAnswer: "0/3",
+        percentComplete: "0",
         question: [
           { text: "Do you have a sustainability risk assessment process for suppliers?", choices: ["Yes", "No"] },
           { text: "Are suppliers categorized based on sustainability risk levels (high, medium, low)?", choices: ["Yes", "No"] },
@@ -132,8 +132,8 @@ export const allCategories = [
       {
         key: "certification-compliance",
         quesSection: "Certification Compliance",
-        questionsAnswer: "2/3",
-        percentComplete: "80%",
+        questionsAnswer: "0/3",
+        percentComplete: "0",
         question: [
           { text: "Does your company hold any recognized environmental certifications?", choices: null },
           { text: "Does your company hold any social certifications?", choices: null },
@@ -151,8 +151,8 @@ export const allCategories = [
       {
         key: "ghg-emissions",
         quesSection: "GHG Emissions",
-        questionsAnswer: "5/5",
-        percentComplete: "100%",
+        questionsAnswer: "0/5",
+        percentComplete: "0",
         question: [
           { text: "Do you measure and report greenhouse gas emissions, including Scope 1, Scope 2, and Scope 3 categories?", choices: ["Yes", "No"] },
           { text: "Are your emissions data externally verified for accuracy and reliability?", choices: ["Yes", "No"] },
@@ -164,8 +164,8 @@ export const allCategories = [
       {
         key: "stationary-combustion",
         quesSection: "Stationary Combustion",
-        questionsAnswer: "2/4",
-        percentComplete: "60%",
+        questionsAnswer: "0/4",
+        percentComplete: "0",
         question: [
           { text: "What are the fuel types used in stationary sources like boilers, furnaces, and generators?", choices: null },
           { text: "How is the fuel consumption monitored and recorded for stationary combustion sources?", choices: null },
@@ -176,8 +176,8 @@ export const allCategories = [
       {
         key: "mobile-combustion",
         quesSection: "Mobile Combustion",
-        questionsAnswer: "4/5",
-        percentComplete: "90%",
+        questionsAnswer: "0/5",
+        percentComplete: "0",
         question: [
           { text: "What types of vehicles are part of your operational fleet?", choices: null },
           { text: "How are fuel consumption and mileage tracked for company vehicles?", choices: null },
@@ -189,8 +189,8 @@ export const allCategories = [
       {
         key: "fugitive-emmission",
         quesSection: "Fugitive-emission",
-        questionsAnswer: "2/5",
-        percentComplete: "40%",
+        questionsAnswer: "0/5",
+        percentComplete: "0",
         question: [
           { text: "What types of refrigerants are used in your operations, and how are leaks monitored?", choices: null },
           { text: "What is the total charge capacity of refrigerants in your systems?", choices: null },
