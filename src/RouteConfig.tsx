@@ -17,6 +17,7 @@ import BenchmarkSustainability from "./pages/supplierdetails/benchmark/Benchmark
 import StrategyRoadMap from "./pages/supplierdetails/supplierstrategy/StrategyRoadMap";
 import Questionnaire from "./pages/questionnaire/Questionnaire";
 import CompanyDetailsForm from "./pages/form/FormPage";
+import SupplierManage from "./pages/supplier/SupplierManage";
 
 const RouterConfig = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const RouterConfig = createBrowserRouter([
                 path: 'user-management',
                 element: <Questionnaire />
             },
+            {
+                path: 'supplier-management',
+                element: <SupplierManage />
+            }
         ],
     },
     {

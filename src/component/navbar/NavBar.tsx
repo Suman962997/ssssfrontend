@@ -50,13 +50,17 @@ const NavBar: React.FC = () => {
         navigate('/company');
     };
 
+    const goToSupplierManagement = () => {
+        navigate('/supplier-management');
+    };
+
     const setting = (
         <div className='dropdown-menu'>
             <div className='profile-content'>
-                <div className='supplier-name'>Supplier</div>
+                <div className='supplier-name' onClick={() => goToSupplierManagement()}>Supplier</div>
                 <div className='supplier-name' onClick={() => goToQuestionnaire()}>Questionnaire</div>
+                <div className='supplier-name' onClick={() => goToCompanyForm()}>Company Form</div>
                 <div className='user-name' onClick={() => goToUserManagement()}>User Management</div>
-                <div className='user-name' onClick={() => goToCompanyForm()}>Company Form</div>
 
             </div>
         </div>
