@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Upload, Button, message } from "antd";
+import { Form, Input, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import './FormPage.scss';
 import CustomButton from "../../component/buttons/CustomButton";

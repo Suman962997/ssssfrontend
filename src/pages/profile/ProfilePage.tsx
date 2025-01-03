@@ -8,7 +8,6 @@ import {
 import { ReactComponent as Profile } from '../../assets/images/profile.svg'
 import CustomButton from "../../component/buttons/CustomButton";
 import { userInfo } from "../../utils/Options";
-import NavBar from "../../component/navbar/NavBar";
 import "./Profile.scss";
 
 const { TabPane } = Tabs;
