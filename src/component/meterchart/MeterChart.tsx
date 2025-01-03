@@ -1,7 +1,7 @@
 import React from "react";
 import GaugeChart from "react-gauge-chart";
-import "./MeterChart.scss";
 import { error, good, primaryColor, satisfactory, warning } from "../../style/ColorCode";
+import "./MeterChart.scss";
 
 interface MeterProps {
   label: string;

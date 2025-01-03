@@ -7,9 +7,9 @@ import {
 } from "@ant-design/icons";
 import { ReactComponent as Profile } from '../../assets/images/profile.svg'
 import CustomButton from "../../component/buttons/CustomButton";
-import "./Profile.scss";
 import { userInfo } from "../../utils/Options";
 import NavBar from "../../component/navbar/NavBar";
+import "./Profile.scss";
 
 const { TabPane } = Tabs;
 
@@ -21,7 +21,6 @@ const ProfilePage: React.FC = () => {
 
     return (
         <div className="profile-main">
-            <NavBar />
             <div className="profile-page">
                 <Card className="profile-card">
                     <div className="profile-header">

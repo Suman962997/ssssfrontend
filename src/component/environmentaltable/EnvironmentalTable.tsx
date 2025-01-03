@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./EnvironmentalTable.scss";
 import Loader from "../loader/Loader";
+import "./EnvironmentalTable.scss";
 
 const EnvironmentalTable: React.FC = () => {
   const [data, setData] = useState<any>(null);

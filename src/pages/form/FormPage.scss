@@ -1,0 +1,43 @@
+@import "../../style/utils/Variables.scss";
+.company-details-form {
+  width: 40%;
+  border: $border;
+  background: $cleanWhite;
+  border-radius: $commonRadius;
+
+    margin: 0 auto;
+    padding: 20px;
+  
+    .upload-file {
+      margin-bottom: 24px;
+      font-size: 14px;
+        font-weight: $bold;
+  
+      .upload-button {
+        background-color: $primary;
+        color: $cleanWhite;
+  
+        &:hover {
+          background-color: $primary;
+          border-color: $primary;
+        }
+      }
+    }
+  
+    .form-item {
+      margin-bottom: 16px;
+  
+      label {
+        font-size: 14px;
+        font-weight: $bold;
+        color: $textColor;
+      }
+  
+      .text-area {
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        cursor: not-allowed;
+      }
+    }
+  }
+  

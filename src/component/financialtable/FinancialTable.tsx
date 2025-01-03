@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./FinancialTable.scss";
 import Loader from "../loader/Loader";
+import "./FinancialTable.scss";
 
 interface TableProps {
   name: string;
@@ -38,7 +38,7 @@ const FinancialTable: React.FC = () => {
         <thead>
           <tr>
             {data?.columns?.map((col: string, index: number) => (
-              <th key={index}>{col}</th>
+              <th key={index ?? null}>{col}</th>
             ))}
           </tr>
         </thead>

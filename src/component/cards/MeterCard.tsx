@@ -1,12 +1,12 @@
 import React from "react";
 import { Card, Tooltip } from "antd";
-import "./Card.scss";
 import DropdownInput from "../dropdown/CustomDropDown";
 import CircularChart from "../circlepercentagechart/CircleChart";
 import BarChart from "../barchart/BarChart";
 import MeterChart from "../meterchart/MeterChart";
 import { InfoCircleTwoTone } from "@ant-design/icons";
 import { bgColor } from "../../style/ColorCode";
+import "./Card.scss";
 
 interface MeterCardProps {
   title: string;

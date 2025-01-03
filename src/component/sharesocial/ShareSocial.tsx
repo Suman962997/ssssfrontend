@@ -24,7 +24,6 @@ export const ShareComponent: React.FC = () => {
         }
         if (navigator.clipboard) {
             try {
-                console.log("Using Clipboard API to copy.");
                 await navigator.clipboard.writeText(link);
                 setCopied(true);
                 setTimeout(() => setCopied(false), 2000);
@@ -34,7 +33,6 @@ export const ShareComponent: React.FC = () => {
             }
         }
         try {
-            console.log("Using fallback to copy.");
             const textarea = document.createElement("textarea");
             textarea.value = link;
             textarea.style.position = "absolute";
