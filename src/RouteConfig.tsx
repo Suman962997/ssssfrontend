@@ -16,6 +16,7 @@ import Waste from "./pages/supplierdetails/waste/Waste";
 import BenchmarkSustainability from "./pages/supplierdetails/benchmark/BenchmarkSustainability";
 import StrategyRoadMap from "./pages/supplierdetails/supplierstrategy/StrategyRoadMap";
 import Questionnaire from "./pages/questionnaire/Questionnaire";
+import CompanyDetailsForm from "./pages/form/FormPage";
 
 const RouterConfig = createBrowserRouter([
     {
@@ -37,7 +38,23 @@ const RouterConfig = createBrowserRouter([
             {
                 path: 'analytics',
                 element: <Analytics />,
-            }
+            },
+            {
+                path: 'company',
+                element: <CompanyDetailsForm />
+            },
+            {
+                path: 'profile',
+                element: <ProfilePage />
+            },
+            {
+                path: 'questionnaire',
+                element: <Questionnaire />
+            },
+            {
+                path: 'user-management',
+                element: <Questionnaire />
+            },
         ],
     },
     {
@@ -94,14 +111,7 @@ const RouterConfig = createBrowserRouter([
             },
         ]
     },
-    {
-        path: 'profile',
-        element: <ProfilePage />
-    },
-    {
-        path: 'questionnaire',
-        element: <Questionnaire />
-    }
+
 
 ]);
 

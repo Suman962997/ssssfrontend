@@ -12,10 +12,10 @@ import {
   ChartData,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
-import "./FinancialChart.scss";
 import DropdownInput from "../dropdown/CustomDropDown";
 import { options as opt } from "../../utils/Options"
 import { bgColor, blue, primaryColor, secondaryColor } from '../../style/ColorCode';
+import "./FinancialChart.scss";
 ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend);
 
 const FinancialChart: React.FC = () => {

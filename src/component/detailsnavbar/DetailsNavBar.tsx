@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Tabs, Dropdown, Menu } from "antd";
 import { DownOutlined, ArrowLeftOutlined, CheckOutlined } from "@ant-design/icons";
-import AeiforoLogo from "../../assets/images/Aeiforo-logo.png";
-import CustomButton from "../buttons/CustomButton";
 import { GlobalIconComponent, HomeIconComponent, MailIconComponent } from "../../utils/ContactIcons";
 import { ShareComponent } from "../../component/sharesocial/ShareSocial";
 import "./DetailsNavBar.scss";
-
+import MainNavBar from "../navbar/NavBar"
 interface NavBarProps {
   activeLink: string;
   setActiveLink: (linkName: string) => void;
@@ -58,19 +56,15 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
     navigate("/dashboard");
   };
 
-  const goBackToContact = () => {
-    console.log("Contact button clicked");
-  };
-
   const visibleTabs = isMobile ? tabs.slice(0, 3) : tabs.slice(0, 8);
   const overflowTabs = isMobile ? tabs.slice(3) : tabs.slice(8);
 
   const overflowMenu = (
     <Menu>
       {overflowTabs.map((tab) => (
-        <Menu.Item key={tab.name}>
-          <Link to={`/supplier/${id}/${tab.name}`} onClick={() => handleLinkClick(tab.name)}>
-            {tab.label}
+        <Menu.Item key={tab?.name}>
+          <Link to={`/supplier/${id}/${tab?.name}`} onClick={() => handleLinkClick(tab.name)}>
+            {tab?.label}
           </Link>
         </Menu.Item>
       ))}
@@ -79,12 +73,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
 
   return (
     <>
-      <div className="navbar-1">
-        <div>
-          <img width={180} src={AeiforoLogo} alt="AeiforoLogo" />
-        </div>
-        <CustomButton label="Contact" type="secondary" onClick={goBackToContact} />
-      </div>
+      <MainNavBar />
       <div className="navbar-2">
         <div className="heading">
           <ArrowLeftOutlined onClick={goBackToDash} />{" "}
@@ -140,7 +129,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
                   {tab.label}
                 </Link>
               }
-              key={tab.name}
+              key={tab?.name}
             />
           ))}
         </Tabs>

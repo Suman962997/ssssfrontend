@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import FinancialChart from '../../component/financialchart/FinancialChart';
 import FinancialTable from '../../component/financialtable/FinancialTable';
-import "./Quality.scss";
 import Loader from '../../component/loader/Loader';
+import "./Quality.scss";
 const Quality: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 

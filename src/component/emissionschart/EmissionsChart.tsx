@@ -10,9 +10,9 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import "./EmissionsChart.scss";
 import DropdownInput from "../dropdown/CustomDropDown";
 import { options as opt } from "../../utils/Options"
+import "./EmissionsChart.scss";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 

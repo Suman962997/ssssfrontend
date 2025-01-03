@@ -22,8 +22,8 @@ import CustomButton from "../../component/buttons/CustomButton";
 import { fetchSupplierListData } from "../../features/action/SupplierAction";
 import { setSelectedRecord } from "../../features/slices/SupplierSlice";
 import { useDispatch } from "react-redux";
-import "./Dashboard.scss";
 import { bgColor } from "../../style/ColorCode";
+import "./Dashboard.scss";
 
 const Dashboard: React.FC = () => {
   const suppliers = useAppSelector((state) => state.suppliers?.data);

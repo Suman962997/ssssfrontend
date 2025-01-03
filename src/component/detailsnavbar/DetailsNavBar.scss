@@ -81,11 +81,15 @@
         background: $grey;
         border-bottom-left-radius: 25px;
         border-bottom-right-radius: 25px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
         display: $flex;
         align-items: center;
         justify-content: space-between;
         padding: $commonPadding;
         flex-wrap: wrap;
+        margin-top: 5px;
+
       }
       .heading {
         display: $flex;
@@ -152,10 +156,13 @@ body {
   background: $grey;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   display: $flex;
   align-items: center;
   justify-content: space-between;
   padding: $commonPadding;
+  margin-top: 5px;
 }
 
 .heading {

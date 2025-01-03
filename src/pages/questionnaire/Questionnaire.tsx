@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Card, Input, List, Space, Table, Tooltip, Upload, message } from "antd";
+import { Card, Input, List, Progress, Space, Table, Tooltip, Upload, message } from "antd";
 import { Radio } from "antd";
 import { ArrowLeftOutlined, CheckOutlined, CopyTwoTone, DeleteOutlined, FileAddTwoTone } from "@ant-design/icons";
 import CustomButton from "../../component/buttons/CustomButton";
 import { allCategories } from "../../utils/Options";
+import { primaryColor } from '../../style/ColorCode';
 import "./Questionnaire.scss";
-import NavBar from "../../component/navbar/NavBar";
 
 const { TextArea } = Input;
 
@@ -41,9 +41,13 @@ const Questionnaire: React.FC = () => {
     const [uploadedFiles, setUploadedFiles] = useState<{ [key: string]: { name: string; size: string } | null }>({});
     const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
     const [isViewMode, setIsViewMode] = useState(false);
+    const [checkMark, setCheckMark] = useState(false);
+    const [singleSection, setSingleSection] = useState<{ [key: string]: any }>({});
 
     const handleRowClick = (record: any, sectionIndex: number) => {
         setShowQuestions(true);
+        setSingleSection(record)
+        console.log(record, 'recordrecord')
         setCurrentSectionIndex(sectionIndex);
     };
 
@@ -158,15 +162,12 @@ const Questionnaire: React.FC = () => {
 
                 section.percentComplete = String(percentComplete);
             });
-
             message.success("submitted successfully!");
             setShowQuestions(false);
         }
+        setCheckMark(anyAnswered)
 
     };
-
-
-
 
 
     const renderQuestionInput = (
@@ -185,7 +186,7 @@ const Questionnaire: React.FC = () => {
             <div>
                 <div className="question-text">
                     <div>{questionIndex + 1}. {question.text}
-                        {isAnswered && (
+                        {checkMark && isAnswered && (
                             <Tooltip title="Answered">
                                 <CheckOutlined className="answered-icon" />
                             </Tooltip>
@@ -294,7 +295,6 @@ const Questionnaire: React.FC = () => {
     }
     return (
         <div className="questionnaire-main">
-            <NavBar />
             <div className="questionnaire-container">
                 <div className="category-card">
                     <Card title={"Categories"} bordered>
@@ -336,17 +336,33 @@ const Questionnaire: React.FC = () => {
                 ) : (
                     <div className="question-card">
                         <Card
-                            title={`Section: ${questions?.quesSection}`}
-                            bordered
-                            extra={
-                                <button
-                                    onClick={handleBackToCategories}
-                                    className="back"
-                                >
-                                    <ArrowLeftOutlined /> Back
-                                </button>
-
+                            title={
+                                <div>
+                                    <ArrowLeftOutlined
+                                        className="back"
+                                        onClick={handleBackToCategories}
+                                    />
+                                    {`Section: ${questions?.quesSection}`}
+                                </div>
                             }
+                            extra={
+                                <div style={{ textAlign: "center" }}>
+                                    <Progress
+                                        type="circle"
+                                        percent={(() => {
+                                            const [answered, total] = singleSection?.questionsAnswer?.split("/").map(Number);
+                                            return (answered / total) * 100;
+                                        })()}
+                                        width={40}
+                                        strokeColor={primaryColor}
+                                        format={() => singleSection?.questionsAnswer}
+                                    />
+                                </div>
+                            }
+
+
+
+                            bordered
                         >
                             {questions?.question.map((q, idx) => {
                                 return (
