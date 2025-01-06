@@ -17,7 +17,9 @@
             border-radius: $commonRadius;
             background: $cleanWhite;
             height: 280px;
-    
+
+
+
             .waste-chart {
                 width: 100% !important;
                 height: 100%;
@@ -46,6 +48,12 @@
         background: $cleanWhite;
         align-content: center;
 
+        .waste-title {
+            padding: 0px 0px 80px 20px;
+            color: $textColor;
+            font-size: 20px;
+            
+          }
 
         .waste-chart {
             width: 50%;

@@ -7,6 +7,7 @@ interface FetchSupplierListDataProps {
   calculateCompliancePercentages: () => void;
 }
 
+
 export const fetchSupplierListData = async ({
   setData,
   setLoading,
@@ -14,9 +15,8 @@ export const fetchSupplierListData = async ({
 }: FetchSupplierListDataProps) => {
   try {
     setLoading(true);
-    const response = await fetch(json_url);
-    const data = await response.json();
-    setData(data);
+    const response = await axios.get(json_url);
+    setData(response.data);
     calculateCompliancePercentages();
   } catch (error) {
     console.error("Error fetching the data:", error);

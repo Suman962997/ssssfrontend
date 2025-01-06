@@ -15,6 +15,7 @@ const Waste = () => {
     return (
         <div className='waste-main'>
             <div className='circle-chart'>
+                <div className='waste-title'>Waste & Consumption</div>
                 <div className='waste-chart'>
                     <NormalChart data={wasteData} />
                 </div>

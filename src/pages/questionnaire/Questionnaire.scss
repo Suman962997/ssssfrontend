@@ -28,16 +28,22 @@
   }
 }
 .questionnaire-main {
-    padding: 20px;
+
+    .questionnaire-title {
+      padding-bottom: 15px;
+      padding-left: 5px;
+      font-weight: $bold;
+      color: $textColor;
+      font-size: 20px;
+    }
 }
 
 .questionnaire-container {
     display: $flex;
     gap: 20px;
-    padding: 20px;
   
     .category-card {
-      width: 20%;
+      width: 30%;
       .ant-card {
         height: 100%;
       }
@@ -147,6 +153,56 @@
   text-align: center; 
 }
 
+.footer-text.performance {
+  flex: 4.6;
+  text-align: left;
+}
+
+.footer-text.supplier-strategy {
+  flex: 4.6;
+  text-align: left;
+}
+
+.footer-text.product-supply {
+  flex: 4.7;
+  text-align: left;
+}
+
+.footer-text.governace {
+  flex: 4.2;
+  text-align: left;
+}
+
+.footer-text.management-system {
+  flex: 4.2;
+  text-align: left;
+}
+
+.footer-text.emissions-waste {
+  flex: 2.3;
+  text-align: left;
+}
+
+.footer-text.carbon {
+  flex: 5;
+  text-align: left;
+}
+
+.footer-text.financial-tracking {
+  flex: 4.8;
+  text-align: left;
+}
+.footer-text.general {
+  flex: 3.4;
+  text-align: left;
+}
+
+.footer-text.default {
+  flex:3.4;
+  text-align: left;
+}
+
+
 .total-label {
   flex: 7.4;
   text-align: start;
@@ -158,12 +214,74 @@ text-align: left;
 
 }
 
+.footer-text.supplierbenchmark {
+  flex:3.0;
+  text-align: left;
+}
+
 .answe-bench {
   flex:3.0;
   text-align: left;
 }
 .percentage {
   flex: 3.5;
+}
+
+
+
+.footer-text.percentage {
+  flex: 3.5;
+  text-align: center;
+}
+
+.footer-text.percentage.performance {
+  flex: 5.2;
+  text-align: center;
+}
+
+.footer-text.percentage.supplier-strategy {
+  flex: 6;
+  text-align: center;
+}
+
+.footer-text.percentage.product-supply {
+  flex: 6;
+  text-align: center;
+}
+
+.footer-text.percentage.governace {
+  flex: 4.9;
+  text-align: center;
+}
+
+.footer-text.percentage.management-system {
+  flex: 4.7;
+  text-align: center;
+}
+
+.footer-text.percentage.emissions-waste {
+  flex: 2.4;
+  text-align: center;
+}
+
+.footer-text.percentage.carbon {
+  flex: 5.9;
+  text-align: center;
+}
+
+.footer-text.percentage.financial-tracking {
+  flex: 5.6;
+  text-align: center;
+}
+
+.footer-text.percentage.general {
+  flex: 3.5;
+  text-align: center;
+}
+
+.footer-text.percentage.supplierbenchmark {
+  flex: 3.5;
+  text-align: center;
 }
 
 

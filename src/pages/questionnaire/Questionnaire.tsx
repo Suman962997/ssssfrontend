@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Input, List, Progress, Space, Table, Tooltip, Upload, message } from "antd";
 import { Radio } from "antd";
 import { ArrowLeftOutlined, CheckOutlined, CopyTwoTone, DeleteOutlined, FileAddTwoTone } from "@ant-design/icons";
@@ -42,11 +42,11 @@ const Questionnaire: React.FC = () => {
     const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
     const [isViewMode, setIsViewMode] = useState(false);
     const [checkMark, setCheckMark] = useState(false);
-    const [singleSection, setSingleSection] = useState<{ [key: string]: any }>({});
+    const [singleSectionTextArea, setsingleSectionTextArea] = useState<any>();
+
 
     const handleRowClick = (record: any, sectionIndex: number) => {
         setShowQuestions(true);
-        setSingleSection(record)
         console.log(record, 'recordrecord')
         setCurrentSectionIndex(sectionIndex);
     };
@@ -54,6 +54,9 @@ const Questionnaire: React.FC = () => {
     const handleBackToCategories = () => {
         setShowQuestions(false);
         setCurrentSectionIndex(0);
+        if (!checkMark) {
+            setAnswers({});
+        }
     };
 
     const handleNextSection = () => {
@@ -70,6 +73,7 @@ const Questionnaire: React.FC = () => {
             ...prevAnswers,
             [questionKey]: value,
         }));
+        console.log(value, questionIndex, section, questionKey, 'value')
     };
 
 
@@ -86,6 +90,7 @@ const Questionnaire: React.FC = () => {
             message.success(`${name} uploaded successfully.`);
         }
     };
+
 
     const handleRemoveFile = (questionKey: string) => {
         setUploadedFiles((prevFiles) => {
@@ -166,8 +171,10 @@ const Questionnaire: React.FC = () => {
             setShowQuestions(false);
         }
         setCheckMark(anyAnswered)
-
     };
+
+
+
 
 
     const renderQuestionInput = (
@@ -182,6 +189,7 @@ const Questionnaire: React.FC = () => {
         if (isViewMode && !isAnswered) {
             return null;
         }
+        console.log(answers?.length, 'dddd')
         return (
             <div>
                 <div className="question-text">
@@ -263,7 +271,7 @@ const Questionnaire: React.FC = () => {
     };
 
     const currentCategory = allCategories.find((cat) => cat.key === activeCategory);
-    const questions = currentCategory?.questions[currentSectionIndex];
+    const questions: any = currentCategory?.questions[currentSectionIndex];
 
     const totalAnswered = currentCategory?.questions.reduce((sum, section) => {
         const [answered] = section.questionsAnswer.split("/").map(Number);
@@ -275,7 +283,24 @@ const Questionnaire: React.FC = () => {
         return sum + total;
     }, 0) ?? 0;
 
+    const getFooterTextClass = (category: string) => {
+        const leftAlignedCategories = [
+            "performance",
+            "supplier-strategy",
+            "product-supply",
+            "governance",
+            "management-system",
+            "emissions-waste",
+            "carbon",
+            "financial-tracking",
+        ];
+
+        return leftAlignedCategories.includes(category) ? "footer-text answered" : "footer-text answe-bench";
+    };
+
+
     const footer = () => {
+        console.log(activeCategory, 'activeCategory')
         return (
             <div className="footer-main">
                 <div className="footer-row">
@@ -283,18 +308,48 @@ const Questionnaire: React.FC = () => {
                     <div className="footer-text total-label">
                         <strong>TOTAL</strong>
                     </div>
-                    <div className={activeCategory !== "supplierbenchmark" ? "footer-text answered" : "footer-text answe-bench"}>
+                    <div className={`footer-text ${activeCategory || "default"}`}>
                         {totalAnswered}/{totalQuestions}
                     </div>
-                    <div className="footer-text percentage">
+
+                    <div className={`footer-text percentage ${activeCategory}`}>
                         {Math.round((totalAnswered / totalQuestions) * 100)}%
                     </div>
+
                 </div>
             </div>
         )
     }
+
+
+
+
+    const countNonEmptyAnswers = () => {
+        let nonEmptyCount = 0;
+        if (currentCategory) {
+            currentCategory.questions[currentSectionIndex]?.question.forEach((_, questionIndex) => {
+                const questionKey = `${activeCategory}-${questions.key}-${questionIndex}`;
+                if (answers[questionKey]) {
+                    nonEmptyCount += 1;
+                }
+            });
+        }
+
+        return nonEmptyCount;
+    };
+
+    const totalTextAreasInSection = questions?.question.length || 0;
+    useEffect(() => {
+        setsingleSectionTextArea(totalTextAreasInSection);
+    }, [questions]);
+
+    const progressPercent = singleSectionTextArea > 0
+        ? Math.round((countNonEmptyAnswers() / singleSectionTextArea) * 100)
+        : 0;
+
     return (
         <div className="questionnaire-main">
+            <div className="questionnaire-title">Questionnaire</div>
             <div className="questionnaire-container">
                 <div className="category-card">
                     <Card title={"Categories"} bordered>
@@ -305,11 +360,12 @@ const Questionnaire: React.FC = () => {
                                 <List.Item
                                     key={category.key}
                                     onClick={() => {
-                                        if (!showQuestions) {
-                                            setActiveCategory(category.key);
-                                        }
+                                        // if (!showQuestions) {
+                                        setActiveCategory(category.key);
+                                        // }
                                     }}
-                                    className={`category-item ${activeCategory === category.key ? "active" : ""} ${showQuestions ? "disabled-item" : ""}`}
+                                    // className={`category-item ${activeCategory === category.key ? "active" : ""} ${showQuestions ? "disabled-item" : ""}`}
+                                    className={`category-item ${activeCategory === category.key ? "active" : ""}`}
                                 >
                                     {category.section}
                                 </List.Item>
@@ -349,14 +405,12 @@ const Questionnaire: React.FC = () => {
                                 <div style={{ textAlign: "center" }}>
                                     <Progress
                                         type="circle"
-                                        percent={(() => {
-                                            const [answered, total] = singleSection?.questionsAnswer?.split("/").map(Number);
-                                            return (answered / total) * 100;
-                                        })()}
-                                        width={40}
+                                        percent={progressPercent}
+                                        width={50}
                                         strokeColor={primaryColor}
-                                        format={() => singleSection?.questionsAnswer}
+                                        format={() => `${countNonEmptyAnswers()}/${singleSectionTextArea}`}
                                     />
+
                                 </div>
                             }
 
@@ -364,7 +418,7 @@ const Questionnaire: React.FC = () => {
 
                             bordered
                         >
-                            {questions?.question.map((q, idx) => {
+                            {questions?.question.map((q: any, idx: any) => {
                                 return (
                                     <div key={`${questions.key}-${idx}`}>
                                         {renderQuestionInput(activeCategory, questions.key, q, idx)}
