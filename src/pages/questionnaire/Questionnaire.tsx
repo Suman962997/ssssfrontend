@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Input, List, Progress, Space, Table, Tooltip, Upload, message } from "antd";
+import { Card, Input, List, Modal, Progress, Space, Table, Tooltip, Upload, message } from "antd";
 import { Radio } from "antd";
 import { ArrowLeftOutlined, CheckOutlined, CopyTwoTone, DeleteOutlined, FileAddTwoTone } from "@ant-design/icons";
 import CustomButton from "../../component/buttons/CustomButton";
@@ -43,20 +43,50 @@ const Questionnaire: React.FC = () => {
     const [isViewMode, setIsViewMode] = useState(false);
     const [checkMark, setCheckMark] = useState(false);
     const [singleSectionTextArea, setsingleSectionTextArea] = useState<any>();
+    const [trust, setTrust] = useState<boolean>(false);
+
+    const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+    const [isUnsavedModalVisible, setIsUnsavedModalVisible] = useState(false);
+    const [pendingAction, setPendingAction] = useState<() => void | null>();
+    const [submittedAnswers, setSubmittedAnswers] = useState<Record<string, boolean>>({});
 
 
     const handleRowClick = (record: any, sectionIndex: number) => {
         setShowQuestions(true);
-        console.log(record, 'recordrecord')
         setCurrentSectionIndex(sectionIndex);
     };
 
-    const handleBackToCategories = () => {
-        setShowQuestions(false);
-        setCurrentSectionIndex(0);
-        if (!checkMark) {
-            setAnswers({});
+    const confirmNavigation = (action: () => void) => {
+        if (hasUnsavedChanges && showQuestions) {
+            setPendingAction(() => action);
+            setIsUnsavedModalVisible(true);
+        } else {
+            action();
         }
+    };
+
+
+    const handleBackToCategories = () => {
+        confirmNavigation(() => {
+            const savedAnswers = localStorage.getItem('answeredQuestions');
+            if (savedAnswers) {
+                setAnswers(JSON.parse(savedAnswers));
+            }
+            setActiveCategory(activeCategory || "");
+            setShowQuestions(false);
+            setCurrentSectionIndex(0);
+            setAnswers((prevAnswers) => {
+                const updatedAnswers = { ...prevAnswers };
+                Object.keys(updatedAnswers).forEach((key) => {
+                    if (!updatedAnswers[key] || updatedAnswers[key].trim() === "") {
+                        updatedAnswers[key] = "";
+                    }
+                });
+
+                return updatedAnswers;
+            });
+        });
+
     };
 
     const handleNextSection = () => {
@@ -73,7 +103,8 @@ const Questionnaire: React.FC = () => {
             ...prevAnswers,
             [questionKey]: value,
         }));
-        console.log(value, questionIndex, section, questionKey, 'value')
+
+        setHasUnsavedChanges(answers[questionKey] === "" ? false : true);
     };
 
 
@@ -132,47 +163,119 @@ const Questionnaire: React.FC = () => {
 
     const hasNonEmptyValues = Object.values(answers).some(value => value !== "");
 
-    const handleSubmitAll = () => {
+    const handleSubmitAll = (item: any) => {
+        setTrust(item?.isTrusted);
+        setSubmittedAnswers((prev) => ({
+            ...prev,
+            [item]: true,
+        }));
+
         let anyAnswered = false;
-
         const currentCategory = allCategories.find((cat) => cat.key === activeCategory);
+
         if (currentCategory) {
-            currentCategory.questions.forEach((section) => {
-                section.question.forEach((_, questionIndex) => {
-                    const questionKey = `${activeCategory}-${section.key}-${questionIndex}`;
-                    if (answers[questionKey]) {
-                        anyAnswered = true;
-                    }
-                });
-            });
-        }
+            const answeredData: any = [];
 
-        if (!anyAnswered) {
-            message.warning("Please answer at least one question before submitting.");
-        } else {
-            currentCategory && currentCategory.questions.forEach((section) => {
+            currentCategory.questions.forEach((section: any) => {
                 let answered = 0;
+                const total = section.question.length;
 
-                section.question.forEach((_, questionIndex) => {
+                section.question.forEach((_: any, questionIndex: any) => {
                     const questionKey = `${activeCategory}-${section.key}-${questionIndex}`;
                     if (answers[questionKey]) {
                         answered += 1;
+                        anyAnswered = true;
                     }
                 });
 
-                const total = section.question.length;
-                section.questionsAnswer = `${answered}/${total}`;
-
+                const questionsAnswer = `${answered}/${total}`;
                 const percentComplete = total > 0 ? Math.round((answered / total) * 100) : 0;
 
-                section.percentComplete = String(percentComplete);
+                section.questionsAnswer = questionsAnswer;
+                section.percentComplete = percentComplete;
+
+                answeredData.push({
+                    sectionKey: section.key,
+                    questionsAnswer,
+                    percentComplete,
+                });
             });
-            message.success("submitted successfully!");
-            setShowQuestions(false);
+
+            localStorage.setItem(`${activeCategory}-answeredData`, JSON.stringify(answeredData));
+
+            if (!anyAnswered) {
+                message.warning("Please answer at least one question before submitting.");
+            } else {
+                message.success("Submitted successfully!");
+                setShowQuestions(false);
+            }
         }
-        setCheckMark(anyAnswered)
     };
 
+    const loadAnsweredData = (categoryKey: string, questions: any[]) => {
+        const storedData = localStorage.getItem(`${categoryKey}-answeredData`);
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            questions.forEach((section) => {
+                const storedSection = parsedData.find((data: any) => data.sectionKey === section.key);
+                if (storedSection) {
+                    section.questionsAnswer = storedSection.questionsAnswer;
+                    section.percentComplete = storedSection.percentComplete;
+                }
+            });
+        }
+    };
+
+    const handleCategoryClick = (categoryKey: string) => {
+        confirmNavigation(() => {
+
+            const selectedCategory = allCategories.find((cat) => cat.key === categoryKey);
+            if (selectedCategory) {
+                loadAnsweredData(categoryKey, selectedCategory.questions);
+            }
+            setActiveCategory(categoryKey);
+            const savedAnswers = localStorage.getItem('answeredQuestions');
+
+            if (savedAnswers) {
+                setAnswers(JSON.parse(savedAnswers));
+            }
+
+            setAnswers((prevAnswers) => {
+                const updatedAnswers = { ...prevAnswers };
+                Object.keys(updatedAnswers).forEach((key) => {
+                    if (!updatedAnswers[key] || updatedAnswers[key].trim() === "") {
+                        updatedAnswers[key] = "";
+                    }
+                });
+
+                return updatedAnswers;
+            });
+        })
+    };
+
+
+
+    useEffect(() => {
+        const savedAnswers: any = localStorage.getItem('answeredQuestions');
+        if (savedAnswers) {
+            setAnswers(JSON.parse(savedAnswers));
+        }
+    }, []);
+
+
+    useEffect(() => {
+        if (!trust) {
+            setAnswers((prevAnswers) => {
+                const updatedAnswers = { ...prevAnswers };
+                Object.keys(updatedAnswers).forEach((key) => {
+                    if (!submittedAnswers[key] && (!updatedAnswers[key] || updatedAnswers[key].trim() === "")) {
+                        updatedAnswers[key] = "";
+                    }
+                });
+                return updatedAnswers;
+            });
+        }
+    }, [trust, submittedAnswers]);
 
 
 
@@ -189,15 +292,15 @@ const Questionnaire: React.FC = () => {
         if (isViewMode && !isAnswered) {
             return null;
         }
-        console.log(answers?.length, 'dddd')
         return (
             <div>
                 <div className="question-text">
                     <div>{questionIndex + 1}. {question.text}
-                        {checkMark && isAnswered && (
+                        {isAnswered && (
                             <Tooltip title="Answered">
                                 <CheckOutlined className="answered-icon" />
                             </Tooltip>
+
                         )}
 
                     </div>
@@ -220,6 +323,7 @@ const Questionnaire: React.FC = () => {
                             onChange={(e) => handleInputChange(section, key, e.target.value, questionIndex)}
                             value={answers[questionKey] || ""}
                         />
+
                         <div className="upload-section">
                             {!isFileUploaded && (
                                 <Tooltip title="Upload">
@@ -253,10 +357,11 @@ const Questionnaire: React.FC = () => {
                             <label key={`${option}-${idx}`}>
                                 <Space direction="vertical">
                                     <Radio
-                                        value={option}
+                                        value={trust ? option : null}
                                         checked={answers[`${section}-${key}-${questionIndex}`] === option}
                                         onChange={() => handleInputChange(section, key, option, questionIndex)}
                                         className="radio-qbutton"
+
                                     >
                                         {option}
                                     </Radio>
@@ -273,34 +378,16 @@ const Questionnaire: React.FC = () => {
     const currentCategory = allCategories.find((cat) => cat.key === activeCategory);
     const questions: any = currentCategory?.questions[currentSectionIndex];
 
-    const totalAnswered = currentCategory?.questions.reduce((sum, section) => {
-        const [answered] = section.questionsAnswer.split("/").map(Number);
-        return sum + answered;
-    }, 0) ?? 0;
-
     const totalQuestions = currentCategory?.questions.reduce((sum, section) => {
         const [, total] = section.questionsAnswer.split("/").map(Number);
         return sum + total;
     }, 0) ?? 0;
 
-    const getFooterTextClass = (category: string) => {
-        const leftAlignedCategories = [
-            "performance",
-            "supplier-strategy",
-            "product-supply",
-            "governance",
-            "management-system",
-            "emissions-waste",
-            "carbon",
-            "financial-tracking",
-        ];
-
-        return leftAlignedCategories.includes(category) ? "footer-text answered" : "footer-text answe-bench";
-    };
-
-
+    const totalAnswered = currentCategory?.questions.reduce((sum, section) => {
+        const [answered] = section.questionsAnswer.split("/").map(Number);
+        return sum + answered;
+    }, 0) ?? 0;
     const footer = () => {
-        console.log(activeCategory, 'activeCategory')
         return (
             <div className="footer-main">
                 <div className="footer-row">
@@ -321,9 +408,6 @@ const Questionnaire: React.FC = () => {
         )
     }
 
-
-
-
     const countNonEmptyAnswers = () => {
         let nonEmptyCount = 0;
         if (currentCategory) {
@@ -339,9 +423,11 @@ const Questionnaire: React.FC = () => {
     };
 
     const totalTextAreasInSection = questions?.question.length || 0;
+
     useEffect(() => {
         setsingleSectionTextArea(totalTextAreasInSection);
-    }, [questions]);
+    }, [totalTextAreasInSection, questions]);
+
 
     const progressPercent = singleSectionTextArea > 0
         ? Math.round((countNonEmptyAnswers() / singleSectionTextArea) * 100)
@@ -359,12 +445,7 @@ const Questionnaire: React.FC = () => {
                             renderItem={(category, id: number) => (
                                 <List.Item
                                     key={category.key}
-                                    onClick={() => {
-                                        // if (!showQuestions) {
-                                        setActiveCategory(category.key);
-                                        // }
-                                    }}
-                                    // className={`category-item ${activeCategory === category.key ? "active" : ""} ${showQuestions ? "disabled-item" : ""}`}
+                                    onClick={() => handleCategoryClick(category.key)}
                                     className={`category-item ${activeCategory === category.key ? "active" : ""}`}
                                 >
                                     {category.section}
@@ -454,7 +535,7 @@ const Questionnaire: React.FC = () => {
                                     <CustomButton
                                         label="Submit Answers"
                                         type="primary"
-                                        onClick={handleSubmitAll}
+                                        onClick={(item: any) => handleSubmitAll(item)}
                                         disabled={allCategories.find((cat) => cat.key === activeCategory)?.questions.every(section =>
                                             section.question.every((_, questionIndex) => {
                                                 const questionKey = `${activeCategory}-${section.key}-${questionIndex}`;
@@ -470,8 +551,27 @@ const Questionnaire: React.FC = () => {
                 )
                 }
             </div >
+            <Modal
+                title="Unsaved Changes!!!"
+                visible={isUnsavedModalVisible}
+                onOk={() => {
+                    setIsUnsavedModalVisible(false);
+                    setHasUnsavedChanges(false);
+                    if (pendingAction) pendingAction();
+                }}
+                onCancel={() => setIsUnsavedModalVisible(false)}
+                okText="Yes"
+                cancelText="No"
+                centered
+            >
+                <div className="model-ques-content">Do You Want to Exit Without Saving?</div>
+            </Modal>
+
+
         </div >
+
     );
+
 };
 
 export default Questionnaire;

@@ -382,3 +382,50 @@ text-align: left;
   background: $cleanWhite;
   cursor: pointer;
 }
+
+
+.model-ques-content {
+  color: $textColor;
+  font-size: 16px;
+  font-weight: $bold;
+  display: ruby-text;
+  
+}
+
+
+  .ant-btn-primary {
+    background-color: $primary;
+    border-color: $primary;
+
+    &:hover {
+      background-color: $primary !important;
+      border-color: $primary;
+      box-shadow: 0 0 0 2px rgba(0, 128, 0, 0.2);
+    }
+
+    &:focus {
+      background-color: $primary;
+      border-color: $primary;
+      box-shadow: 0 0 0 2px rgba(0, 128, 0, 0.2);
+    }
+  }
+
+  .ant-modal-header {
+    background-color: $cleanWhite;
+    padding-bottom: $commonPadding;
+
+    .ant-modal-title {
+
+      color: $textColor;
+    }
+  }
+
+  .ant-modal-body {
+    background-color: $cleanWhite;
+  }
+
+  .ant-modal-footer {
+    background-color: $cleanWhite;
+    padding: 0;
+  }
+

@@ -4,7 +4,7 @@ import '../buttons/Buttons.scss';
 
 interface ButtonProps {
   label: string;
-  onClick?: () => void;
+  onClick?: any;
   type?: "primary" | "outline" | "secondary" | "default";
   icon?: any;
   className?: string;

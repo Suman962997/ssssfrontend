@@ -35,6 +35,8 @@ const NavBar: React.FC = () => {
 
     const handleLogout = () => {
         setIsDropdownOpen(!isDropdownOpen);
+        localStorage.removeItem('totalAnswered');
+        localStorage.removeItem('answeredQuestions');
     };
     const goToProfile = () => {
         navigate('/profile');
