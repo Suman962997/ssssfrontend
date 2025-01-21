@@ -18,10 +18,15 @@ import StrategyRoadMap from "./pages/supplierdetails/supplierstrategy/StrategyRo
 import Questionnaire from "./pages/questionnaire/Questionnaire";
 import CompanyDetailsForm from "./pages/form/FormPage";
 import SupplierManage from "./pages/supplier/SupplierManage";
+import Login from "./pages/login/Login";
 
 const RouterConfig = createBrowserRouter([
+
     {
         path: '/',
+        element: <Login />,
+    },
+    {
         element: <Home />,
         children: [
             {

@@ -4,6 +4,13 @@ import CustomButton from '../../../component/buttons/CustomButton';
 import DocumentCertificate from '../overview/component/document/DocumentCertificate';
 import MapComponent from '../../../component/mapcomponent/MapComponent';
 import Loader from '../../../component/loader/Loader';
+import Nozzle from '../../../assets/images/nozzle.png'
+import Gasket from '../../../assets/images/gasket.png'
+import Spindle from '../../../assets/images/spindle.png'
+import Bellows from '../../../assets/images/bellows.png'
+import Relay from '../../../assets/images/relay.png'
+import Oring from '../../../assets/images/o-ring.png'
+
 import './Governance.scss';
 
 
@@ -40,7 +47,26 @@ const Governance: React.FC = () => {
   const miniCard = [
     { totalsystem: "10", active: "2", outdated: "8", },
   ];
+  console.log(record?.key === "nakakita", 'record')
 
+  const getImage = (name: string) => {
+    switch (name.toLowerCase()) {
+      case 'nozzle':
+        return Nozzle;
+      case 'gasket':
+        return Gasket;
+      case 'spindle':
+        return Spindle;
+      case 'bellows':
+        return Bellows;
+      case 'relay':
+        return Relay;
+      case 'o-ring':
+        return Oring;
+      default:
+        return '';
+    }
+  };
   return (
     <div className='goverance-flex'>
       {type === "governance" &&
@@ -120,39 +146,71 @@ const Governance: React.FC = () => {
       }
       {type === "products&services" && (
         <div className='prd-main'>
-          <div className="governance-main-prod">
-            <div className="governance-content-prod">
-              <div className="con-title">{record?.supplier}</div>
+          {record?.key === "nakakita" ? (
+            <div className="governance-main-item">
+              {record?.product?.map((product: any) => (
+                <div key={product.key} className="product-item">
+                  <div className='product-item-img'>
+                    <img src={getImage(product?.name)} width={160} alt={product.name} />
+                  </div>
+                  <div className='product-item-content'>
+                    <div>
+                      <div className="product-item-un">
+                        <div>UNSPSC: {product.unspsc}</div>
+                        <div>HSN: {product.hsn}</div>
+                      </div>
+                      <div className='product-item-address'>{product.productAdress}</div>
+                      <div>SKU: {product.sku}</div>
+                      <div>Mfg: {product.Mfg}</div>
+                      <div>Location: {product.location}</div>
+                    </div>
+                  </div>
 
-              <div className="governance-con-start">
-                <div className='prod-head'>Industry</div>
-                <div className='prod-space'>{record?.industry}</div>
-              </div>
-
-              {record?.product && record?.product.length > 0 && (
-                <div className="governance-con-start-prod">
-                  <div className="prod-head">Products</div>
-                  {record?.product.map((prod: string) => (
-                    <div className='prod-list' key={prod}>{prod}</div>
-                  ))}
+                  <div className='product-item-details'>
+                    <div className='name-details'> <span>Name:</span> <span> {product.name}</span></div>
+                    <div className='meterial-details'> <span>Material:</span> <span>{product.material} </span></div>
+                    <div className='app-details'><span>Application:</span> <span>{product.application} </span></div>
+                  </div>
                 </div>
-              )}
+              ))}
 
-              {record?.service && record?.service?.length > 0 && (
-                <div className="governance-con-start-prod">
-                  <div className='prod-head'>Services</div>
-                  {record?.service?.map((serv: string, index: number) => (
-                    <div className='prod-list' key={index}>{serv}</div>
-                  ))}
-                </div>
-              )}
             </div>
-          </div>
+          ) : (
+            <div className="governance-main-prod">
+              <div className="governance-content-prod">
+                <div className="con-title">{record?.supplier}</div>
+
+                <div className="governance-con-start">
+                  <div className='prod-head'>Industry</div>
+                  <div className='prod-space'>{record?.industry}</div>
+                </div>
+
+                {record?.product && record?.product.length > 0 && (
+                  <div className="governance-con-start-prod">
+                    <div className="prod-head">Products</div>
+                    {record?.product.map((prod: string) => (
+                      <div className='prod-list' key={prod}>{prod}</div>
+                    ))}
+                  </div>
+                )}
+
+                {record?.service && record?.service?.length > 0 && (
+                  <div className="governance-con-start-prod">
+                    <div className='prod-head'>Services</div>
+                    {record?.service?.map((serv: string, index: number) => (
+                      <div className='prod-list' key={index}>{serv}</div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )
+          }
         </div>
       )}
 
       <div className='doc-certi'>
-        <DocumentCertificate />
+        <DocumentCertificate record={record} />
       </div>
 
     </div>

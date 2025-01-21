@@ -11,6 +11,8 @@ import { ReactComponent as AuditPass } from '../assets/icons/AuditPassIcon.svg';
 import { ReactComponent as Score } from '../assets/icons/ScoreIcon.svg';
 import { ReactComponent as Rating } from '../assets/icons/RatingIcon.svg';
 import { ReactComponent as History } from '../assets/icons/HistoryIcon.svg';
+import { ReactComponent as Background } from '../assets/images/login_background.svg';
+
 import '../style/mixins/mixins.scss'
 
 
@@ -126,6 +128,15 @@ export const AuditPassIcon: React.FC = () => {
     return (
         <div className="hover-img">
             <AuditPass />
+        </div>
+    )
+}
+
+
+export const BackgroundImg: React.FC = () => {
+    return (
+        <div className="hover-img">
+            <Background />
         </div>
     )
 }

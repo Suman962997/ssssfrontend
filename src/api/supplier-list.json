@@ -1,5 +1,121 @@
 [
     {
+        "key": "nakakita",
+        "supplier": "Nakakita Seisakusho Co Ltd",
+        "industry": "Automobile",
+        "service": [
+            "NAKAKITA's serial number",
+            "Plant name (Shipyard name)",
+            "Plant number (Ship number)",
+            "Application (Valve number)",
+            "Product name, etc"
+        ],
+        "product": [
+            {
+                "productAdress": "Nozzle, Nakakita Seisakusho Co Ltd,Japan, Stainless Steel 304 Stellited, Psvs Of Uty-2 Plant",
+                "key": 1,
+                "name": "Nozzle",
+                "location": "Yanbu, Saudi Arabia",
+                "sku": "GSC034-0321-02-55664",
+                "Mfg": "Nakakita Seisakusho Co Ltd, Japan",
+                "unspsc": "40141731",
+                "hsn": "84249000",
+                "material": "Stainless Steel 304 Stellited",
+                "application": "Psvs Of Uty-2 Plant"
+            },
+            {
+                "productAdress": "Gasket, Nakakita Seisakusho Co Ltd, Japan, 27,Acbt-3294Dm",
+                "key": 2,
+                "name": "Gasket",
+                "location": "Al-Jubail, Saudi Arabia",
+                "sku": "GSC034-1120-01-18029",
+                "Mfg": "Nakakita Seisakusho Co Ltd, Japan",
+                "unspsc": "31401500",
+                "hsn": "40169320",
+                "material": "ACBT-3294DM",
+                "application": "27"
+            },
+            {
+                "productAdress": "Spindle, Nakakita Seisakusho Co Ltd, Japan, 8,Arrowhead International Corporation, Mitsubishi Heavy Industries,ltd, NS255DX-E, Stainless Steel 403",
+                "name": "Spindle",
+                "key": 3,
+                "location": "Yanbu, Saudi Arabia",
+                "sku": "GSC034-1120-01-40684",
+                "Mfg": "Al-Jubail, Saudi Arabia",
+                "unspsc": "31162800",
+                "hsn": "84604011",
+                "material": "Stainless Steel 403",
+                "application": "NS255DX-E"
+            },
+            {
+                "productAdress": "Bellows, Nakakita Seisakusho Co Ltd,Japan, SS316L",
+                "name": "Bellows",
+                "key": 4,
+                "location": "Yanbu, Saudi Arabia",
+                "sku": "GSC034-0321-02-52092",
+                "Mfg": "Nakakita Seisakusho Co Ltd, Japan",
+                "unspsc": "23153100",
+                "hsn": "84248920",
+                "material": "SS 316L",
+                "application": "--"
+            },
+            {
+                "productAdress": "RELAY, NAKAKITA SEISAKUSHO CO LTD, KC003948, PNEUMATIC,DOUBLE PILOT, NS727D-D, JAPAN",
+                "name": "RELAY",
+                "location": "Al-Jubail, Saudi Arabia",
+                "sku": "GSC034-0321-02-55664",
+                "Mfg": "Nakakita Seisakusho Co Ltd, Japan",
+                "unspsc": "39122325",
+                "key": 5,
+                "hsn": "85364900",
+                "material": "PNEUMATIC,DOUBLE PILOT",
+                "application": "NS727D-D"
+            },
+            {
+                "productAdress": "O-Ring, Nakakita Seisakusho Co Ltd, G65, Pelletizing,Ns-650 Elox-Rb, 83K-X107Z, Nitrile Rubber, Jis B 2401,3.1 Mm, 64.4 Mm",
+                "name": "O-Ring",
+                "location": " Al-Jubail, Saudi Arabia",
+                "sku": "GSC034-1120-01-27120",
+                "Mfg": "Nakakita Seisakusho Co Ltd",
+                "unspsc": "31401503",
+                "key": 6,
+                "hsn": "40169320",
+                "material": "Nitrile Rubber",
+                "application": "NS-650 ELOX-RB"
+            }
+        ],
+        "website": "https://www.nakakita-s.co.jp/en/companyoutline",
+        "websiteName": "www.nakakita-s.co",
+        "companyId": "15468456",
+        "location": "1-1 Fukonominamicho, Daito, Osaka 574-8691, Japan",
+        "certification": [
+            {
+                "environment_management_system": "ISO 9001 (LRQA)"
+            },
+            {
+                "health&safety_management_system": "CE Marking (LRQA)"
+            },
+            {
+                "quantity_management_system": "Eco Action 21 Initiative"
+            }
+        ],
+        "riskScore": 95,
+        "riskLevel": "Low",
+        "compliance": "Compliant",
+        "category": "Safety Material",
+        "cyberRiskScore": 90,
+        "financialRiskScore": 40,
+        "healthScore": 60,
+        "environment": 79,
+        "social": 80,
+        "governance": 60,
+        "healthSafety": 90,
+        "status": true,
+        "email": "bus@nakakita-s.co.jp",
+        "contactUs": "81-72-871-1331",
+        "aboutUs": "our founding in 1930, we have been working hard every day to meet our customers' needs, from design and manufacturing to maintenance of fluid control systems centered on valves, under our company motto of 'progressive development.' Meanwhile,in order to respond to the accelerating changes of the times, we are adding 'challenge' to our theme of 'protecting the present while challenging new things'. While refining our 'product development' that gives shape to the voices of our customers, we will also challenge ourselves to develop new 'technologies' and aim to be a company that proposes new values and benefits to our customers. We ask for your continued understanding and support for Nakakita Seisakusho Co., Ltd., which boldly challenges new things."
+    },
+    {
         "key": "green",
         "supplier": "Green Field Material Handling",
         "industry": "Automobile",
