@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Input, Button, Checkbox, message } from 'antd';
+import { Card, Input, Checkbox, message } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone, LockOutlined, UserOutlined } from '@ant-design/icons';
 import './Login.scss';
 import AeiforoLogo from '../../assets/images/Aeiforo-logo.png';
@@ -13,8 +13,8 @@ const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const correctUsername = 'admin123';
-    const correctPassword = 'admin@123';
+    const correctUsername = 'admin';
+    const correctPassword = 'password';
 
     const handleLogin = () => {
         if (!username || !password) {

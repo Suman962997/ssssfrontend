@@ -36,12 +36,12 @@ const columns: any = [
 
 const Questionnaire: React.FC = () => {
     const [activeCategory, setActiveCategory] = useState<string>("general");
+    const [isMandatory, setIsMandatory] = useState<boolean>(false);
     const [showQuestions, setShowQuestions] = useState<boolean>(false);
     const [answers, setAnswers] = useState<{ [key: string]: any }>({});
     const [uploadedFiles, setUploadedFiles] = useState<{ [key: string]: { name: string; size: string } | null }>({});
     const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
     const [isViewMode, setIsViewMode] = useState(false);
-    const [checkMark, setCheckMark] = useState(false);
     const [singleSectionTextArea, setsingleSectionTextArea] = useState<any>();
     const [trust, setTrust] = useState<boolean>(false);
 
@@ -52,6 +52,7 @@ const Questionnaire: React.FC = () => {
 
 
     const handleRowClick = (record: any, sectionIndex: number) => {
+        console.log(record, 'tttttttttttttttttttt')
         setShowQuestions(true);
         setCurrentSectionIndex(sectionIndex);
     };
@@ -283,7 +284,7 @@ const Questionnaire: React.FC = () => {
     const renderQuestionInput = (
         section: string,
         key: string,
-        question: { text: string; choices: string[] | null },
+        question: { text: string; choices: string[] | null; isMandatory: boolean },
         questionIndex: number
     ) => {
         const questionKey = `${section}-${key}-${questionIndex}`;
@@ -296,6 +297,7 @@ const Questionnaire: React.FC = () => {
             <div>
                 <div className="question-text">
                     <div>{questionIndex + 1}. {question.text}
+                        {question.isMandatory && <span className="mandatory-asterisk">**</span>}
                         {isAnswered && (
                             <Tooltip title="Answered">
                                 <CheckOutlined className="answered-icon" />

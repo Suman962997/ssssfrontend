@@ -106,7 +106,7 @@ const OverView = () => {
                     ))}
                 </div>
             </div>
-            <DocumentCertificate />
+            <DocumentCertificate record={record} />
         </div>
 
     );

@@ -9,13 +9,18 @@ import { ReactComponent as Profile } from '../../assets/images/profile.svg'
 import CustomButton from "../../component/buttons/CustomButton";
 import { userInfo } from "../../utils/Options";
 import "./Profile.scss";
+import { useNavigate } from "react-router-dom";
 
 const { TabPane } = Tabs;
 
 const ProfilePage: React.FC = () => {
-
+    const navigate = useNavigate()
     const handleLogout = () => {
-        console.log("User logged out");
+        navigate("/")
+        localStorage.removeItem("record");
+        localStorage.removeItem("activeTab");
+        localStorage.removeItem('totalAnswered');
+        localStorage.removeItem('answeredQuestions');
     };
 
     return (

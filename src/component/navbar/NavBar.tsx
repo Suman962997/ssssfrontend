@@ -36,6 +36,8 @@ const NavBar: React.FC = () => {
     const handleLogout = () => {
         setIsDropdownOpen(!isDropdownOpen);
         navigate('/')
+        localStorage.removeItem("record");
+        localStorage.removeItem("activeTab");
         localStorage.removeItem('totalAnswered');
         localStorage.removeItem('answeredQuestions');
     };
@@ -51,6 +53,9 @@ const NavBar: React.FC = () => {
     };
     const goToCompanyForm = () => {
         navigate('/company');
+    };
+    const goToHomePage = () => {
+        navigate('/dashboard');
     };
 
     const goToSupplierManagement = () => {
@@ -91,8 +96,8 @@ const NavBar: React.FC = () => {
     return (
         <>
             <div className="navbar">
-                <div>
-                    <img width={180} src={AeiforoLogo} alt="AeiforoLogo" />
+                <div className='navbar-logo'>
+                    <img width={180} src={AeiforoLogo} onClick={goToHomePage} alt="AeiforoLogo" />
                 </div>
                 <div className="flex">
                     <ul>

@@ -1,6 +1,15 @@
 @import '../../style/utils/Variables.scss';
 
 
+@media (max-width: 480px) {
+    body {
+      background-color: $white;
+    }
+    .login-illustration {
+        display: none !important;
+    }
+}
+
 .login-page {
     display: flex;
     height: 100vh;
@@ -92,37 +101,6 @@
                     span {
                         display: block;
                         margin-bottom: 8px;
-                    }
-
-                    .social-icons {
-                        display: flex;
-                        justify-content: center;
-                        gap: 8px;
-
-                        .social-icon {
-                            width: 32px;
-                            height: 32px;
-                            border-radius: 50%;
-                            background-color: #f5f5f5;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-
-                            &.facebook {
-                                background-image: url('');
-                                background-size: cover;
-                            }
-
-                            &.twitter {
-                                background-image: url('');
-                                background-size: cover;
-                            }
-
-                            &.google {
-                                background-image: url('');
-                                background-size: cover;
-                            }
-                        }
                     }
                 }
             }

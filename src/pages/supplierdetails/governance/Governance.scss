@@ -474,31 +474,35 @@ padding-bottom: 20px;
   }
 
   .app-details {
-display:flex;
-gap: 20px;
+display:ruby-text;
 justify-content: space-between;
-span {
-  align-self: baseline;
- }
+align-self: start;
+.prod-application {
+  padding-left: 1px;
+  }
   }
 
   .meterial-details {
-display:flex;
-gap:20px;
+display:ruby-text;
 justify-content: space-between;
+align-self: start;
 
-span {
-  align-items: flex-start;
- }
+.prod-material {
+padding-left: 21px;
+}
   }
 
   .name-details {
-display:flex;
-gap: 20px;
+display:ruby-text;
 justify-content: space-between;
-span {
-  align-items: flex-start;
- }
+align-self: start;
+.prod-name {
+  padding-left: 36px;
+}
+  }
 
-
+  .product-item-img {
+    img {
+      border-radius: 5px;
+    }
   }

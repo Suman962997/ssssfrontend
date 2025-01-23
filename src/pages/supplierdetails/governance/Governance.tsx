@@ -167,9 +167,9 @@ const Governance: React.FC = () => {
                   </div>
 
                   <div className='product-item-details'>
-                    <div className='name-details'> <span>Name:</span> <span> {product.name}</span></div>
-                    <div className='meterial-details'> <span>Material:</span> <span>{product.material} </span></div>
-                    <div className='app-details'><span>Application:</span> <span>{product.application} </span></div>
+                    <div className='name-details'> <span>Name:</span> <span className='prod-name'> {product.name}</span></div>
+                    <div className='meterial-details'> <span>Material:</span> <span className='prod-material'>{product.material} </span></div>
+                    <div className='app-details'><span>Application:</span> <span className='prod-application'>{product.application} </span></div>
                   </div>
                 </div>
               ))}

@@ -19,6 +19,8 @@ import Questionnaire from "./pages/questionnaire/Questionnaire";
 import CompanyDetailsForm from "./pages/form/FormPage";
 import SupplierManage from "./pages/supplier/SupplierManage";
 import Login from "./pages/login/Login";
+import UserManagement from "./pages/usermanagement/UserManagement";
+import UserCreation from "./pages/usercreation/UserCreation";
 
 const RouterConfig = createBrowserRouter([
 
@@ -32,6 +34,10 @@ const RouterConfig = createBrowserRouter([
             {
                 path: 'dashboard',
                 element: <Dashboard />
+            },
+            {
+                path: 'user-creation',
+                element: <UserCreation />
             },
             {
                 path: 'reports',
@@ -59,7 +65,7 @@ const RouterConfig = createBrowserRouter([
             },
             {
                 path: 'user-management',
-                element: <Questionnaire />
+                element: <UserManagement />
             },
             {
                 path: 'supplier-management',

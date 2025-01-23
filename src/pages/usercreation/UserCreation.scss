@@ -1,0 +1,74 @@
+@import '../../style/utils/Variables.scss';
+
+.user-main {
+    .user-container {
+        display: flex;
+        gap: 20px;
+        padding: $commonPadding;
+
+        .user-first-box {
+            width: 25%;
+            height: max-content;
+            padding: $commonPadding;
+
+            .category-item {
+                cursor: pointer;
+                padding: $commonPadding;
+                color: $textColor;
+            }
+
+            .category-item.active {
+                background-color: $bgColor;
+                font-weight: $bold;
+                color: $textColor;
+            }
+
+        }
+
+        .user-second-box {
+            width: 75%;
+            padding: $commonPadding;
+
+            .ant-card {
+                height: auto;
+            }
+        }
+
+    }
+
+}
+
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings-container h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.settings-container .ant-form-item {
+    margin-bottom: 15px;
+}
+
+
+.role-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.role-item span {
+    font-weight: bold;
+}
+
+.role-item .ant-checkbox-group {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}

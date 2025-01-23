@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tabs, Progress, Typography } from 'antd';
 import './BenchmarkSustainability.scss';
 import CustomTable from '../../../component/table/CustomTable';
@@ -6,12 +6,15 @@ import DocumentCertificate from '../overview/component/document/DocumentCertific
 import { error, good, primaryColor, satisfactory, warning } from '../../../style/ColorCode';
 import BenchOverView from './overview/BenchOverView';
 import OverViewProgress from './progress/Progress';
+import Loader from '../../../component/loader/Loader';
 
 
 const { TabPane } = Tabs;
 const { Text } = Typography;
 
 const BenchmarkSustainability: React.FC = () => {
+    const [record, setRecord] = useState<any>(null);
+    const [loading, setLoading] = useState<boolean>(true);
     const dataSource = [
         { key: '1', parameter: 'Energy Efficiency', benchmark: '85%', performance: '80%' },
         { key: '2', parameter: 'Water Usage', benchmark: '70%', performance: '65%' },
@@ -59,6 +62,23 @@ const BenchmarkSustainability: React.FC = () => {
         },
     ];
 
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            const storedRecord = localStorage.getItem("record");
+            if (storedRecord) {
+                setRecord(JSON.parse(storedRecord));
+            }
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <Loader />
+    }
+
     return (
         <div className='bench-flex'>
             <div className="benchmark-sustainability">
@@ -82,7 +102,7 @@ const BenchmarkSustainability: React.FC = () => {
                 </Tabs>
             </div>
             <div className='certificate-new'>
-                <DocumentCertificate />
+                <DocumentCertificate record={record} />
             </div>
         </div>
     );

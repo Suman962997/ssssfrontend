@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DocumentCertificate from '../overview/component/document/DocumentCertificate';
 import AnalyseChart from '../../../component/analyseChart/AnalyseChart';
 import './Analyse.scss';
 import { useLocation } from 'react-router-dom';
+import Loader from '../../../component/loader/Loader';
 
 const Analyse: React.FC = () => {
     const location = useLocation();
+    const [record, setRecord] = useState<any>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            const storedRecord = localStorage.getItem("record");
+            if (storedRecord) {
+                setRecord(JSON.parse(storedRecord));
+            }
+            setLoading(false);
+        };
 
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <Loader />
+    }
     return (
         <div className="analyse-main">
             <div className={location.pathname.split('/')[3] === 'analyse' ? "analyse-grid" : "analyse-grid2"}>
@@ -28,7 +46,7 @@ const Analyse: React.FC = () => {
             </div>
             {location.pathname.split('/')[3] === 'analyse' &&
                 <div className="certificate">
-                    <DocumentCertificate />
+                    <DocumentCertificate record={record} />
                 </div>
             }
         </div>

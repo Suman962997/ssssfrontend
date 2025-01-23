@@ -4,7 +4,7 @@ import './Model.scss';
 
 interface CustomModalProps {
   visible: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   title: string;
   content: any;
   onOk?: () => void;

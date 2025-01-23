@@ -429,3 +429,8 @@ text-align: left;
     padding: 0;
   }
 
+.mandatory-asterisk {
+  color: $error;
+  font-weight: $bold;
+  font-size: 18px;
+}

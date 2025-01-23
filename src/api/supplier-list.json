@@ -90,13 +90,24 @@
         "location": "1-1 Fukonominamicho, Daito, Osaka 574-8691, Japan",
         "certification": [
             {
-                "environment_management_system": "ISO 9001 (LRQA)"
+                "name": "Quality Management",
+                "certificate": "ISO 9001 (LRQA)"
             },
             {
-                "health&safety_management_system": "CE Marking (LRQA)"
+                "name": "Environment Management",
+                "certificate": "CE Marking (LRQA)"
             },
             {
-                "quantity_management_system": "Eco Action 21 Initiative"
+                "name": "Eco",
+                "certificate": "Eco Action 21 Initiative"
+            },
+            {
+                "name": "ASME",
+                "certificate": "ASME Type Approval"
+            },
+            {
+                "name": "Safety",
+                "certificate": "Safety valve KCs mark certification"
             }
         ],
         "riskScore": 95,
@@ -132,13 +143,20 @@
         "location": "Plot No. N-49/1, MIDC, Additional Ambernath Indl. Area, Ambernath (E), Thane - 421506, Maharashtra, India.",
         "certification": [
             {
-                "environment_management_system": "ISO 14001:2004"
+                "name": "Quality Management",
+                "certificate": "ISO 14001:2004"
             },
             {
-                "health&safety_management_system": "OHSAS 18001:2007"
+                "name": "Environment Management",
+                "certificate": "ISO 9001 (LRQA)"
             },
             {
-                "quantity_management_system": "ISO9001:2008"
+                "name": "Health & Safety Management",
+                "certificate": "OHSAS 18001:2007"
+            },
+            {
+                "name": "Quantity Management System",
+                "certificate": "ISO9001:2008"
             }
         ],
         "riskScore": 84,
@@ -171,13 +189,16 @@
         "location": "No.79, Valmiki Street Thiruvanmiyur, Chennai - 600 041Tamil Nadu, India",
         "certification": [
             {
-                "environment_management_system": "ISO 9001:2015"
+                "name": "Environment Management",
+                "certificate": "ISO 9001:2015"
             },
             {
-                "eu_certificate_of_quality_system_approval": "0343/PED/MUM/2210015/2"
+                "name": "EU Certificate of quality system",
+                "certificate": "0343/PED/MUM/2210015/2"
             },
             {
-                "quantity_management_system": "0038/UK/PER/MUM/2210015/4"
+                "name": "Quantity Management System",
+                "certificate": "0038/UK/PER/MUM/2210015/4"
             }
         ],
         "riskScore": 73,
@@ -216,7 +237,12 @@
             "Air cylinders"
         ],
         "location": "Plot No. N-49/1, MIDC, Additional Ambernath Indl. Area, Ambernath (E), Thane - 421506, Maharashtra, India.",
-        "certification": "Power tool accessories & fasteners and hand tools",
+        "certification": [
+            {
+                "name": "Power tool accessories & fasteners and hand tools",
+                "certificate": "ISO 9001:2015"
+            }
+        ],
         "riskScore": 48,
         "riskLevel": "Medium",
         "compliance": "Compliant",
@@ -250,7 +276,12 @@
             "Immersion rod"
         ],
         "location": "Meerut Road Industrial Area, Ghaziabad - 201003, Uttar Pradesh, India",
-        "certification": "",
+        "certification": [
+            {
+                "name": "Environment Management",
+                "certificate": "ISO 9001:2015"
+            }
+        ],
         "riskScore": 42,
         "riskLevel": "Medium",
         "compliance": "Non-Compliant",
@@ -287,7 +318,12 @@
             "UHP system"
         ],
         "location": "A-28, Hauz Khas,New Delhi - 110016 India",
-        "certification": "",
+        "certification": [
+            {
+                "name": "Quality Management",
+                "certificate": "ISO 14001:2004"
+            }
+        ],
         "riskScore": 80,
         "riskLevel": "Low",
         "compliance": "Compliant",
@@ -314,7 +350,12 @@
         "riskScore": 20,
         "service": "",
         "product": "",
-        "certification": "",
+        "certification": [
+            {
+                "name": "Quality Management",
+                "certificate": "ISO 14001:2004"
+            }
+        ],
         "location": "",
         "riskLevel": "High",
         "compliance": "Non-Compliant",
@@ -346,7 +387,12 @@
             "heat press machine"
         ],
         "location": "Plot-B-4, TV Compound, Near Alidhara Office, Road No.6, Dist,-udhana surat, surat, Aaradhna Society, Surat - 394210, Gujarat, India",
-        "certification": "",
+        "certification": [
+            {
+                "name": "Environment Management",
+                "certificate": "ISO 9001:2015"
+            }
+        ],
         "riskScore": 42,
         "riskLevel": "Medium",
         "compliance": "Non-Compliant",
@@ -374,7 +420,12 @@
         "service": "",
         "product": "",
         "location": "Not Available",
-        "certification": "",
+        "certification": [
+            {
+                "name": "Env Management",
+                "certificate": "ISO 9001:2016"
+            }
+        ],
         "riskLevel": "Low",
         "compliance": "Compliant",
         "category": "Battery",
@@ -410,7 +461,12 @@
             "motor terminal block & spares"
         ],
         "location": "Old no.130/ New, no.273, Thambu Chetty St, next to LAKSHMI VILAS BANK, Chennai, Tamil Nadu 600001",
-        "certification": "",
+        "certification": [
+            {
+                "name": "Health & Safety Management",
+                "certificate": "ISO 9001:2015"
+            }
+        ],
         "riskScore": 35,
         "riskLevel": "High",
         "compliance": "Non-Compliant",
@@ -437,7 +493,12 @@
         "service": "",
         "product": "",
         "location": "",
-        "certification": "",
+        "certification": [
+            {
+                "name": "system Management",
+                "certificate": "ISO 9001:2005"
+            }
+        ],
         "riskScore": 95,
         "riskLevel": "Low",
         "compliance": "Compliant",
