@@ -5,13 +5,6 @@ import DocumentCertificate from "../overview/component/document/DocumentCertific
 import Loader from "../../../component/loader/Loader";
 
 const StrategyRoadMap: React.FC = () => {
-    const milestones = [
-        { year: "2024", event: "Launch sustainability initiative" },
-        { year: "2025", event: "Achieve 50% carbon reduction" },
-        { year: "2026", event: "Implement renewable energy systems" },
-        { year: "2027", event: "Zero waste to landfill goal" },
-        { year: "2030", event: "Net zero carbon emissions" },
-    ];
 
     const strategies = [
         {
@@ -65,9 +58,9 @@ const StrategyRoadMap: React.FC = () => {
                     <div className="timeline-section">
                         <h2>Milestones</h2>
                         <Timeline mode="right">
-                            {milestones.map((milestone, index) => (
-                                <Timeline.Item key={index} label={milestone.year}>
-                                    {milestone.event}
+                            {record?.history?.map((milestone: { achivement: '', years: '' }, index: number) => (
+                                <Timeline.Item key={index} label={milestone.years}>
+                                    {milestone.achivement}
                                 </Timeline.Item>
                             ))}
                         </Timeline>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Card, Tabs } from "antd";
+import { Avatar, Card, Modal, Tabs } from "antd";
 import {
     SettingOutlined,
     HistoryOutlined,
@@ -15,12 +15,26 @@ const { TabPane } = Tabs;
 
 const ProfilePage: React.FC = () => {
     const navigate = useNavigate()
+
+    const showLogoutConfirm = () => {
+        Modal.confirm({
+            title: 'Are you sure you want to logout?',
+            content: 'You will be logged out and returned to the login page.',
+            okText: 'Logout',
+            cancelText: 'Cancel',
+            onOk: handleLogout,
+            onCancel: () => { },
+        });
+    };
+
     const handleLogout = () => {
         navigate("/")
         localStorage.removeItem("record");
         localStorage.removeItem("activeTab");
         localStorage.removeItem('totalAnswered');
         localStorage.removeItem('answeredQuestions');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
     };
 
     return (
@@ -39,7 +53,7 @@ const ProfilePage: React.FC = () => {
                     <CustomButton
                         type="primary"
                         icon={<LogoutOutlined />}
-                        onClick={handleLogout}
+                        onClick={showLogoutConfirm}
                         className="logout-button"
                         label="Logout"
                     />

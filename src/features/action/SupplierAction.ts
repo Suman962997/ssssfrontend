@@ -46,6 +46,20 @@ export const postData = async (data: FormData, setLoading: React.Dispatch<React.
 };
 
 
+export const loginApi = async (data: { email: string; password: string; }, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
+  setLoading(true)
+  try {
+    const response = await axios.post('https://api.escuelajs.co/api/v1/auth/login', data, {
+    });
 
+    return response.data;
+  } catch (error) {
+    console.error('Error during POST call:', error);
+    throw error;
+  }
+  finally {
+    setLoading(false)
+  }
+};
 
 

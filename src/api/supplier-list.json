@@ -82,6 +82,54 @@
                 "hsn": "40169320",
                 "material": "Nitrile Rubber",
                 "application": "NS-650 ELOX-RB"
+            },
+            {
+                "productAdress": "Valve Disc, Nakakita Seisakusho Co Ltd, Japan, NS 75F, FCD 400, 150 LB",
+                "name": "Valve Disc",
+                "location": " Al-Jubail, Saudi Arabia",
+                "sku": "GSC034-1120-01-11142",
+                "Mfg": "Nakakita Seisakusho Co Ltd, Japan",
+                "unspsc": "40141616",
+                "key": 7,
+                "hsn": "84819090",
+                "material": "FCD 400",
+                "application": "Secondary Pressure Regulator"
+            },
+            {
+                "productAdress": "Nakakita Seisakusho Co Ltd, Japan, NS727D-D",
+                "name": "Motor",
+                "location": " Al-Jubail, Saudi Arabia",
+                "sku": "GSC034-1120-01-25822",
+                "Mfg": "Nakakita Seisakusho Co Ltd, Japan",
+                "unspsc": "26100000",
+                "key": 8,
+                "hsn": "85369090",
+                "material": "Non Asbestos",
+                "application": "237 OHM"
+            },
+            {
+                "productAdress": "Compression Spring, Nakakita Seisakusho Co Ltd, Japan, 11",
+                "name": "Compression Spring",
+                "location": " Al-Jubail, Saudi Arabia",
+                "sku": "GSC034-1120-01-40994",
+                "Mfg": "Nakakita Seisakusho Co Ltd,Japan",
+                "unspsc": "31161900",
+                "key": 9,
+                "hsn": "73209090",
+                "material": "SKD4",
+                "application": "NS-650 ELOX-RB"
+            },
+            {
+                "productAdress": "Disc, Nakakita Seisakusho Co Ltd,Japan, Ns-255Ab-E (4'X6'Ansi 300/150)",
+                "name": "Disc",
+                "location": "Al-Jubail, Saudi Arabia",
+                "sku": "GSC034-0321-02-53317",
+                "Mfg": "Nakakita Seisakusho Co Ltd,Japan",
+                "unspsc": "23153100",
+                "key": 10,
+                "hsn": "84819090",
+                "material": "Stainless Steel 304 Stellited",
+                "application": "Ns-255Ab-E (4'X6'Ansi 300/150) Psvs Of Uty-2 Plant"
             }
         ],
         "website": "https://www.nakakita-s.co.jp/en/companyoutline",
@@ -91,23 +139,28 @@
         "certification": [
             {
                 "name": "Quality Management",
-                "certificate": "ISO 9001 (LRQA)"
+                "certificate": "ISO 9001 (LRQA)",
+                "expire_date": "Expires 15 Jan 2025"
             },
             {
                 "name": "Environment Management",
-                "certificate": "CE Marking (LRQA)"
+                "certificate": "CE Marking (LRQA)",
+                "expire_date": "Expires 15 Jan 2025"
             },
             {
                 "name": "Eco",
-                "certificate": "Eco Action 21 Initiative"
+                "certificate": "Eco Action 21 Initiative",
+                "expire_date": "Expires 23 Nov 2024"
             },
             {
                 "name": "ASME",
-                "certificate": "ASME Type Approval"
+                "certificate": "ASME Type Approval",
+                "expire_date": "Expires 02 Dec 2024"
             },
             {
                 "name": "Safety",
-                "certificate": "Safety valve KCs mark certification"
+                "certificate": "Safety valve KCs mark certification",
+                "expire_date": "Expires 23 Nov 2024"
             }
         ],
         "riskScore": 95,
@@ -124,7 +177,58 @@
         "status": true,
         "email": "bus@nakakita-s.co.jp",
         "contactUs": "81-72-871-1331",
-        "aboutUs": "our founding in 1930, we have been working hard every day to meet our customers' needs, from design and manufacturing to maintenance of fluid control systems centered on valves, under our company motto of 'progressive development.' Meanwhile,in order to respond to the accelerating changes of the times, we are adding 'challenge' to our theme of 'protecting the present while challenging new things'. While refining our 'product development' that gives shape to the voices of our customers, we will also challenge ourselves to develop new 'technologies' and aim to be a company that proposes new values and benefits to our customers. We ask for your continued understanding and support for Nakakita Seisakusho Co., Ltd., which boldly challenges new things."
+        "aboutUs": "our founding in 1930, we have been working hard every day to meet our customers' needs, from design and manufacturing to maintenance of fluid control systems centered on valves, under our company motto of 'progressive development.' Meanwhile,in order to respond to the accelerating changes of the times, we are adding 'challenge' to our theme of 'protecting the present while challenging new things'. While refining our 'product development' that gives shape to the voices of our customers, we will also challenge ourselves to develop new 'technologies' and aim to be a company that proposes new values and benefits to our customers. We ask for your continued understanding and support for Nakakita Seisakusho Co., Ltd., which boldly challenges new things.",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "green",
@@ -144,19 +248,23 @@
         "certification": [
             {
                 "name": "Quality Management",
-                "certificate": "ISO 14001:2004"
+                "certificate": "ISO 14001:2004",
+                "expire_date": "Expires 23 Nov 2024"
             },
             {
                 "name": "Environment Management",
-                "certificate": "ISO 9001 (LRQA)"
+                "certificate": "ISO 9001 (LRQA)",
+                "expire_date": "Expires 02 Dec 2024"
             },
             {
                 "name": "Health & Safety Management",
-                "certificate": "OHSAS 18001:2007"
+                "certificate": "OHSAS 18001:2007",
+                "expire_date": "Expires 15 Jan 2025"
             },
             {
                 "name": "Quantity Management System",
-                "certificate": "ISO9001:2008"
+                "certificate": "ISO9001:2008",
+                "expire_date": "Expires 15 Jan 2025"
             }
         ],
         "riskScore": 84,
@@ -173,7 +281,58 @@
         "status": true,
         "email": "info@hararamagroup.com",
         "contactUs": "+91 251 3217880 / +91 251 2621681",
-        "aboutUs": "Green Field Material Handling P. Ltd., An ISO 9001-2000 Certified Company, a group of companies founded in 1990, offering a wide range of products and services to industry in the specialized field of materials handling and lifting. The vital strength of the organization is the vast experience of our key person, for more than two decades, in the field of Material Handling and Critical Lifting, which has solved a lot of lifting problems in India and Overseas as well. Our accomplished engineering sales force could solve any sort of lifting problems. Advise and implement up-to-date, latest innovative designs and solutions to meet newer challenges. We sincerely attend to your requirement, small or large, from a single hook to a 50-meter long non-metallic sling. Our speciality is heavy-duty non-metallic sling, made of polyester. These are of two types: flat webbing sling with Eye-loop at the ends and Round (endless) slings. Both are available in different lengths and weight lifting capacities, ranging from 1 ton up to 300 tons. We also have various types of Hooks, D-Shackles, Bow Shackles, Multi-leg slings, Master Rings & Cargo lashings, Safety Harness, lifting beams, lifting clamps & crane weighing systems, etc. The Green Field's efficient personnel are always available to advise you on any type of problem in material handling and lifting."
+        "aboutUs": "Green Field Material Handling P. Ltd., An ISO 9001-2000 Certified Company, a group of companies founded in 1990, offering a wide range of products and services to industry in the specialized field of materials handling and lifting. The vital strength of the organization is the vast experience of our key person, for more than two decades, in the field of Material Handling and Critical Lifting, which has solved a lot of lifting problems in India and Overseas as well. Our accomplished engineering sales force could solve any sort of lifting problems. Advise and implement up-to-date, latest innovative designs and solutions to meet newer challenges. We sincerely attend to your requirement, small or large, from a single hook to a 50-meter long non-metallic sling. Our speciality is heavy-duty non-metallic sling, made of polyester. These are of two types: flat webbing sling with Eye-loop at the ends and Round (endless) slings. Both are available in different lengths and weight lifting capacities, ranging from 1 ton up to 300 tons. We also have various types of Hooks, D-Shackles, Bow Shackles, Multi-leg slings, Master Rings & Cargo lashings, Safety Harness, lifting beams, lifting clamps & crane weighing systems, etc. The Green Field's efficient personnel are always available to advise you on any type of problem in material handling and lifting.",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "fasteners",
@@ -190,15 +349,18 @@
         "certification": [
             {
                 "name": "Environment Management",
-                "certificate": "ISO 9001:2015"
+                "certificate": "ISO 9001:2015",
+                "expire_date": "Expires 23 Nov 2024"
             },
             {
                 "name": "EU Certificate of quality system",
-                "certificate": "0343/PED/MUM/2210015/2"
+                "certificate": "0343/PED/MUM/2210015/2",
+                "expire_date": "Expires 02 Dec 2024"
             },
             {
                 "name": "Quantity Management System",
-                "certificate": "0038/UK/PER/MUM/2210015/4"
+                "certificate": "0038/UK/PER/MUM/2210015/4",
+                "expire_date": "Expires 15 Jan 2025"
             }
         ],
         "riskScore": 73,
@@ -218,7 +380,34 @@
         "websiteName": "www.vkfasteners.co.in",
         "email": "marketing1@vkf.co.in",
         "contactUs": "+91 89259 50777",
-        "aboutUs": "VK Fasteners - Another MILESTONE of IGP Group, serving the industries more than 60 years. As a traditional family business the core values of optimization, reliability, continuity, and sustainability hold true for every business in IGP Family.Now VK Fasteners Private Limited, a group company of IGP is set at Chennai, Tamilnadu for manufacture of HIGH TENSILE FASTENERS AND PARTS to cater the need of automotive manufacturer through Cold Forging Process.Highly trained and experienced professional along with latest automatic imported bolt former with quality control equipment shall assure you ONTIME DELIVERY AND BEST QUALITY Plant has a installed capacity around 5000MTPA Plant is capable enough to produce all types of fasteners to national and international standards and to customer designed specification"
+        "aboutUs": "VK Fasteners - Another MILESTONE of IGP Group, serving the industries more than 60 years. As a traditional family business the core values of optimization, reliability, continuity, and sustainability hold true for every business in IGP Family.Now VK Fasteners Private Limited, a group company of IGP is set at Chennai, Tamilnadu for manufacture of HIGH TENSILE FASTENERS AND PARTS to cater the need of automotive manufacturer through Cold Forging Process.Highly trained and experienced professional along with latest automatic imported bolt former with quality control equipment shall assure you ONTIME DELIVERY AND BEST QUALITY Plant has a installed capacity around 5000MTPA Plant is capable enough to produce all types of fasteners to national and international standards and to customer designed specification",
+        "history": [
+            {
+                "achivement": "established in 1965,",
+                "years": "1965"
+            },
+            {
+                "achivement": "Another MILESTONE of IGP Group, serving the industries more than 60 years.As a traditional family business the core values of optimization, reliability, continuity, and sustainability hold true for every business in IGP Family.",
+                "years": "2025"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "rahul",
@@ -240,7 +429,8 @@
         "certification": [
             {
                 "name": "Power tool accessories & fasteners and hand tools",
-                "certificate": "ISO 9001:2015"
+                "certificate": "ISO 9001:2015",
+                "expire_date": "Expires 23 Nov 2024"
             }
         ],
         "riskScore": 48,
@@ -260,7 +450,34 @@
         "status": true,
         "email": "mayur.rahulagencies@gmail.com",
         "contactUs": "+91 9824138242",
-        "aboutUs": "Established as a Proprietor firm in the year 2019 at Vapi (Gujarat, India), we “Rahul Agencies” are a leading Distributor / Channel Partner of a wide ran of Solenoid Valves, Pneumatic Cylinder, etc. We procure these products from the most trusted and renowned vendors after stringent market analysis. Further, we offer these products at reasonable rates and deliver these within the promised time-frame. Under the headship of “Mr. Mayur Shah”, we have gained a huge clientele across the nation."
+        "aboutUs": "Established as a Proprietor firm in the year 2019 at Vapi (Gujarat, India), we “Rahul Agencies” are a leading Distributor / Channel Partner of a wide ran of Solenoid Valves, Pneumatic Cylinder, etc. We procure these products from the most trusted and renowned vendors after stringent market analysis. Further, we offer these products at reasonable rates and deliver these within the promised time-frame. Under the headship of “Mr. Mayur Shah”, we have gained a huge clientele across the nation.",
+        "history": [
+            {
+                "achivement": "established in 1990,",
+                "years": "1990"
+            },
+            {
+                "achivement": "At the 30th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "2025"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "sonic",
@@ -279,7 +496,8 @@
         "certification": [
             {
                 "name": "Environment Management",
-                "certificate": "ISO 9001:2015"
+                "certificate": "ISO 9001:2015",
+                "expire_date": "Expires 3 Nov 2024"
             }
         ],
         "riskScore": 42,
@@ -299,7 +517,58 @@
         "website": "https://www.sonichomeappliances.com/",
         "websiteName": "www.sonichomeappliances.com",
         "contactUs": "+91 9998012325",
-        "aboutUs": "We “Sonic Enterprise” founded in the year 2005 are a renowned firm that is engaged in manufacturing a wide assortment of Kitchen Jali, PVC Curtain Bracket Holder, PVC Curtain Bracket, Wall Hanger, etc. We have a wide and well functional infrastructural unit that is situated at Rajkot (Gujarat, India) and helps us in making a remarkable collection of products as per the set industry standards. We are a Sole Proprietorship firm that is managed under the headship of “Mr. Mukesh” (Manager), and have achieved a significant position in this sector"
+        "aboutUs": "We “Sonic Enterprise” founded in the year 2005 are a renowned firm that is engaged in manufacturing a wide assortment of Kitchen Jali, PVC Curtain Bracket Holder, PVC Curtain Bracket, Wall Hanger, etc. We have a wide and well functional infrastructural unit that is situated at Rajkot (Gujarat, India) and helps us in making a remarkable collection of products as per the set industry standards. We are a Sole Proprietorship firm that is managed under the headship of “Mr. Mukesh” (Manager), and have achieved a significant position in this sector.",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "brijbasi",
@@ -321,7 +590,8 @@
         "certification": [
             {
                 "name": "Quality Management",
-                "certificate": "ISO 14001:2004"
+                "certificate": "ISO 14001:2004",
+                "expire_date": "Expires 13 Feb 2024"
             }
         ],
         "riskScore": 80,
@@ -341,7 +611,58 @@
         "websiteName": "brijbasihitech.com",
         "email": "brijbasi11@gmail.com",
         "contactUs": "011 2686 2057 / 2652 2074",
-        "aboutUs": "Brijbasi Hi Tech Udyog Ltd. (BHTUL). An ISO 9001-2000 company, is a pioneer in design, manufacture and supply of fire fighting vehicles and equipment in the Indian sub-continent. The company was established in 1971. Our Head Office is in New Delhi and branch offices in Mumbai, Chennai and Kolkata.Our primary production facility is located in Mathura, about 145 kilometers from New Delhi, and has an approved facility for testing and commissioning of fire vehicles by prestigious Government of India organizations such as Defence Institute for Fire Research, Engineers India Ltd., etc. We have also set up a new factory near Mumbai for further capacity expansion as well as for introducing new products and diversification.Brijbasi Hi Tech Udyog Ltd. employs over 150 people including trained and qualified people in engineering and management departments at its manufacturing facility at Mathura. The various departments of the company work hand in hand to assure a quality product, and make sure that the customer is satisfied with the product and the after sales service.Our innovative product development capabilities helped us secure our first big order for 60 Crash Fire Trucks for the Airports Authority of India during 1975. Since then, we have designed, developed and supplied more than 150 Fire Crash Tenders to Indian Air Force and to the Airport Authority. In addition, we have been awarded the biggest order for fabrication of 110 Crash Fire Tenders for Indian Air Force through Bharat Earth Movers Ltd., Bangalore."
+        "aboutUs": "Brijbasi Hi Tech Udyog Ltd. (BHTUL). An ISO 9001-2000 company, is a pioneer in design, manufacture and supply of fire fighting vehicles and equipment in the Indian sub-continent. The company was established in 1971. Our Head Office is in New Delhi and branch offices in Mumbai, Chennai and Kolkata.Our primary production facility is located in Mathura, about 145 kilometers from New Delhi, and has an approved facility for testing and commissioning of fire vehicles by prestigious Government of India organizations such as Defence Institute for Fire Research, Engineers India Ltd., etc. We have also set up a new factory near Mumbai for further capacity expansion as well as for introducing new products and diversification.Brijbasi Hi Tech Udyog Ltd. employs over 150 people including trained and qualified people in engineering and management departments at its manufacturing facility at Mathura. The various departments of the company work hand in hand to assure a quality product, and make sure that the customer is satisfied with the product and the after sales service.Our innovative product development capabilities helped us secure our first big order for 60 Crash Fire Trucks for the Airports Authority of India during 1975. Since then, we have designed, developed and supplied more than 150 Fire Crash Tenders to Indian Air Force and to the Airport Authority. In addition, we have been awarded the biggest order for fabrication of 110 Crash Fire Tenders for Indian Air Force through Bharat Earth Movers Ltd., Bangalore.",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "general",
@@ -353,7 +674,8 @@
         "certification": [
             {
                 "name": "Quality Management",
-                "certificate": "ISO 14001:2004"
+                "certificate": "ISO 14001:2004",
+                "expire_date": "Expires 03 Dec 2025"
             }
         ],
         "location": "",
@@ -373,7 +695,58 @@
         "website": "https://genpumps.com/",
         "websiteName": "genpumps.com",
         "contactUs": "+91 7845852171",
-        "aboutUs": "We're a retail and e commerce company based in South India, specializing in Power Tools, Cleaning Equipment, Automotive Tools, Survey Equipment, and Construction Equipment. We strive to provide our customers with world class products and services."
+        "aboutUs": "We're a retail and e commerce company based in South India, specializing in Power Tools, Cleaning Equipment, Automotive Tools, Survey Equipment, and Construction Equipment. We strive to provide our customers with world class products and services.",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "engineering",
@@ -390,7 +763,8 @@
         "certification": [
             {
                 "name": "Environment Management",
-                "certificate": "ISO 9001:2015"
+                "certificate": "ISO 9001:2015",
+                "expire_date": "Expires 31 Nov 2034"
             }
         ],
         "riskScore": 42,
@@ -410,7 +784,58 @@
         "website": "https://www.sbengineers.com/",
         "websiteName": "www.sbengineers.com",
         "contactUs": "08046077749",
-        "aboutUs": "Established in the year 2016 as a Sole Proprietorship firm at Surat (Gujarat, India), we “SB Engineering” are engaged in Manufacturing an extensive range of Coil Winding Machine, Face Mask, Thread Cutting Machine, Heat Press Machine, PLC Control Panel, Ultrasonic Hot Fixing Machine, etc. Using high-quality raw material and latest techniques, these products are manufactured as per set industry norms."
+        "aboutUs": "Established in the year 2016 as a Sole Proprietorship firm at Surat (Gujarat, India), we “SB Engineering” are engaged in Manufacturing an extensive range of Coil Winding Machine, Face Mask, Thread Cutting Machine, Heat Press Machine, PLC Control Panel, Ultrasonic Hot Fixing Machine, etc. Using high-quality raw material and latest techniques, these products are manufactured as per set industry norms.",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "moveson",
@@ -423,7 +848,8 @@
         "certification": [
             {
                 "name": "Env Management",
-                "certificate": "ISO 9001:2016"
+                "certificate": "ISO 9001:2016",
+                "expire_date": "Expires 02 Nov 2029"
             }
         ],
         "riskLevel": "Low",
@@ -442,7 +868,58 @@
         "website": "https://moveon.solutions/",
         "websiteName": "moveon.solutions",
         "contactUs": "Not Available",
-        "aboutUs": "Not Available"
+        "aboutUs": "Not Available",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "gyandeep",
@@ -464,7 +941,8 @@
         "certification": [
             {
                 "name": "Health & Safety Management",
-                "certificate": "ISO 9001:2015"
+                "certificate": "ISO 9001:2015",
+                "expire_date": "Expires 13 Nov 2026"
             }
         ],
         "riskScore": 35,
@@ -484,7 +962,58 @@
         "website": "https://www.justdial.com/jdmart/Chennai/Gyandeep-Electricals-Next-Lakshmi-Vilas-Bank-Near-High-Court-Parrys/044P4203524_BZDET/catalogue",
         "websiteName": "Gyandeep-Electricals.in",
         "contactUs": "08048370630",
-        "aboutUs": " Retailer of capacitors, electrical wire etc."
+        "aboutUs": " Retailer of capacitors, electrical wire etc.",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
+            }
+        ]
     },
     {
         "key": "prarthana",
@@ -496,7 +1025,25 @@
         "certification": [
             {
                 "name": "system Management",
-                "certificate": "ISO 9001:2005"
+                "certificate": "ISO 9001:2005",
+                "expire_date": "Expires 23 Jan 2028"
+            }
+        ],
+        "insurance": [
+            {
+                "name": "Public Liability",
+                "amount": "$ 1,00,000.000",
+                "expire_date": "Expires 30 Nov 2024"
+            },
+            {
+                "name": "Professional Indemnity",
+                "amount": "$ 5,000.000",
+                "expire_date": "Expires 22 Dec 2024"
+            },
+            {
+                "name": "Employer’s Liability",
+                "amount": "$ 1,50,000.000",
+                "expire_date": "Expires 04 Jan 2025"
             }
         ],
         "riskScore": 95,
@@ -516,6 +1063,40 @@
         "website": "https://www.indiamart.com/prarthana-engineering-services/",
         "websiteName": "prarthana.engineering.in",
         "contactUs": "9825969396",
-        "aboutUs": "We are India's largest marketplace and a one-stop expert solution for all business needs, empowering 81 lakh suppliers by connecting them with ~20 crore buyers across the nation. At the heart of IndiaMART is our commitment to creating value for Indian business communities through strong network effects. We make business effortless for all by ensuring access to a wider market, technology, and finance."
+        "aboutUs": "We are India's largest marketplace and a one-stop expert solution for all business needs, empowering 81 lakh suppliers by connecting them with ~20 crore buyers across the nation. At the heart of IndiaMART is our commitment to creating value for Indian business communities through strong network effects. We make business effortless for all by ensuring access to a wider market, technology, and finance.",
+        "history": [
+            {
+                "achivement": "Commenced the production of automatic control valves at Matsugae-cho, Kita-ku, Osaka under a private undertaking owned by Mr. Benzo Nakakita, the first president of Nakakita Seisakusho Co., Ltd",
+                "years": "1930"
+            },
+            {
+                "achivement": "Reopened Tokyo office and opened Kyushu office.",
+                "years": "1950"
+            },
+            {
+                "achivement": "At the 40th anniversary of the founding, the new plant was thrown open to customers.",
+                "years": "1970"
+            },
+            {
+                "achivement": "Introduced a three-dimensional measuring instrument.",
+                "years": "1999"
+            },
+            {
+                "achivement": "Mr. Kenichi Nakakita was inaugurated as president",
+                "years": "2004"
+            },
+            {
+                "achivement": "Completed Nuclear Valve Assembly Shop.",
+                "years": "2009"
+            },
+            {
+                "achivement": "Obtained Certificate 01 eco action 21 Approved by IPSuS",
+                "years": "2011"
+            },
+            {
+                "achivement": "KCs Mark for safety valves approved by KOSHA (Korea).",
+                "years": "2013"
+            }
+        ]
     }
 ]

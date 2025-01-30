@@ -27,12 +27,23 @@ export const allCategories = [
           { text: "What is the legal name of the company?", choices: null, isMandatory: false },
           { text: "What year was the company founded?", choices: null, isMandatory: false },
           { text: "Where is the company headquartered?", choices: null, isMandatory: false },
-          { text: "How many locations/offices does the company operate in?", choices: null, isMandatory: false },
+          {
+            text: "How many locations/offices does the company operate in?", choices: ["Single location",
+              "2-5 locations",
+              "6-10 locations",
+              "More than 10"], isMandatory: false
+          },
           {
             text: "What is the organizational structure of the company?",
-            choices: ["Flat", "Hierarchical", "Matrix", "Other"], isMandatory: false,
+            choices: ["Functional", "Divisional", "Matrix", "Flat"], isMandatory: false,
           },
-          { text: "How many employees does the company currently have?", choices: null, isMandatory: false },
+          {
+            text: "How many employees does the company currently have?", choices: ["Less than 50",
+              "51-200",
+              "201-500",
+              "501-1000",
+            ], isMandatory: false
+          },
           { text: "What are the company’s primary business activities?", choices: null, isMandatory: false },
           { text: "In which industries or sectors does the company operate?", choices: null, isMandatory: false },
           { text: "What are the company’s core products or services?", choices: null, isMandatory: false },
@@ -44,13 +55,48 @@ export const allCategories = [
         questionsAnswer: "0/7",
         percentComplete: "0",
         question: [
-          { text: "What are the primary markets/geographies the company serves?", choices: null, isMandatory: false },
-          { text: "What is the company’s annual revenue or turnover?", choices: null, isMandatory: false },
-          { text: "How is the company funded?", choices: null },
-          { text: "What percentage of the company’s operations are automated?", choices: null, isMandatory: false },
-          { text: "What is the company’s supply chain structure?", choices: null, isMandatory: false },
-          { text: "How does the company ensure quality control of its products/services?", choices: null, isMandatory: false },
-          { text: "Does the company outsource any major business operations?", choices: ["Yes", "No"], isMandatory: false },
+          {
+            text: "What are the primary markets/geographies the company serves?", choices: ["Local",
+              "Regional",
+              "National",
+              "Internation"], isMandatory: false
+          },
+          {
+            text: "What is the company’s annual revenue or turnover?", choices: ["Less than $1M",
+              "$1M - $10M",
+              "$10M - $50M",
+              "More than $50M"], isMandatory: false
+          },
+          {
+            text: "How is the company funded?", choices: ["Self-funded",
+              "Investor-funded",
+              "Publicly listed",
+              "Other"], isMandatory: false
+          },
+          {
+            text: "What percentage of the company’s operations are automated?", choices: ["0-25%",
+              "26-50%",
+              "51-75%",
+              "76-100%"], isMandatory: false
+          },
+          {
+            text: "What is the company’s supply chain structure?", choices: ["Single-tier supply chain",
+              "Multi-tier supply chain",
+              "Global supply chain",
+              "Integrated supply chain"], isMandatory: false
+          },
+          {
+            text: "How does the company ensure quality control of its products/services?", choices: ["In-house quality checks",
+              "Third-party audits",
+              "SO certifications",
+              "Regular custom"], isMandatory: false
+          },
+          {
+            text: "Does the company outsource any major business operations?", choices: ["Yes, production operations are outsourced (details required)",
+              "Yes, logistics and supply chain management are outsourced (details required)",
+              "Yes, IT or administrative functions are outsourced (details required)",
+              "No, all major business operations are handled in-house"], isMandatory: false
+          },
         ],
       },
       {
@@ -59,10 +105,29 @@ export const allCategories = [
         questionsAnswer: "0/4",
         percentComplete: "0",
         question: [
-          { text: "Who are the company’s main customers (B2B, B2C, etc.)?", choices: null, isMandatory: false },
-          { text: "Does the company have strategic partnerships or collaborations?", choices: null, isMandatory: false },
-          { text: "What percentage of revenue comes from the top 5 customers?", choices: null, isMandatory: false },
-          { text: "What is the customer retention rate over the past 3 years?", choices: null, isMandatory: false },
+          {
+            text: "Who are the company’s main customers (B2B, B2C, etc.)?", choices: ["Business to Business (B2B)",
+              "Business to Consumer (B2C)", "Both B2B and B2C",
+              "Government or Institutional Customers"], isMandatory: false
+          },
+          {
+            text: "Does the company have strategic partnerships or collaborations?", choices: ["Yes, with suppliers or manufacturers (details required)",
+              "Yes, with research institutions or technology partners (details required)",
+              "Yes, with NGOs or sustainability organizations (details required)",
+              "No, the company operates independently without formal partnerships"], isMandatory: false
+          },
+          {
+            text: "What percentage of revenue comes from the top 5 customers?", choices: ["Less than 10%",
+              "10-30%",
+              "31-50%",
+              "More than 50%"], isMandatory: false
+          },
+          {
+            text: "What is the customer retention rate over the past 3 years?", choices: ["Less than 50%",
+              "50-75%",
+              "76-90%",
+              "More than 90%"], isMandatory: false
+          },
         ],
       },
       {
@@ -72,8 +137,45 @@ export const allCategories = [
         percentComplete: "0",
         question: [
           { text: "What key technologies does the company use to operate its business?", choices: null, isMandatory: false },
-          { text: "Does the company invest in R&D (Research & Development)?", choices: ["Yes", "No"], isMandatory: false },
-          { text: "How often does the company upgrade its systems or processes?", choices: null, isMandatory: false },
+          {
+            text: "Does the company invest in R&D (Research & Development)?", choices: ["Yes, significant investment in R&D",
+              "Yes, moderate or limited investment in R&D",
+              "No, but plans to invest in the future",
+              "No, the company does not focus on R&D"], isMandatory: false
+          },
+          {
+            text: "How often does the company upgrade its systems or processes?", choices: ["Annually",
+              "Every 2-3 years",
+              "Rarely",
+              "Not applicable"], isMandatory: false
+          },
+        ],
+      },
+      {
+        key: "risk-business-continuity",
+        quesSection: "Risk and Business Continuity",
+        questionsAnswer: "0/3",
+        percentComplete: "0",
+        question: [
+          {
+            text: "Does the company have a business continuity or disaster recovery plan?", choices: ["Yes, regularly tested and updated",
+              "Yes, but it has not been tested recently",
+              "No, but currently developing one",
+              "No, the company does not have a plan"], isMandatory: false
+          },
+          {
+            text: "What are the major risks the company faces in operations?", choices: [
+              "Operational risks",
+              "Financial risks",
+              "Cybersecurity risks", "Other"], isMandatory: false
+          },
+          {
+            text: "Does the company have insurance coverage for its key risks?", choices: ["Yes, comprehensive coverage for key risks",
+              "Yes, partial coverage for selected risks",
+              "No, but plans to obtain coverage",
+              "No, the company does not have insurance coverage"
+            ], isMandatory: false
+          },
         ],
       },
       {
@@ -82,8 +184,18 @@ export const allCategories = [
         questionsAnswer: "0/2",
         percentComplete: "0",
         question: [
-          { text: "What has been the average revenue growth rate over the past 5 years?", choices: null, isMandatory: false },
-          { text: "Are there plans for company expansion (new locations, products, etc.)?", choices: ["Yes", "No"], isMandatory: false },
+          {
+            text: "What has been the average revenue growth rate over the past 5 years?", choices: ["Negative growth",
+              "0-5%",
+              "6-10%",
+              "More than 10%"], isMandatory: false
+          },
+          {
+            text: "Are there plans for company expansion (new locations, products, etc.)?", choices: ["Yes, plans for domestic expansion",
+              "Yes, plans for international expansion",
+              "Yes, expansion into new product or service lines",
+              "No current plans for expansion"], isMandatory: false
+          },
         ],
       },
       {
@@ -93,7 +205,12 @@ export const allCategories = [
         percentComplete: "0",
         question: [
           { text: "How is the workforce divided by function (operations, sales, admin)?", choices: null, isMandatory: false },
-          { text: "What is the company’s attrition rate for the past 3 years?", choices: null, isMandatory: false },
+          {
+            text: "What is the company’s attrition rate for the past 3 years?", choices: ["Less than 5%",
+              "5-10%",
+              "11-20%",
+              "More than 20%"], isMandatory: false
+          },
           { text: "How does the company attract and retain talent?", choices: null, isMandatory: false },
         ],
       },
@@ -111,10 +228,21 @@ export const allCategories = [
         questionsAnswer: "0/4",
         percentComplete: "0",
         question: [
-          { text: "Do you have a formal Environmental, Social, and Governance (ESG) policy?", choices: ["Yes", "No"], isMandatory: false },
-          { text: "Is your ESG policy aligned with global standards?", choices: ["Yes", "No"], isMandatory: false },
-          { text: "How often is the ESG policy reviewed and updated?", choices: null, isMandatory: false },
-          { text: "How do you communicate ESG policies to internal and external stakeholders?", choices: null, isMandatory: false },
+          { text: "Do you have a formal Environmental, Social, and Governance (ESG) policy?", choices: ["Yes", "No", "In Progress"], isMandatory: false },
+          { text: "Is your ESG policy aligned with global standards Like", choices: null, isMandatory: false },
+          {
+            text: "How often is the ESG policy reviewed and updated?", choices: ["Annually",
+              "Bi-annually",
+              "Less frequently",
+              "Not reviewed"], isMandatory: false
+          },
+          {
+            text: "How do you communicate ESG policies to internal and external stakeholders?", choices: ["Internal training sessions",
+              "Reports and public website",
+              "Not communicated",
+              "Regular stakeholder meetings and updates",
+            ], isMandatory: false
+          },
         ],
       },
       {
@@ -123,10 +251,20 @@ export const allCategories = [
         questionsAnswer: "0/3",
         percentComplete: "0",
         question: [
-          { text: "Do you have a sustainability risk assessment process for suppliers?", choices: ["Yes", "No"], isMandatory: false },
-          { text: "Are suppliers categorized based on sustainability risk levels (high, medium, low)?", choices: ["Yes", "No"], isMandatory: false },
-          { text: "What are the most significant sustainability risks across your supplier base?", choices: null, isMandatory: false },
-          { text: "How frequently are high-risk suppliers monitored for compliance and improvements?", choices: null, isMandatory: false },
+          { text: "Do you have a sustainability risk assessment process for suppliers?", choices: ["Yes", "No", "In Progress", "Under development"], isMandatory: false },
+          { text: "Are suppliers categorized based on sustainability risk levels (high, medium, low)?", choices: ["Yes", "No", "In Progress", "Under development"], isMandatory: false },
+          {
+            text: "What are the most significant sustainability risks across your supplier base?", choices: ["Environmental impacts",
+              "Social impacts",
+              "Governance and compliance risks",
+              "Financial and market risks"], isMandatory: false
+          },
+          {
+            text: "How frequently are high-risk suppliers monitored for compliance and improvements?", choices: ["Monthly",
+              "Quarterly",
+              "Annually",
+              "Not monitored"], isMandatory: false
+          },
         ],
       },
       {
@@ -135,72 +273,89 @@ export const allCategories = [
         questionsAnswer: "0/3",
         percentComplete: "0",
         question: [
-          { text: "Does your company hold any recognized environmental certifications?", choices: null, isMandatory: false },
-          { text: "Does your company hold any social certifications?", choices: null, isMandatory: false },
-          { text: "Does your company adhere to any sustainability reporting or management standards?", choices: null, isMandatory: false },
+          {
+            text: "Does your company hold any recognized environmental certifications?", choices: ["Yes, currently certified",
+              "Certification in progress",
+              "No, but planning to apply",
+              "No, and no plans to apply"], isMandatory: false
+          },
+          {
+            text: "Does your company hold any social certifications?", choices: ["Yes, currently certified",
+              "Certification in progress",
+              "No, but planning to apply",
+              "No, and no plans to apply"], isMandatory: false
+          },
+          {
+            text: "Does your company adhere to any sustainability reporting or management standards?", choices: ["Yes, currently certified",
+              "Certification in progress",
+              "No, but planning to apply",
+              "No, and no plans to apply"], isMandatory: false
+          },
+          {
+            text: "Does your company hold any governance or supply chain certifications?", choices: ["Yes, currently certified",
+              "Certification in progress",
+              "No, but planning to apply",
+              "No, and no plans to apply"], isMandatory: false
+          },
+          {
+            text: "How often are you audited for compliance with these certifications?", choices: ["Annually",
+              "Bi-annually",
+              "Less frequently",
+              "Not audited"], isMandatory: false
+          },
+          {
+            text: "Are there any additional certifications you are pursuing? If yes, please apply.", choices: null, isMandatory: false
+          },
+        ],
+      },
+      {
+        key: "sustainbility-performance",
+        quesSection: "Sustainability Performance",
+        questionsAnswer: "0/3",
+        percentComplete: "0",
+        question: [
+          {
+            text: "Do you provide annual sustainability performance reports?", choices: ["Yes, public reports",
+              "Yes, internal reports only",
+              "No, but planning to start",
+              "No, and no plans to start"], isMandatory: false
+          },
+          {
+            text: "What KPIs do you use to measure your sustainability performance?", choices: ["Environmental Impact KPIs",
+              "Resource Efficiency and Innovation KPIs",
+              "Governance and Compliance KPIs",
+              "Social and Economic Impact KPIs"], isMandatory: false
+          },
+          {
+            text: "How transparent are you about your sustainability progress and challenges?", choices: ["Fully transparent",
+              "Partially transparent",
+              "Not transparent",
+              "Committed to increasing transparency in the future"], isMandatory: false
+          },
+        ],
+      },
+      {
+        key: "collabration-innovation",
+        quesSection: "Collaboration & Innovation",
+        questionsAnswer: "0/2",
+        percentComplete: "0",
+        question: [
+          {
+            text: "Do you engage in sustainability innovation (e.g., circular economy, low-carbon products)?", choices: ["Yes, fully engaged",
+              "Partially engaged",
+              "Not engaged",
+              "Planning to engage in the near future"], isMandatory: false
+          },
+          {
+            text: "What challenges do you face in improving sustainability performance", choices: ["Financial Constraints",
+              "Technical Gaps",
+              "Regulatory and Compliance Barriers",
+              "Monitoring and Reporting Challenges"], isMandatory: false
+          },
         ],
       },
     ],
   },
-  // {
-  //   key: "emission",
-  //   section: "Emission",
-  //   questionsAnswer: "0/3",
-  //   percentComplete: "0%",
-  //   questions: [
-  //     {
-  //       key: "ghg-emissions",
-  //       quesSection: "GHG Emissions",
-  //       questionsAnswer: "0/5",
-  //       percentComplete: "0",
-  //       question: [
-  //         { text: "Do you measure and report greenhouse gas emissions, including Scope 1, Scope 2, and Scope 3 categories?", choices: ["Yes", "No"] },
-  //         { text: "Are your emissions data externally verified for accuracy and reliability?", choices: ["Yes", "No"] },
-  //         { text: "Has your company set formal targets to reduce Greenhouse Gas (GHG) emissions?", choices: ["Yes", "No"] },
-  //         { text: "Are your emissions reduction targets approved by the Science Based Targets initiative (SBTi)?", choices: ["Yes", "No"] },
-  //         { text: "Do your emissions reduction goals extend to supply chain emissions (Scope 3)?", choices: ["Yes", "No"] },
-  //       ],
-  //     },
-  //     {
-  //       key: "stationary-combustion",
-  //       quesSection: "Stationary Combustion",
-  //       questionsAnswer: "0/4",
-  //       percentComplete: "0",
-  //       question: [
-  //         { text: "What are the fuel types used in stationary sources like boilers, furnaces, and generators?", choices: null },
-  //         { text: "How is the fuel consumption monitored and recorded for stationary combustion sources?", choices: null },
-  //         { text: "What is the thermal efficiency of your stationary combustion equipment?", choices: null },
-  //         { text: "Are there any emissions control technologies installed for stationary combustion sources?", choices: ["Yes", "No"] },
-  //       ],
-  //     },
-  //     {
-  //       key: "mobile-combustion",
-  //       quesSection: "Mobile Combustion",
-  //       questionsAnswer: "0/5",
-  //       percentComplete: "0",
-  //       question: [
-  //         { text: "What types of vehicles are part of your operational fleet?", choices: null },
-  //         { text: "How are fuel consumption and mileage tracked for company vehicles?", choices: null },
-  //         { text: "What initiatives have been implemented to reduce fleet emissions?", choices: null },
-  //         { text: "What is the average fuel efficiency of your operational fleet (miles per gallon or km per liter)?", choices: null },
-  //         { text: "Do you use telematics or GPS systems to monitor fuel efficiency and route optimization?", choices: ["Yes", "No"] },
-  //       ],
-  //     },
-  //     {
-  //       key: "fugitive-emmission",
-  //       quesSection: "Fugitive-emission",
-  //       questionsAnswer: "0/5",
-  //       percentComplete: "0",
-  //       question: [
-  //         { text: "What types of refrigerants are used in your operations, and how are leaks monitored?", choices: null },
-  //         { text: "What is the total charge capacity of refrigerants in your systems?", choices: null },
-  //         { text: "Are gas leak detection systems (e.g., infrared cameras, ultrasonic sensors) deployed for refrigerants?", choices: ["Yes", "No"] },
-  //         { text: "How frequently are HVAC and refrigeration systems inspected for leaks?", choices: null },
-  //         { text: "What percentage of fugitive emissions are recovered or minimized through leak management?", choices: null },
-  //       ],
-  //     },
-  //   ],
-  // },
   {
     key: "supplier-strategy",
     section: "Supplier Strategy & SDG Roadmap",
@@ -304,7 +459,17 @@ export const allCategories = [
         percentComplete: "0",
         question: [
           { text: "Does your company have a formal environmental policy that includes a commitment to legal compliance, continuous measurement, and continuous improvement in environmental performance?", choices: null, isMandatory: true },
-          { text: "Which of the following areas are included in your environmental policy?", choices: null, isMandatory: false },
+          {
+            text: "Which of the following areas are included in your environmental policy?", choices: ["Legal compliance",
+              "Continuous measurement of environmental performance",
+              "Continuous improvement in environmental performance",
+              "Waste management",
+              "Water management",
+              "Resource efficiency",
+              "Biodiversity conservation",
+              "Energy management",
+              "Other (please specify)"], isMandatory: false
+          },
           { text: "Does your company organize training for employees on the environmental policy?", choices: ["Yes", "No", "In Progress", "Not applicable"], isMandatory: true },
           { text: "Does your site have an environmental management system (EMS) in place?", choices: ["Yes", "No", "In Progress", "Not applicable"], isMandatory: true },
           { text: "Does your site have an energy management system (EnMS) in place?", choices: ["Yes", "No", "In Progress", "Not applicable"], isMandatory: true },
@@ -347,7 +512,16 @@ export const allCategories = [
         question: [
           { text: "What were your gross Scope 1 GHG emissions (in metric tons CO₂-equivalent) for the last reporting year?", choices: null, isMandatory: true },
           { text: "What percentage of your Scope 1 emissions comes from stationary combustion, transportation, or fugitive sources?", choices: null, isMandatory: true },
-          { text: "Which gases were included in your Scope 1 emissions calculations?", choices: null, isMandatory: true },
+          {
+            text: "Which gases were included in your Scope 1 emissions calculations?", choices: [
+              "-CO₂ (Carbon Dioxide)",
+              "-CH₄ (Methane)",
+              "-N₂O (Nitrous Oxide)",
+              "-HFCs (Hydrofluorocarbons)",
+              "-PFCs (Perfluorocarbons)",
+              "-SF₆ (Sulfur Hexafluoride)",
+              "-NF₃ (Nitrogen Trifluoride)"], isMandatory: true
+          },
           { text: "What were your gross Scope 2 emissions (in metric tons CO₂-equivalent) using the location-based method?", choices: null, isMandatory: false },
           { text: "If applicable, what were your gross Scope 2 emissions (in metric tons CO₂-equivalent) using the market-based method?", choices: null, isMandatory: true },
         ],
@@ -447,7 +621,12 @@ export const allCategories = [
         question: [
           { text: "What restricted substances are used at your site in production or operations?", choices: null, isMandatory: true },
           { text: "Do you have protocols in place to manage restricted substances?", choices: ["Yes", "No", "In Progress", "Not applicable"], isMandatory: true },
-          { text: "Which regulations are covered by your site’s written procedures for managing restricted substances", choices: null, isMandatory: true },
+          {
+            text: "Which regulations are covered by your site’s written procedures for managing restricted substances", choices: ["-REACH (EU)",
+              "-TSCA or CERCLA (USA)",
+              "-RoHS (EU)",
+              "-Other (please specify)"], isMandatory: true
+          },
         ],
       },
       {

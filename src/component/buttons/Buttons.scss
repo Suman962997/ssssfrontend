@@ -3,6 +3,7 @@
   background-color: $primary; 
   color: $white;
   border-color: $primary; 
+  border-radius: $commonRadius;
   
   &:hover {
       background-color: $primary !important; 
@@ -18,18 +19,19 @@
   
 
   .outline-button {
-    background: $secondary;
-    color: $white;
-    border-color: $secondary;
-    padding: 15px;
+    background: $cleanWhite;
+    color: $textColor;
+    border-color: 1px solid $commonRadius;
     border-radius: $commonRadius;
     &:hover {
-      background: $secondary !important;
-      color: $white !important;
+      background: $cleanWhite !important;
+      color: $textColor !important;
+      border-color: $textColor !important;
+
     }
     &:focus {
-      background-color: $secondary !important;
-      color: $white;
+      background-color: $cleanWhite !important;
+      color: $textColor;
     }
   }
   

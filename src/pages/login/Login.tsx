@@ -1,30 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, Input, Checkbox, message } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone, LockOutlined, UserOutlined } from '@ant-design/icons';
-import './Login.scss';
 import AeiforoLogo from '../../assets/images/Aeiforo-logo.png';
-import { useNavigate } from 'react-router-dom';
 import CustomButton from '../../component/buttons/CustomButton';
+import { loginApi } from '../../features/action/SupplierAction';
+import './Login.scss';
 
 const LoginPage = () => {
     const navigate = useNavigate();
     const Background = require('../../assets/images/login_background.svg').default;
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState<boolean>(false);
+    const [rememberMe, setRememberMe] = useState<boolean>(false);
+    useEffect(() => {
 
-    const correctUsername = 'admin';
-    const correctPassword = 'password';
-
-    const handleLogin = () => {
-        if (!username || !password) {
-            message.error('Please fill in both username and password!');
+        const savedEmail = localStorage.getItem('rememberedEmail');
+        if (savedEmail) {
+            setEmail(savedEmail);
+            setRememberMe(true);
+        }
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+    }, []);
+    const handleLogin = async () => {
+        if (!email || !password) {
+            message.error("Please fill in both email and password!");
             return;
         }
-        if (username === correctUsername && password === correctPassword) {
-            navigate('/dashboard');
-        } else {
-            message.error('Invalid username or password!');
+
+        try {
+            const response = await loginApi({ email, password }, setLoading);
+            message.success("Login successful!");
+            localStorage.setItem("accessToken", response.access_token);
+            localStorage.setItem("refreshToken", response.refresh_token);
+            localStorage.setItem("user", JSON.stringify(response));
+
+            if (rememberMe) {
+                localStorage.setItem('rememberedEmail', email);
+            } else {
+                localStorage.removeItem('rememberedEmail');
+            }
+
+            navigate("/dashboard");
+        } catch (error: any) {
+            if (error.response) {
+                if (error.response.status === 401) {
+                    message.error("Invalid email or password!");
+                } else {
+                    message.error("Something went wrong. Please try again!");
+                }
+            } else if (error.request) {
+                message.error("Network error. Please check your connection.");
+            } else {
+                message.error("An unexpected error occurred.");
+            }
         }
     };
 
@@ -38,7 +70,9 @@ const LoginPage = () => {
                     <img src={Background} alt="Illustration" />
                 </div>
             </div>
-
+            <div className="login-form-logo">
+                <img width={120} src={AeiforoLogo} alt="Aeiforo Logo" />
+            </div>
             <div className="login-form-container">
                 <Card className="login-card">
                     <div className="login-header">
@@ -49,8 +83,10 @@ const LoginPage = () => {
                             prefix={<UserOutlined />}
                             placeholder="Email"
                             className="login-input"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={email}
+                            name='email'
+                            aria-label="Email input"
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <Input.Password
                             prefix={<LockOutlined />}
@@ -58,10 +94,11 @@ const LoginPage = () => {
                             iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                             className="login-input"
                             value={password}
+                            aria-label="Password input"
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <div className="login-options">
-                            <Checkbox>Remember me</Checkbox>
+                            <Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)}>Remember me</Checkbox>
                             <a href="/forgot-password" className="forgot-password-link">
                                 Forgot password?
                             </a>
@@ -70,7 +107,8 @@ const LoginPage = () => {
                             type="primary"
                             className="login-button"
                             onClick={handleLogin}
-                            label='Log In'
+                            disabled={loading}
+                            label={loading ? " Loading..." : 'Log In'}
                         />
 
                     </form>

@@ -5,7 +5,8 @@ import { DownOutlined, ArrowLeftOutlined, CheckOutlined } from "@ant-design/icon
 import { GlobalIconComponent, HomeIconComponent, MailIconComponent } from "../../utils/ContactIcons";
 import { ShareComponent } from "../../component/sharesocial/ShareSocial";
 import "./DetailsNavBar.scss";
-import MainNavBar from "../navbar/NavBar"
+import MainNavBar from "../navbar/NavBar";
+
 interface NavBarProps {
   activeLink: string;
   setActiveLink: (linkName: string) => void;
@@ -62,14 +63,26 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
   const overflowMenu = (
     <Menu>
       {overflowTabs.map((tab) => (
-        <Menu.Item key={tab?.name}>
-          <Link to={`/supplier/${id}/${tab?.name}`} onClick={() => handleLinkClick(tab.name)}>
-            {tab?.label}
+        <Menu.Item key={tab.name}>
+          <Link to={`/supplier/${id}/${tab.name}`} onClick={() => handleLinkClick(tab.name)}>
+            {tab.label}
           </Link>
         </Menu.Item>
       ))}
     </Menu>
   );
+
+  const tabItems = visibleTabs.map((tab) => ({
+    label: (
+      <Link
+        to={`/supplier/${id}/${tab.name}`}
+        className={activeLink === tab.name ? "active" : ""}
+      >
+        {tab.label}
+      </Link>
+    ),
+    key: tab.name,
+  }));
 
   return (
     <>
@@ -94,7 +107,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
           </div>
           <div className="contact-home">
             <GlobalIconComponent />
-            <div onClick={() => (window.location.href = record?.website)} role="button">
+            <div onClick={() => window.open(record?.website, '_blank')} role="button">
               {record?.websiteName}
             </div>
           </div>
@@ -118,21 +131,8 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
             )
           }
           tabBarGutter={12}
-        >
-          {visibleTabs.map((tab) => (
-            <Tabs.TabPane
-              tab={
-                <Link
-                  to={`/supplier/${id}/${tab.name}`}
-                  className={activeLink === tab.name ? "active" : ""}
-                >
-                  {tab.label}
-                </Link>
-              }
-              key={tab?.name}
-            />
-          ))}
-        </Tabs>
+          items={tabItems}
+        />
       </div>
     </>
   );

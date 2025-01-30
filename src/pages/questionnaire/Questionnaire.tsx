@@ -6,9 +6,9 @@ import CustomButton from "../../component/buttons/CustomButton";
 import { allCategories } from "../../utils/Options";
 import { primaryColor } from '../../style/ColorCode';
 import "./Questionnaire.scss";
+import SelectDropDown from "../../component/select/SelectDropDown";
 
 const { TextArea } = Input;
-
 const columns: any = [
     {
         title: "Section",
@@ -36,7 +36,6 @@ const columns: any = [
 
 const Questionnaire: React.FC = () => {
     const [activeCategory, setActiveCategory] = useState<string>("general");
-    const [isMandatory, setIsMandatory] = useState<boolean>(false);
     const [showQuestions, setShowQuestions] = useState<boolean>(false);
     const [answers, setAnswers] = useState<{ [key: string]: any }>({});
     const [uploadedFiles, setUploadedFiles] = useState<{ [key: string]: { name: string; size: string } | null }>({});
@@ -52,7 +51,6 @@ const Questionnaire: React.FC = () => {
 
 
     const handleRowClick = (record: any, sectionIndex: number) => {
-        console.log(record, 'tttttttttttttttttttt')
         setShowQuestions(true);
         setCurrentSectionIndex(sectionIndex);
     };
@@ -76,16 +74,7 @@ const Questionnaire: React.FC = () => {
             setActiveCategory(activeCategory || "");
             setShowQuestions(false);
             setCurrentSectionIndex(0);
-            setAnswers((prevAnswers) => {
-                const updatedAnswers = { ...prevAnswers };
-                Object.keys(updatedAnswers).forEach((key) => {
-                    if (!updatedAnswers[key] || updatedAnswers[key].trim() === "") {
-                        updatedAnswers[key] = "";
-                    }
-                });
-
-                return updatedAnswers;
-            });
+            handleClearUnsubmittedAnswers()
         });
 
     };
@@ -227,6 +216,18 @@ const Questionnaire: React.FC = () => {
         }
     };
 
+    const handleClearUnsubmittedAnswers = () => {
+        setAnswers((prevAnswers) => {
+            const updatedAnswers = { ...prevAnswers };
+            Object.keys(updatedAnswers).forEach((key) => {
+                if (!submittedAnswers[key]) {
+                    updatedAnswers[key] = "";
+                }
+            });
+            return updatedAnswers;
+        });
+    };
+
     const handleCategoryClick = (categoryKey: string) => {
         confirmNavigation(() => {
 
@@ -240,17 +241,7 @@ const Questionnaire: React.FC = () => {
             if (savedAnswers) {
                 setAnswers(JSON.parse(savedAnswers));
             }
-
-            setAnswers((prevAnswers) => {
-                const updatedAnswers = { ...prevAnswers };
-                Object.keys(updatedAnswers).forEach((key) => {
-                    if (!updatedAnswers[key] || updatedAnswers[key].trim() === "") {
-                        updatedAnswers[key] = "";
-                    }
-                });
-
-                return updatedAnswers;
-            });
+            handleClearUnsubmittedAnswers()
         })
     };
 
@@ -297,14 +288,13 @@ const Questionnaire: React.FC = () => {
             <div>
                 <div className="question-text">
                     <div>{questionIndex + 1}. {question.text}
-                        {question.isMandatory && <span className="mandatory-asterisk">**</span>}
+                        {question.isMandatory && <span className="mandatory-asterisk">*</span>}
                         {isAnswered && (
                             <Tooltip title="Answered">
                                 <CheckOutlined className="answered-icon" />
                             </Tooltip>
 
                         )}
-
                     </div>
                     <Tooltip title="Copy Question">
                         <button
@@ -322,7 +312,9 @@ const Questionnaire: React.FC = () => {
                             rows={3}
                             placeholder="Type your answer here"
                             size="small"
-                            onChange={(e) => handleInputChange(section, key, e.target.value, questionIndex)}
+                            onChange={(e) =>
+                                handleInputChange(section, key, e.target.value, questionIndex)
+                            }
                             value={answers[questionKey] || ""}
                         />
 
@@ -346,24 +338,49 @@ const Questionnaire: React.FC = () => {
                             <div className="uploaded-file-info">
                                 <div className="uploaded-file-details">
                                     File: {uploadedFiles[questionKey]?.name} ({uploadedFiles[questionKey]?.size})
-                                    <button onClick={() => handleRemoveFile(questionKey)} className="remove-file-icon" >
+                                    <button
+                                        onClick={() => handleRemoveFile(questionKey)}
+                                        className="remove-file-icon"
+                                    >
                                         <DeleteOutlined />
                                     </button>
                                 </div>
                             </div>
                         )}
                     </div>
+                ) : question.choices.length > 4 ? (
+                    <SelectDropDown
+                        mode="multiple"
+                        options={question.choices.map((choice) => ({
+                            label: choice,
+                            value: choice,
+                        }))}
+                        placeholder="Select options"
+                        value={answers[`${section}-${key}-${questionIndex}`] || []}
+                        onChange={(value: any) =>
+                            handleInputChange(section, key, value, questionIndex)
+                        }
+                    />
                 ) : (
                     <div className="question-options">
                         {question.choices.map((option, idx) => (
                             <label key={`${option}-${idx}`}>
                                 <Space direction="vertical">
                                     <Radio
-                                        value={trust ? option : null}
-                                        checked={answers[`${section}-${key}-${questionIndex}`] === option}
-                                        onChange={() => handleInputChange(section, key, option, questionIndex)}
+                                        value={option}
+                                        checked={
+                                            answers[`${section}-${key}-${questionIndex}`] ===
+                                            option
+                                        }
+                                        onChange={() =>
+                                            handleInputChange(
+                                                section,
+                                                key,
+                                                option,
+                                                questionIndex
+                                            )
+                                        }
                                         className="radio-qbutton"
-
                                     >
                                         {option}
                                     </Radio>
@@ -371,8 +388,8 @@ const Questionnaire: React.FC = () => {
                             </label>
                         ))}
                     </div>
-
                 )}
+
             </div>
         );
     };

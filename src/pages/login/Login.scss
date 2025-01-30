@@ -8,12 +8,21 @@
     .login-illustration {
         display: none !important;
     }
+
+    .login-form-logo {
+        align-self: flex-start;
+        display: flex !important;
+    }
+    .login-page {
+        flex-direction: column;
+        gap: 35%;
+    }
 }
 
 .login-page {
     display: flex;
     height: 100vh;
-
+    background: $cleanWhite;
    
 
     .login-illustration {
@@ -32,7 +41,10 @@
 
         }
     }
-
+    
+    .login-form-logo {
+        display: none;
+    }
     .login-form-container {
         flex: 0;
         display: flex;

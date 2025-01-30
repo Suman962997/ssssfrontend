@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import '../buttons/Buttons.scss';
 
 interface ButtonProps {
-  label: string;
+  label: string | any;
   onClick?: any;
   type?: "primary" | "outline" | "secondary" | "default";
   icon?: any;

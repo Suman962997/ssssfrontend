@@ -10,7 +10,10 @@ import Spindle from '../../../assets/images/spindle.png'
 import Bellows from '../../../assets/images/bellows.png'
 import Relay from '../../../assets/images/relay.png'
 import Oring from '../../../assets/images/o-ring.png'
-
+import ValveDisc from '../../../assets/images/valve-disc.png'
+import WhiteDisc from '../../../assets/images/disc-white.png'
+import Motor from '../../../assets/images/motor-NS.png'
+import Spring from '../../../assets/images/spring.png'
 import './Governance.scss';
 
 
@@ -47,7 +50,6 @@ const Governance: React.FC = () => {
   const miniCard = [
     { totalsystem: "10", active: "2", outdated: "8", },
   ];
-  console.log(record?.key === "nakakita", 'record')
 
   const getImage = (name: string) => {
     switch (name.toLowerCase()) {
@@ -63,6 +65,14 @@ const Governance: React.FC = () => {
         return Relay;
       case 'o-ring':
         return Oring;
+      case 'valve disc':
+        return ValveDisc;
+      case 'motor':
+        return Motor;
+      case 'compression spring':
+        return Spring;
+      case 'disc':
+        return WhiteDisc;
       default:
         return '';
     }
@@ -76,20 +86,61 @@ const Governance: React.FC = () => {
               <div className='governance-main' key={item.title}>
                 <div className='governance-content' key={item.title}>
                   <div className='con-title'>{item.title}</div>
-                  <div className='governance-con-start'>
-                    <div>Quality</div>
-                    <div>{item.quality}</div>
-                  </div>
-                  <div className='governance-con-start'>
-                    <div>Environmental</div>
-                    <div>{item.environmental}</div>
-                  </div>
-                  {item.health && (
-                    <div className='governance-con-start'>
-                      <div>Health</div>
-                      <div>{item.health}</div>
+                  {item.title === "Management Systems" &&
+                    <>
+                      <div className='governance-con-start'>
+                        <div>Quality</div>
+                        <div className='governance-items'>{item.quality}</div>
+                      </div>
+                      <div className='governance-con-start'>
+                        <div>Environmental</div>
+                        <div className='governance-items'>{item.environmental}</div>
+                      </div>
+                      <div className='governance-con-start'>
+                        <div>Health</div>
+                        <div className='governance-items'>{item.health}</div>
+                      </div>
+                    </>
+                  }
+                  {item?.title === "Certifications" &&
+                    <div className='certification-main'>
+                      {record?.certification?.map((item: any, index: any) => {
+                        return (
+                          <div key={index} className='certificate-div'>
+                            <div className='certificate-certi'>
+                              {item?.certificate}
+                            </div>
+                            <div className='certificate-name'>
+                              {item?.name}
+                            </div>
+                            <div className='certificate-name'>
+                              {item?.expire_date}
+                            </div>
+                          </div>
+                        )
+
+                      })}
                     </div>
-                  )}
+                  }
+                  {item?.title === "Insurances" &&
+                    <div className='certification-main'>
+                      {record?.insurance?.map((item: any, index: any) => {
+                        return (
+                          <div key={index} className='certificate-div'>
+                            <div className='certificate-certi'>
+                              {item?.name}
+                            </div>
+                            <div className='certificate-name'>
+                              {item?.amount}
+                            </div>
+                            <div className='certificate-name'>
+                              {item?.expire_date}
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  }
                 </div>
                 {type === "governance" &&
                   <div className='governance-overview'>

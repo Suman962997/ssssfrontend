@@ -5,7 +5,6 @@ interface DocProps {
   record?: any
 }
 const DocumentCertificate: React.FC<DocProps> = ({ record }) => {
-  console.log(record?.certification, 'recssord')
 
   return (
     <div className="document-certificate">
