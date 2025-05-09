@@ -25,40 +25,59 @@ const LoginPage = () => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
     }, []);
-    const handleLogin = async () => {
+
+
+    const [username, setUsername] = useState('');
+
+    const correctUsername = 'admin@demo.com';
+    const correctPassword = 'admin@123';
+
+    const handleLogin = () => {
         if (!email || !password) {
-            message.error("Please fill in both email and password!");
+            message.error('Please fill in both username and password!');
             return;
         }
-
-        try {
-            const response = await loginApi({ email, password }, setLoading);
-            message.success("Login successful!");
-            localStorage.setItem("accessToken", response.access_token);
-            localStorage.setItem("refreshToken", response.refresh_token);
-            localStorage.setItem("user", JSON.stringify(response));
-
-            if (rememberMe) {
-                localStorage.setItem('rememberedEmail', email);
-            } else {
-                localStorage.removeItem('rememberedEmail');
-            }
-
-            navigate("/dashboard");
-        } catch (error: any) {
-            if (error.response) {
-                if (error.response.status === 401) {
-                    message.error("Invalid email or password!");
-                } else {
-                    message.error("Something went wrong. Please try again!");
-                }
-            } else if (error.request) {
-                message.error("Network error. Please check your connection.");
-            } else {
-                message.error("An unexpected error occurred.");
-            }
+        if (email === correctUsername && password === correctPassword) {
+            navigate('/dashboard');
+        } else {
+            message.error('Invalid username or password!');
         }
     };
+
+    // const handleLogin = async () => {
+    //     if (!email || !password) {
+    //         message.error("Please fill in both email and password!");
+    //         return;
+    //     }
+
+    //     try {
+    //         const response = await loginApi({ email, password }, setLoading);
+    //         message.success("Login successful!");
+    //         localStorage.setItem("accessToken", response.access_token);
+    //         localStorage.setItem("refreshToken", response.refresh_token);
+    //         localStorage.setItem("user", JSON.stringify(response));
+
+    //         if (rememberMe) {
+    //             localStorage.setItem('rememberedEmail', email);
+    //         } else {
+    //             localStorage.removeItem('rememberedEmail');
+    //         }
+
+    //         navigate("/dashboard");
+    //     } catch (error: any) {
+    //         if (error.response) {
+    //             if (error.response.status === 401) {
+    //                 message.error("Invalid email or password!");
+    //             } else {
+    //                 message.error("Something went wrong. Please try again!");
+    //             }
+    //         } else if (error.request) {
+    //             message.error("Network error. Please check your connection.");
+    //         } else {
+    //             message.error("An unexpected error occurred.");
+    //         }
+    //     }
+    // };
 
     return (
         <div className="login-page">

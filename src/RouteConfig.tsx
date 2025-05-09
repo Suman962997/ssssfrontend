@@ -21,7 +21,7 @@ import SupplierManage from "./pages/supplier/SupplierManage";
 import Login from "./pages/login/Login";
 import UserManagement from "./pages/usermanagement/UserManagement";
 import UserCreation from "./pages/usercreation/UserCreation";
-import ProtectedRoute from "./ProdectedRoute";
+// import ProtectedRoute from "./ProdectedRoute";
 
 const RouterConfig = createBrowserRouter([
 
@@ -38,97 +38,166 @@ const RouterConfig = createBrowserRouter([
         children: [
             {
                 path: 'dashboard',
-                element: <ProtectedRoute><Dashboard /></ProtectedRoute>
+                element:
+                    // <ProtectedRoute>
+                    <Dashboard />
+                // </ProtectedRoute>
             },
             {
                 path: 'user-creation',
-                element: <ProtectedRoute><UserCreation /></ProtectedRoute>
+                element:
+                    // <ProtectedRoute>
+                    <UserCreation />
+                // </ProtectedRoute>
             },
             {
                 path: 'reports',
-                element: <ProtectedRoute><Report /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Report />
+                // </ProtectedRoute>,
             },
             {
                 path: 'quality',
-                element: <ProtectedRoute><Quality /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Quality />
+                // </ProtectedRoute>,
             },
             {
                 path: 'analytics',
-                element: <ProtectedRoute><Analytics /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Analytics />
+                // </ProtectedRoute>,
             },
             {
                 path: 'company',
-                element: <ProtectedRoute><CompanyDetailsForm /></ProtectedRoute>
+                element:
+                    // <ProtectedRoute>
+                    <CompanyDetailsForm />
+                // </ProtectedRoute>
             },
             {
                 path: 'profile',
-                element: <ProtectedRoute><ProfilePage /></ProtectedRoute>
+                element:
+                    //  <ProtectedRoute>
+                    <ProfilePage />
+                // </ProtectedRoute>
             },
             {
                 path: 'questionnaire',
-                element: <ProtectedRoute><Questionnaire /></ProtectedRoute>
+                element:
+                    // <ProtectedRoute>
+                    <Questionnaire />
+                // </ProtectedRoute>
             },
             {
                 path: 'user-management',
-                element: <ProtectedRoute><UserManagement /></ProtectedRoute>
+                element:
+                    // <ProtectedRoute>
+                    <UserManagement />
+                // </ProtectedRoute>
             },
             {
                 path: 'supplier-management',
-                element: <ProtectedRoute><SupplierManage /></ProtectedRoute>
+                element:
+                    // <ProtectedRoute>
+                    <SupplierManage />
+                // </ProtectedRoute>
             }
         ],
     },
     {
         path: "supplier/:id",
-        element: <ProtectedRoute><SupplierDetailsPage /></ProtectedRoute>,
+        element:
+            // <ProtectedRoute>
+            <SupplierDetailsPage />,
+        // </ProtectedRoute>,
         children: [
             {
                 path: 'overview',
-                element: <ProtectedRoute><OverView /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <OverView />
+                // </ProtectedRoute>,
             },
             {
                 path: 'company',
-                element: <ProtectedRoute><Governance /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Governance />
+                // </ProtectedRoute>,
             },
             {
                 path: 'products&services',
-                element: <ProtectedRoute><Governance /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Governance />
+                // </ProtectedRoute>,
             },
             {
                 path: 'location',
-                element: <ProtectedRoute><Governance /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Governance />
+                // </ProtectedRoute>,
             },
             {
                 path: 'governance',
-                element: <ProtectedRoute><Governance /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Governance />
+                // </ProtectedRoute>,
             },
             {
                 path: 'carbon',
-                element: <ProtectedRoute><Carbon /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Carbon />
+                // </ProtectedRoute>,
             },
             {
                 path: 'performance',
-                element: <ProtectedRoute><Performance /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Performance />
+                // </ProtectedRoute>,
             },
             {
                 path: 'analyse',
-                element: <ProtectedRoute><Analyse /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Analyse />
+                // </ProtectedRoute>,
             },
             {
                 path: 'waste-consumption',
-                element: <ProtectedRoute><Waste /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <Waste />
+                // </ProtectedRoute>,
             },
             {
                 path: 'reports',
-                element: <ProtectedRoute><SingleReport /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <SingleReport />
+                //</ProtectedRoute>,
             },
             {
                 path: 'benchmark-sustainability',
-                element: <ProtectedRoute><BenchmarkSustainability /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <BenchmarkSustainability />
+                //</ProtectedRoute>,
             },
             {
                 path: 'strategy-road-map',
-                element: <ProtectedRoute><StrategyRoadMap /></ProtectedRoute>,
+                element:
+                    // <ProtectedRoute>
+                    <StrategyRoadMap />
+                // </ProtectedRoute>,
             },
         ]
     },

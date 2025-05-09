@@ -5,9 +5,9 @@ import type { SelectProps } from "antd";
 const { Option } = Select;
 
 interface CustomSelectProps extends SelectProps {
-    options: { label: string; value: string | number }[];
+    options: { label: string; value: string | number }[] | any;
     showSearch?: boolean;
-    mode: "multiple" | "tags" | undefined;
+    mode?: "multiple" | "tags" | undefined;
 }
 
 const SelectDropDown: React.FC<CustomSelectProps> = ({
@@ -31,7 +31,7 @@ const SelectDropDown: React.FC<CustomSelectProps> = ({
             }}
             {...props}
         >
-            {options.map((option) => (
+            {options.map((option: any) => (
                 <Option key={option.value} value={option.value} label={option.label}>
                     {option.label}
                 </Option>

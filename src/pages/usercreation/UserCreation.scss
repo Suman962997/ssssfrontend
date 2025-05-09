@@ -21,7 +21,7 @@
                 border-left: none;
                 border-top: none;
                 border-bottom: none;
-                height: 83vh;
+                height: 103vh;
             }
 .ant-card-head-title {
     padding-top: 20px;
@@ -83,7 +83,9 @@
             }
 
         }
-
+.none-box {
+  display: none;
+}
         .user-second-box {
             width: 80%;
             padding: $commonPadding;
@@ -356,4 +358,15 @@
     .add-useritem {
       width: max-content;
     }
+}
+
+.empty-state {
+  color: #999;
+  text-align: center;
+  padding: 40px;
+  font-style: italic;
+}
+
+.custom-cont {
+  // width: 80%;
 }

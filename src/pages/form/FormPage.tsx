@@ -4,7 +4,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import type { RcFile } from "antd/lib/upload";
 import "./FormPage.scss";
 import CustomButton from "../../component/buttons/CustomButton";
-import { postData } from "../../features/action/SupplierAction";
+import { postData, postDatas } from "../../features/action/SupplierAction";
 import Loader from "../../component/loader/Loader";
 
 const CompanyDetailsForm = () => {
@@ -42,6 +42,22 @@ const CompanyDetailsForm = () => {
 
         return false;
     };
+
+    const [text, setText] = useState<string | any>('');
+
+    const handleSubmit = async () => {
+        if (!text.trim()) {
+            alert("Please enter text before submitting.");
+            return;
+        }
+
+        try {
+            const response = await postDatas(text, setLoading);
+            console.log("API Response:", response);
+        } catch (error) {
+            console.error("API Error:", error);
+        }
+    }
 
     const handleConfirm = () => {
         if (tempData) {

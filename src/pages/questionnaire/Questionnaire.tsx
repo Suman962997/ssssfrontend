@@ -98,7 +98,28 @@ const Questionnaire: React.FC = () => {
     };
 
 
-    const handleFileUpload = (info: any, questionKey: string) => {
+    const handleFileUpload = async (info: any, questionKey: string) => {
+        const { file } = info;
+        if (!file || file.status === "uploading") return;
+        try {
+            const formData = new FormData();
+            formData.append('file', file.originFileObj || file);
+
+            const response = await fetch('http://192.168.2.75:1500/tester/', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) throw new Error('Upload failed');
+
+            const responseData = await response.json();
+            console.log(responseData)
+        } catch (error) {
+            console.error('Upload error:', error);
+            message.error('Failed to process file');
+        } finally {
+            // setLoading(false);
+        }
         if (info.file.status !== "uploading") {
             const { name, size } = info.file;
             const fileSize = `${(size / 1024).toFixed(2)} KB`;
@@ -110,7 +131,7 @@ const Questionnaire: React.FC = () => {
 
             message.success(`${name} uploaded successfully.`);
         }
-    };
+    }
 
 
     const handleRemoveFile = (questionKey: string) => {
@@ -260,7 +281,7 @@ const Questionnaire: React.FC = () => {
             setAnswers((prevAnswers) => {
                 const updatedAnswers = { ...prevAnswers };
                 Object.keys(updatedAnswers).forEach((key) => {
-                    if (!submittedAnswers[key] && (!updatedAnswers[key] || updatedAnswers[key].trim() === "")) {
+                    if (!submittedAnswers[key] && (!updatedAnswers[key])) {
                         updatedAnswers[key] = "";
                     }
                 });
@@ -318,7 +339,7 @@ const Questionnaire: React.FC = () => {
                             value={answers[questionKey] || ""}
                         />
 
-                        <div className="upload-section">
+                        {/* <div className="upload-section">
                             {!isFileUploaded && (
                                 <Tooltip title="Upload">
                                     <Upload
@@ -333,8 +354,8 @@ const Questionnaire: React.FC = () => {
                                     </Upload>
                                 </Tooltip>
                             )}
-                        </div>
-                        {isFileUploaded && (
+                        </div> */}
+                        {/* {isFileUploaded && (
                             <div className="uploaded-file-info">
                                 <div className="uploaded-file-details">
                                     File: {uploadedFiles[questionKey]?.name} ({uploadedFiles[questionKey]?.size})
@@ -346,7 +367,7 @@ const Questionnaire: React.FC = () => {
                                     </button>
                                 </div>
                             </div>
-                        )}
+                        )} */}
                     </div>
                 ) : question.choices.length > 4 ? (
                     <SelectDropDown
@@ -502,7 +523,19 @@ const Questionnaire: React.FC = () => {
                                 </div>
                             }
                             extra={
-                                <div style={{ textAlign: "center" }}>
+                                <div style={{ textAlign: "center", display: "flex", gap: "10px", alignItems: 'center' }}>
+                                    <Tooltip title="Upload">
+                                        <Upload
+                                            showUploadList={false}
+                                            customRequest={(options) => {
+                                                const { onSuccess } = options;
+                                                setTimeout(() => onSuccess?.("ok"), 0);
+                                            }}
+                                            onChange={(info) => handleFileUpload(info, '')}
+                                        >
+                                            <FileAddTwoTone className="upload-icon" />
+                                        </Upload>
+                                    </Tooltip>
                                     <Progress
                                         type="circle"
                                         percent={progressPercent}

@@ -56,7 +56,7 @@ const CustomTable: React.FC<CustomTableProps> = ({
 
     const lowerSearchText = searchText.toLowerCase();
     const filtered = data.filter((row) =>
-      ['supplier', 'industry', 'category', 'compliance', 'name', 'role', 'username', 'roleName', 'permissions'].some((key) =>
+      ['supplier', 'industry', 'category', 'compliance', 'name', 'role', 'username', 'roleName', 'permissions', 'company', 'address', 'country', 'state', 'city'].some((key) =>
         row[key]?.toString().toLowerCase().includes(lowerSearchText)
       )
     );
@@ -130,21 +130,23 @@ const CustomTable: React.FC<CustomTableProps> = ({
         <div className='search-bar' >
           {currentLoc !== "user-creation" &&
             <div className="table-title">{title}<span className='title-count'>({filteredData?.length})</span></div>}
-          {currentLoc === "user-creation" && (activeChild === 'userList' || activeChild === 'roleList') && (
+          {currentLoc === "user-creation" && (activeChild === 'userList' || activeChild === 'roleList' || activeChild === 'Supplier List') && (
             <div className='display-add-delete'>
               <div className={`add-user ${rowSelection?.selectedRowKeys.length ? 'disabled' : ''}`} onClick={() => setIsDrawerVisible(true)} role='button' >
                 <div>
                   <UserAddOutlined />
                 </div>
-                <div className='add-useritem'> {activeChild === 'userList' ? "Add a user" : "Add a role"} </div></div>
+                <div className='add-useritem'> {activeChild === 'userList' ? "Add a user"
+                  : activeChild === 'Supplier List' ? "Add a Supplier"
+                    : "Add a role"} </div></div>
               <div className={`add-user ${rowSelection?.selectedRowKeys.length === 0 ? 'disabled' : ''}`} onClick={() => setIsDeleteModalVisible(true)} role='button' >
                 <div>
                   <UserDeleteOutlined />
                 </div>
-                <div className='add-useritem'>{activeChild === 'userList' ? "Delete a user" : " Delete a role"}</div></div>
+                <div className='add-useritem'>{activeChild === 'userList' ? "Delete a user" : activeChild === 'Supplier List' ? "Delete a Supplier" : " Delete a role"}</div></div>
             </div>
           )}
-          {currentLoc === "user-creation" && (activeChild === 'deletedUsers' || activeChild === 'deletedRole') && (
+          {currentLoc === "user-creation" && (activeChild === 'deletedUsers' || activeChild === 'deletedRole' || activeChild === 'Deleted Supplier') && (
             <div className={`add-user ${rowSelection?.selectedRowKeys.length === 0 ? 'disabled' : ''}`} role='button' onClick={() => setIsRecoverModalVisible(true)}>
               <div>
                 <RollbackOutlined />

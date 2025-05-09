@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, Button } from 'antd';
+import { Drawer } from 'antd';
 import { DrawerProps } from 'antd/es/drawer';
 import './Drawer.scss';
 

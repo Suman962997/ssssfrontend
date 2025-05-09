@@ -45,6 +45,33 @@ export const postData = async (data: FormData, setLoading: React.Dispatch<React.
 
 };
 
+const API_URL = "https://ml-api.infony.in/nmav_parser_api/";
+
+export const postDatas = async (
+  text: string,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  setLoading(true);
+  try {
+    const payload = { text }; // Payload with "text" field
+
+    const response = await axios.post(API_URL, payload, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    console.log("Response:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error during POST call:", error);
+    throw error;
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
 export const loginApi = async (data: { email: string; password: string; }, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
   setLoading(true)

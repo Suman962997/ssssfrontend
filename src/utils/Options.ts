@@ -11,6 +11,43 @@ export const userInfo = {
   user: "Admin",
 };
 
+export const dateFormatOptions = [
+  { value: 'MMM. d, yyyy', label: 'Abbreviated month (Jan. 1, 2025)' },
+  { value: 'MMMM d, yyyy', label: 'Full month (January 1, 2025)' },
+  { value: 'MM/dd/yyyy', label: 'Numeric (01/01/2025)' },
+  { value: 'yyyy-MM-dd', label: 'ISO (2025-01-01)' },
+];
+
+export const timeFormatOptions = [
+  { value: '12h', label: '12 Hour Format' },
+  { value: '24h', label: '24 Hour Format' },
+];
+
+
+export const data = {
+  countries: [
+    { label: "usa", value: "United States" },
+    { label: "uk", value: "United Kingdom" },
+    { label: "canada", value: "Canada" },
+    { label: "australia", value: "Australia" },
+    { label: "germany", value: "Germany" }
+  ],
+  states: [
+    { label: "california", value: "California" },
+    { label: "texas", value: "Texas" },
+    { label: "new-york", value: "New York" },
+    { label: "florida", value: "Florida" },
+    { label: "illinois", value: "Illinois" }
+  ],
+  cities: [
+    { label: "los-angeles", value: "Los Angeles" },
+    { label: "san-francisco", value: "San Francisco" },
+    { label: "new-york-city", value: "New York City" },
+    { label: "chicago", value: "Chicago" },
+    { label: "miami", value: "Miami" }
+  ]
+};
+
 export const allCategories = [
   {
     key: "general",
@@ -719,4 +756,3 @@ export const allCategories = [
   },
 
 ];
-
