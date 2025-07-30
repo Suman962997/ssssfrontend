@@ -232,7 +232,7 @@ body {
   }
 
   .governance-content {
-
+    width: -webkit-fill-available;
     border-radius: $commonRadius;
     color: $textColor;
 
@@ -248,6 +248,7 @@ body {
 
 
     .governance-con-start {
+      width: 30%;
       display: $flex;
       justify-content: space-between;
       color: $textColor;
@@ -365,6 +366,40 @@ body {
 
 }
 
+
+.governance-main-item {
+  border: $border;
+  border-radius: $commonRadius;
+  margin-top: 15px;
+  padding: 30px;
+  background: $cleanWhite;
+  color: $textColor;
+
+  .product-item {
+  border: $border;
+  border-radius: $commonRadius;
+  background: $cleanWhite;
+  color: $textColor;
+  padding: $commonPadding;
+  margin-bottom: 20px;
+  font-size: 14px;
+  display: flex;
+  gap: 30px;
+
+  .product-item-un {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .product-item-address {
+    padding-bottom: 20px;
+    font-size: 14px;
+
+  }
+  }
+}
 .governance-content-location {
   color: $textColor;
   font-size: 16px;
@@ -408,7 +443,7 @@ body {
   }
 
   .governance-con-start-com {
-padding-bottom: 20px;
+  padding-bottom: 20px;
   }
 
   .prod-list {
@@ -423,4 +458,75 @@ padding-bottom: 20px;
 
   .location-main {
     width: $fullWidth;
+  }
+
+
+  .product-item-content {
+    width: 60%;
+  }
+
+  .product-item-details {
+    width: 40%;
+    font-size: 14px;
+    padding: $commonPadding;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .app-details {
+display:ruby-text;
+justify-content: space-between;
+align-self: start;
+.prod-application {
+  padding-left: 1px;
+  }
+  }
+
+  .meterial-details {
+display:ruby-text;
+justify-content: space-between;
+align-self: start;
+
+.prod-material {
+padding-left: 21px;
+}
+  }
+
+  .name-details {
+display:ruby-text;
+justify-content: space-between;
+align-self: start;
+.prod-name {
+  padding-left: 36px;
+}
+  }
+
+  .product-item-img {
+    img {
+      border-radius: 5px;
+    }
+  }
+.certification-main {
+  width: -webkit-fill-available;
+
+}
+
+  .certificate-div {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+  }
+
+  .certificate-certi {
+    width: 150%;
+padding-bottom: 10px;
+  }
+
+  .certificate-name {
+    width: 150%;
+  }
+
+  .governance-items {
+    width:20%
   }

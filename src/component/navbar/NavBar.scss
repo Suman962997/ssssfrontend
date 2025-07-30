@@ -57,7 +57,11 @@ body {
   display: $flex;
   align-items: center;
   justify-content: space-between;
-   padding: $commonPadding;
+  padding: $commonPadding;
+
+   .navbar-logo {
+   cursor: pointer;
+   }
 }
 
 

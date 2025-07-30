@@ -9,6 +9,9 @@ interface CustomSearchInputProps {
   placeholder?: string;
   disabled?: boolean;
   size?: 'small' | 'middle' | 'large';
+  onPressEnter?: () => void;
+  suggestions?: string[];
+  onSuggestionSelect?: (index: number) => void;
 }
 
 const CustomSearchInput: React.FC<CustomSearchInputProps> = ({
@@ -17,6 +20,10 @@ const CustomSearchInput: React.FC<CustomSearchInputProps> = ({
   placeholder,
   disabled = false,
   size = 'middle',
+  onPressEnter,
+  suggestions,
+  onSuggestionSelect
+
 }) => {
   return (
     <div className="custom-search-wrapper">
@@ -27,8 +34,24 @@ const CustomSearchInput: React.FC<CustomSearchInputProps> = ({
         placeholder={placeholder || 'Search...'}
         disabled={disabled}
         size={size}
+        allowClear
+        onKeyPress={(e) => e.key === 'Enter' && onPressEnter?.()}
       />
+      {/* {suggestions?.length && (
+        <div className="suggestions-dropdown">
+          {suggestions.map((suggestion, index) => (
+            <div
+              key={index}
+              className="suggestion-item"
+              onClick={() => onSuggestionSelect?.(index)}
+            >
+              {suggestion}
+            </div>
+          ))}
+        </div>
+      )} */}
     </div>
+
   );
 };
 

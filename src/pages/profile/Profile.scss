@@ -49,11 +49,14 @@
       margin: 0 auto;
       background:$error;
       gap: 5px;
+      border-color: $error;
+      
+      &:hover {
+        background:$error;
+      }
+      
     }
 
-    .logout-button:hover {
-      background:$error;
-    }
   }
 
   .profile-tabs {
@@ -139,7 +142,6 @@
 
         &::after {
           width: 100%; 
-          background-color: $primary; 
         }
       }
     }

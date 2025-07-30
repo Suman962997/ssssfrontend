@@ -15,12 +15,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import CustomModal from "../../component/popup/CustomModel";
 import { DeleteOutlined, EditOutlined, UnorderedListOutlined } from "@ant-design/icons";
-import { Switch, Tooltip } from "antd";
+import { Form, Switch, Tooltip } from "antd";
 import Loader from "../../component/loader/Loader";
 import EditRow from "./EditRow";
 import CustomButton from "../../component/buttons/CustomButton";
 import { fetchSupplierListData } from "../../features/action/SupplierAction";
-import { setSelectedRecord } from "../../features/slices/SupplierSlice";
+import { setSelectedRecord, setSuppliers } from "../../features/slices/SupplierSlice";
 import { useDispatch } from "react-redux";
 import { bgColor } from "../../style/ColorCode";
 import "./Dashboard.scss";
@@ -29,6 +29,7 @@ const Dashboard: React.FC = () => {
   const suppliers = useAppSelector((state) => state.suppliers?.data);
 
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
 
   const showModal = () => setIsTrue(true);
   const hideModal = () => setIsTrue(false);
@@ -219,9 +220,31 @@ const Dashboard: React.FC = () => {
     },
   ];
 
-  const handleOk = () => {
-    setIsTrue(false);
+  const handleOk = async () => {
+    switch (rowType) {
+      case "delete":
+        console.log("Deleting:", singleDeleteData?.supplier);
+        break;
+      case "edit":
+        form.validateFields()
+          .then(values => {
+            const newUser: any = { key: String(suppliers.length + 1), ...values };
+            setSuppliers([...suppliers, newUser]);
+          })
+          .catch(error => {
+            console.log('errorr')
+          })
+        console.log("Editing:", singleDeleteData?.supplier);
+        break;
+      case "status":
+        console.log("Changing Status for:", singleDeleteData?.supplier);
+        break;
+      default:
+        break;
+    }
+    hideModal();
   };
+
 
   const navigate = useNavigate();
 
@@ -283,12 +306,11 @@ const Dashboard: React.FC = () => {
   const getCancelName = (rowType: string) => {
     switch (rowType) {
       case "delete":
-        return <><CustomButton key="cancel" type='default' onClick={() => ''} label={"No"} /><CustomButton key="ok" type="primary" onClick={() => ''} label={"Yes"} /></>;
+        return <><CustomButton key="cancel" type='default' onClick={hideModal} label={"No"} /><CustomButton key="ok" type="primary" onClick={handleOk} label={"Yes"} /></>;
       case "edit":
-        return <><CustomButton key="cancel" type='default' onClick={() => ''} label={"Cancel"} /><CustomButton key="ok" type="primary" onClick={() => ''} label={"edit"} /></>;
-
+        return <><CustomButton key="cancel" type='default' onClick={hideModal} label={"Cancel"} /><CustomButton key="ok" type="primary" onClick={handleOk} label={"edit"} /></>;
       case "status":
-        return <><CustomButton key="cancel" type='default' onClick={() => ''} label={"No"} /><CustomButton key="ok" type="primary" onClick={() => ''} label={"Yes"} /></>;
+        return <><CustomButton key="cancel" type='default' onClick={hideModal} label={"No"} /><CustomButton key="ok" type="primary" onClick={handleOk} label={"Yes"} /></>;
       default:
         return "";
     }
@@ -299,7 +321,7 @@ const Dashboard: React.FC = () => {
       case "delete":
         return <div>{singleDeleteData?.supplier}</div>
       case "edit":
-        return <EditRow singleDeleteData={singleDeleteData} />;
+        return <EditRow singleDeleteData={singleDeleteData} form={form} />;
       case "status":
         return <div>{singleDeleteData?.status}</div>;
       default:
@@ -343,6 +365,7 @@ const Dashboard: React.FC = () => {
       <CustomModal
         visible={isTrue}
         onClose={hideModal}
+        onCancel={hideModal}
         title={getTitle(rowType)}
         content={getComponent(rowType)}
         onOk={handleOk}

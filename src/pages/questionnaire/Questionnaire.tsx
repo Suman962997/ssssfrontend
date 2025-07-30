@@ -6,9 +6,9 @@ import CustomButton from "../../component/buttons/CustomButton";
 import { allCategories } from "../../utils/Options";
 import { primaryColor } from '../../style/ColorCode';
 import "./Questionnaire.scss";
+import SelectDropDown from "../../component/select/SelectDropDown";
 
 const { TextArea } = Input;
-
 const columns: any = [
     {
         title: "Section",
@@ -41,7 +41,6 @@ const Questionnaire: React.FC = () => {
     const [uploadedFiles, setUploadedFiles] = useState<{ [key: string]: { name: string; size: string } | null }>({});
     const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
     const [isViewMode, setIsViewMode] = useState(false);
-    const [checkMark, setCheckMark] = useState(false);
     const [singleSectionTextArea, setsingleSectionTextArea] = useState<any>();
     const [trust, setTrust] = useState<boolean>(false);
 
@@ -75,16 +74,7 @@ const Questionnaire: React.FC = () => {
             setActiveCategory(activeCategory || "");
             setShowQuestions(false);
             setCurrentSectionIndex(0);
-            setAnswers((prevAnswers) => {
-                const updatedAnswers = { ...prevAnswers };
-                Object.keys(updatedAnswers).forEach((key) => {
-                    if (!updatedAnswers[key] || updatedAnswers[key].trim() === "") {
-                        updatedAnswers[key] = "";
-                    }
-                });
-
-                return updatedAnswers;
-            });
+            handleClearUnsubmittedAnswers()
         });
 
     };
@@ -108,7 +98,28 @@ const Questionnaire: React.FC = () => {
     };
 
 
-    const handleFileUpload = (info: any, questionKey: string) => {
+    const handleFileUpload = async (info: any, questionKey: string) => {
+        const { file } = info;
+        if (!file || file.status === "uploading") return;
+        try {
+            const formData = new FormData();
+            formData.append('file', file.originFileObj || file);
+
+            const response = await fetch('http://192.168.2.75:1500/tester/', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) throw new Error('Upload failed');
+
+            const responseData = await response.json();
+            console.log(responseData)
+        } catch (error) {
+            console.error('Upload error:', error);
+            message.error('Failed to process file');
+        } finally {
+            // setLoading(false);
+        }
         if (info.file.status !== "uploading") {
             const { name, size } = info.file;
             const fileSize = `${(size / 1024).toFixed(2)} KB`;
@@ -120,7 +131,7 @@ const Questionnaire: React.FC = () => {
 
             message.success(`${name} uploaded successfully.`);
         }
-    };
+    }
 
 
     const handleRemoveFile = (questionKey: string) => {
@@ -226,6 +237,18 @@ const Questionnaire: React.FC = () => {
         }
     };
 
+    const handleClearUnsubmittedAnswers = () => {
+        setAnswers((prevAnswers) => {
+            const updatedAnswers = { ...prevAnswers };
+            Object.keys(updatedAnswers).forEach((key) => {
+                if (!submittedAnswers[key]) {
+                    updatedAnswers[key] = "";
+                }
+            });
+            return updatedAnswers;
+        });
+    };
+
     const handleCategoryClick = (categoryKey: string) => {
         confirmNavigation(() => {
 
@@ -239,17 +262,7 @@ const Questionnaire: React.FC = () => {
             if (savedAnswers) {
                 setAnswers(JSON.parse(savedAnswers));
             }
-
-            setAnswers((prevAnswers) => {
-                const updatedAnswers = { ...prevAnswers };
-                Object.keys(updatedAnswers).forEach((key) => {
-                    if (!updatedAnswers[key] || updatedAnswers[key].trim() === "") {
-                        updatedAnswers[key] = "";
-                    }
-                });
-
-                return updatedAnswers;
-            });
+            handleClearUnsubmittedAnswers()
         })
     };
 
@@ -268,7 +281,7 @@ const Questionnaire: React.FC = () => {
             setAnswers((prevAnswers) => {
                 const updatedAnswers = { ...prevAnswers };
                 Object.keys(updatedAnswers).forEach((key) => {
-                    if (!submittedAnswers[key] && (!updatedAnswers[key] || updatedAnswers[key].trim() === "")) {
+                    if (!submittedAnswers[key] && (!updatedAnswers[key])) {
                         updatedAnswers[key] = "";
                     }
                 });
@@ -283,7 +296,7 @@ const Questionnaire: React.FC = () => {
     const renderQuestionInput = (
         section: string,
         key: string,
-        question: { text: string; choices: string[] | null },
+        question: { text: string; choices: string[] | null; isMandatory: boolean },
         questionIndex: number
     ) => {
         const questionKey = `${section}-${key}-${questionIndex}`;
@@ -296,13 +309,13 @@ const Questionnaire: React.FC = () => {
             <div>
                 <div className="question-text">
                     <div>{questionIndex + 1}. {question.text}
+                        {question.isMandatory && <span className="mandatory-asterisk">*</span>}
                         {isAnswered && (
                             <Tooltip title="Answered">
                                 <CheckOutlined className="answered-icon" />
                             </Tooltip>
 
                         )}
-
                     </div>
                     <Tooltip title="Copy Question">
                         <button
@@ -320,11 +333,13 @@ const Questionnaire: React.FC = () => {
                             rows={3}
                             placeholder="Type your answer here"
                             size="small"
-                            onChange={(e) => handleInputChange(section, key, e.target.value, questionIndex)}
+                            onChange={(e) =>
+                                handleInputChange(section, key, e.target.value, questionIndex)
+                            }
                             value={answers[questionKey] || ""}
                         />
 
-                        <div className="upload-section">
+                        {/* <div className="upload-section">
                             {!isFileUploaded && (
                                 <Tooltip title="Upload">
                                     <Upload
@@ -339,29 +354,54 @@ const Questionnaire: React.FC = () => {
                                     </Upload>
                                 </Tooltip>
                             )}
-                        </div>
-                        {isFileUploaded && (
+                        </div> */}
+                        {/* {isFileUploaded && (
                             <div className="uploaded-file-info">
                                 <div className="uploaded-file-details">
                                     File: {uploadedFiles[questionKey]?.name} ({uploadedFiles[questionKey]?.size})
-                                    <button onClick={() => handleRemoveFile(questionKey)} className="remove-file-icon" >
+                                    <button
+                                        onClick={() => handleRemoveFile(questionKey)}
+                                        className="remove-file-icon"
+                                    >
                                         <DeleteOutlined />
                                     </button>
                                 </div>
                             </div>
-                        )}
+                        )} */}
                     </div>
+                ) : question.choices.length > 4 ? (
+                    <SelectDropDown
+                        mode="multiple"
+                        options={question.choices.map((choice) => ({
+                            label: choice,
+                            value: choice,
+                        }))}
+                        placeholder="Select options"
+                        value={answers[`${section}-${key}-${questionIndex}`] || []}
+                        onChange={(value: any) =>
+                            handleInputChange(section, key, value, questionIndex)
+                        }
+                    />
                 ) : (
                     <div className="question-options">
                         {question.choices.map((option, idx) => (
                             <label key={`${option}-${idx}`}>
                                 <Space direction="vertical">
                                     <Radio
-                                        value={trust ? option : null}
-                                        checked={answers[`${section}-${key}-${questionIndex}`] === option}
-                                        onChange={() => handleInputChange(section, key, option, questionIndex)}
+                                        value={option}
+                                        checked={
+                                            answers[`${section}-${key}-${questionIndex}`] ===
+                                            option
+                                        }
+                                        onChange={() =>
+                                            handleInputChange(
+                                                section,
+                                                key,
+                                                option,
+                                                questionIndex
+                                            )
+                                        }
                                         className="radio-qbutton"
-
                                     >
                                         {option}
                                     </Radio>
@@ -369,8 +409,8 @@ const Questionnaire: React.FC = () => {
                             </label>
                         ))}
                     </div>
-
                 )}
+
             </div>
         );
     };
@@ -483,7 +523,19 @@ const Questionnaire: React.FC = () => {
                                 </div>
                             }
                             extra={
-                                <div style={{ textAlign: "center" }}>
+                                <div style={{ textAlign: "center", display: "flex", gap: "10px", alignItems: 'center' }}>
+                                    <Tooltip title="Upload">
+                                        <Upload
+                                            showUploadList={false}
+                                            customRequest={(options) => {
+                                                const { onSuccess } = options;
+                                                setTimeout(() => onSuccess?.("ok"), 0);
+                                            }}
+                                            onChange={(info) => handleFileUpload(info, '')}
+                                        >
+                                            <FileAddTwoTone className="upload-icon" />
+                                        </Upload>
+                                    </Tooltip>
                                     <Progress
                                         type="circle"
                                         percent={progressPercent}

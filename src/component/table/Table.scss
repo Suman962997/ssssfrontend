@@ -36,7 +36,10 @@
     font-weight: $bold;
     color: $textColor;
   }
+.search-dot {
+  display: flex;
 
+}
   .search-bar{
     display: $flex;
     min-width:  $fullWidth;
@@ -133,4 +136,44 @@
       color: $primary; 
     }
   }
+
+  .display-add-delete {
+    display: flex;  
+    gap: 15%;
+  }
+
+  .display-add-delete{
+  .color-delete {
+    .ant-btn-icon
+    {
+      color: $error;
+    }
+  }
 }
+
+.three-dot {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: $bold;
+  color: $textColor;
+  align-self: center;
+  padding: 5px;
+}
+
+.add-user {
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+  color: $textColor;
+  font-weight: $bold;
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.add-useritem {
+  width: max-content;
+}
+}
+

@@ -1,16 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Timeline } from "antd";
 import "./StrategyRoadMap.scss";
 import DocumentCertificate from "../overview/component/document/DocumentCertificate";
+import Loader from "../../../component/loader/Loader";
 
 const StrategyRoadMap: React.FC = () => {
-    const milestones = [
-        { year: "2024", event: "Launch sustainability initiative" },
-        { year: "2025", event: "Achieve 50% carbon reduction" },
-        { year: "2026", event: "Implement renewable energy systems" },
-        { year: "2027", event: "Zero waste to landfill goal" },
-        { year: "2030", event: "Net zero carbon emissions" },
-    ];
 
     const strategies = [
         {
@@ -31,6 +25,25 @@ const StrategyRoadMap: React.FC = () => {
         },
     ];
 
+    const [record, setRecord] = useState<any>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            const storedRecord = localStorage.getItem("record");
+            if (storedRecord) {
+                setRecord(JSON.parse(storedRecord));
+            }
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <Loader />
+    }
+
     return (
         <div className="strategy-flex">
             <div className="strategy-road-map">
@@ -45,9 +58,9 @@ const StrategyRoadMap: React.FC = () => {
                     <div className="timeline-section">
                         <h2>Milestones</h2>
                         <Timeline mode="right">
-                            {milestones.map((milestone, index) => (
-                                <Timeline.Item key={index} label={milestone.year}>
-                                    {milestone.event}
+                            {record?.history?.map((milestone: { achivement: '', years: '' }, index: number) => (
+                                <Timeline.Item key={index} label={milestone.years}>
+                                    {milestone.achivement}
                                 </Timeline.Item>
                             ))}
                         </Timeline>
@@ -66,7 +79,7 @@ const StrategyRoadMap: React.FC = () => {
                 </div>
             </div>
             <div className='certificate-new'>
-                <DocumentCertificate />
+                <DocumentCertificate record={record} />
             </div>
         </div>
     );

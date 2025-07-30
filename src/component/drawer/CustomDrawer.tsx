@@ -1,13 +1,15 @@
 import React from 'react';
-import { Drawer, Button } from 'antd';
+import { Drawer } from 'antd';
 import { DrawerProps } from 'antd/es/drawer';
-import '../style/Drawer.scss'; 
+import './Drawer.scss';
 
 interface CustomDrawerProps extends DrawerProps {
   title: string;
-  onClose: () => void;
+  onClose?: () => void;
   visible: boolean;
   footerContent?: React.ReactNode;
+  content?: any;
+  width?: any
 }
 
 const CustomDrawer: React.FC<CustomDrawerProps> = ({
@@ -15,31 +17,26 @@ const CustomDrawer: React.FC<CustomDrawerProps> = ({
   onClose,
   visible,
   footerContent,
-  children,
+  content,
+  width,
   ...props
 }) => {
   return (
     <Drawer
-      className="custom-drawer" 
+      className="custom-drawer"
       title={title}
       placement="right"
       onClose={onClose}
       visible={visible}
-      width={400} 
-      {...props} 
+      width={width}
+      {...props}
     >
       <div className="custom-content">
-        {children}
+        {content}
       </div>
 
       <div className="custom-footer">
-        {footerContent ? (
-          footerContent
-        ) : (
-          <Button onClick={onClose} type="primary">
-            Close
-          </Button>
-        )}
+        {footerContent}
       </div>
     </Drawer>
   );

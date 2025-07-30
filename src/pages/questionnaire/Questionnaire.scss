@@ -193,7 +193,7 @@
   text-align: left;
 }
 .footer-text.general {
-  flex: 3.4;
+  flex: 3;
   text-align: left;
 }
 
@@ -275,12 +275,12 @@ text-align: left;
 }
 
 .footer-text.percentage.general {
-  flex: 3.5;
+  flex: 3.1;
   text-align: center;
 }
 
 .footer-text.percentage.supplierbenchmark {
-  flex: 3.5;
+  flex: 3.2;
   text-align: center;
 }
 
@@ -429,3 +429,8 @@ text-align: left;
     padding: 0;
   }
 
+.mandatory-asterisk {
+  color: $error;
+  font-weight: $bold;
+  font-size: 18px;
+}

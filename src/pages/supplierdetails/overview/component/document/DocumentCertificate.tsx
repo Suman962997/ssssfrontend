@@ -1,26 +1,22 @@
 import React from "react";
 import './DocumentCertificate.scss';
 import { CertificateIcon } from "../../../../../utils/CardIcons";
+interface DocProps {
+  record?: any
+}
+const DocumentCertificate: React.FC<DocProps> = ({ record }) => {
 
-const DocumentCertificate: React.FC = () => {
-  const certifications = [
-    { name: "ISO9001", description: "Quality Management" },
-    { name: "ISO45001", description: "Environment Management" },
-    { name: "ISO19845", description: "Health & Safety Management" },
-    { name: "ISO55001", description: "Information Security" },
-    
-  ];
   return (
     <div className="document-certificate">
       <h4>Certification</h4>
       <ul>
-        {certifications.map((cert, index) => (
+        {record?.certification?.map((cert: any, index: any) => (
           <div key={index} className="cert-card">
-           <div>
-           <CertificateIcon/>
-            </div> 
+            <div>
+              <CertificateIcon />
+            </div>
             <div className="cert-name">{cert.name}</div>
-            <div className="cert-desc">{cert.description}</div>
+            <div className="cert-desc">{cert.certificate}</div>
           </div>
         ))}
       </ul>

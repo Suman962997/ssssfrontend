@@ -149,15 +149,10 @@ const SupplierTable: React.FC = () => {
             ),
         },
     ];
-    const [rowType, setRowType] = useState<string>('')
-    const [isTrue, setIsTrue] = useState(false)
-    const [singleDeleteData, setSingleDeleteData] = useState<string | any>(null)
     const [visibleRow, setVisibleRow] = useState<string | null>(null);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const showModal = () => setIsTrue(true);
-    const hideModal = () => setIsTrue(false);
 
     const handleRowClick = (id: string, record: any) => {
         navigate(`/supplier/${id}/overview`);
@@ -166,9 +161,7 @@ const SupplierTable: React.FC = () => {
     };
 
     const handleStatus = (row: any, p0: string) => {
-        setRowType(p0)
-        setSingleDeleteData(row)
-        showModal()
+        alert('clicked')
     };
 
     const handleMenuClick = (rowKey: string) => {
@@ -183,15 +176,11 @@ const SupplierTable: React.FC = () => {
     }
 
     const handleEdit = (row: any, p0: string) => {
-        setRowType(p0)
-        setSingleDeleteData(row)
-        showModal()
+        alert('clicked')
     };
 
     const handleDelete = (row: any, p0: string) => {
-        setRowType(p0)
-        setSingleDeleteData(row)
-        showModal()
+        alert('clicked')
     };
 
     return (

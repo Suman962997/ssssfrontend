@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import InputField from '../../component/inputfield/CustomInputField';
 import './EditRow.scss';
+import { Form } from 'antd';
 
 interface EditRowProps {
     singleDeleteData: {
@@ -11,9 +12,10 @@ interface EditRowProps {
         compliance: string;
         status: boolean;
     };
+    form: any
 }
 
-const EditRow: React.FC<EditRowProps> = ({ singleDeleteData }) => {
+const EditRow: React.FC<EditRowProps> = ({ singleDeleteData, form }) => {
     const [formData, setFormData] = useState({
         supplier: singleDeleteData?.supplier || '',
         industry: singleDeleteData?.industry || '',
@@ -28,7 +30,7 @@ const EditRow: React.FC<EditRowProps> = ({ singleDeleteData }) => {
     };
 
     return (
-        <div className="edit-modal">
+        <Form form={form} className="edit-modal">
             <div className="input-field">
                 <label>Supplier Name:</label>
                 <InputField
@@ -107,7 +109,7 @@ const EditRow: React.FC<EditRowProps> = ({ singleDeleteData }) => {
                     </label>
                 </div>
             </div>
-        </div>
+        </Form>
     );
 };
 
