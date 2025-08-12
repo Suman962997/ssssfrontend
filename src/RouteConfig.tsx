@@ -27,80 +27,80 @@ const RouterConfig = createBrowserRouter([
 
     {
         path: '/',
-        element: <Navigate to="/login" replace />,
+        element: <Navigate to="/sss/dashboard" replace />,
     },
-    {
-        path: 'login',
-        element: <Login />
-    },
+    // {
+    //     path: 'login',
+    //     element: <Login />
+    // },
     {
         element: <Home />,
         children: [
             {
-                path: 'dashboard',
+                path: 'sss/dashboard',
                 element:
                     // <ProtectedRoute>
                     <Dashboard />
                 // </ProtectedRoute>
             },
             {
-                path: 'user-creation',
+                path: 'sss/user-creation',
                 element:
                     // <ProtectedRoute>
                     <UserCreation />
                 // </ProtectedRoute>
             },
             {
-                path: 'reports',
+                path: 'sss/reports',
                 element:
                     // <ProtectedRoute>
                     <Report />
                 // </ProtectedRoute>,
             },
             {
-                path: 'quality',
+                path: 'sss/quality',
                 element:
                     // <ProtectedRoute>
                     <Quality />
                 // </ProtectedRoute>,
             },
             {
-                path: 'analytics',
+                path: 'sss/analytics',
                 element:
                     // <ProtectedRoute>
                     <Analytics />
                 // </ProtectedRoute>,
             },
             {
-                path: 'company',
+                path: 'sss/company',
                 element:
                     // <ProtectedRoute>
                     <CompanyDetailsForm />
                 // </ProtectedRoute>
             },
             {
-                path: 'profile',
+                path: 'sss/profile',
                 element:
                     //  <ProtectedRoute>
                     <ProfilePage />
                 // </ProtectedRoute>
             },
             {
-                path: 'questionnaire',
+                path: 'sss/questionnaire',
                 element:
                     // <ProtectedRoute>
                     <Questionnaire />
                 // </ProtectedRoute>
             },
             {
-                path: 'user-management',
+                path: 'sss/user-management',
                 element:
                     // <ProtectedRoute>
                     <UserManagement />
                 // </ProtectedRoute>
             },
             {
-                path: 'supplier-management',
+                path: 'sss/supplier-management',
                 element:
                     // <ProtectedRoute>
                     <SupplierManage />
@@ -109,7 +109,7 @@ const RouterConfig = createBrowserRouter([
         ],
     },
     {
-        path: "supplier/:id",
+        path: "sss/supplier/:id",
         element:
             // <ProtectedRoute>
             <SupplierDetailsPage />,

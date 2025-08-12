@@ -39,7 +39,7 @@ const Governance: React.FC = () => {
   if (loading) {
     return <Loader />
   }
-  const type = location?.pathname.split("/")[3];
+  const type = location?.pathname.split("/")[4];
 
   const cards1 = [
     { title: "Management Systems", quality: "QualTech", health: "Orion", environmental: "Orion" },

@@ -26,6 +26,13 @@ import { bgColor } from "../../style/ColorCode";
 import "./Dashboard.scss";
 
 const Dashboard: React.FC = () => {
+  const params = new URLSearchParams(window.location.search);
+const walletAdd = params.get("wallet");
+
+if (walletAdd) {
+  localStorage.setItem("walletAddress", walletAdd);
+}
+const [walletAddress, setWalletAddress] = useState<string | null>(walletAdd);
   const suppliers = useAppSelector((state) => state.suppliers?.data);
 
   const dispatch = useDispatch();
@@ -49,13 +56,13 @@ const Dashboard: React.FC = () => {
   };
 
   const handleRowClick = (id: string, record: any) => {
-    navigate(`/supplier/${id}/overview`);
+    navigate(`/sss/supplier/${id}/overview`);
     localStorage.setItem("record", JSON.stringify(record));
     dispatch(setSelectedRecord(record));
 
   };
   const handleDetails = (id: string, record: any) => {
-    navigate(`/supplier/${id}/overview`);
+    navigate(`/sss/supplier/${id}/overview`);
     localStorage.setItem("record", JSON.stringify(record));
     dispatch(setSelectedRecord(record));
 
@@ -269,7 +276,12 @@ const Dashboard: React.FC = () => {
     fetchSupplierListData({ setData, setLoading, calculateCompliancePercentages });
   }, [calculateCompliancePercentages]);
 
-
+useEffect(() => {
+    const savedAddress = localStorage.getItem("walletAddress");
+    if (savedAddress) {
+      setWalletAddress(savedAddress);
+    }
+  }, []);
 
 
 

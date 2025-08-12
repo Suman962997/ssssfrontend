@@ -54,7 +54,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
   const goBackToDash = () => {
     localStorage.removeItem("record");
     localStorage.removeItem("activeTab");
-    navigate("/dashboard");
+    navigate("/sss/dashboard");
   };
 
   const visibleTabs = isMobile ? tabs.slice(0, 3) : tabs.slice(0, 8);
@@ -64,7 +64,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
     <Menu>
       {overflowTabs.map((tab) => (
         <Menu.Item key={tab.name}>
-          <Link to={`/supplier/${id}/${tab.name}`} onClick={() => handleLinkClick(tab.name)}>
+          <Link to={`/sss/supplier/${id}/${tab.name}`} onClick={() => handleLinkClick(tab.name)}>
             {tab.label}
           </Link>
         </Menu.Item>
@@ -75,7 +75,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeLink, setActiveLink, id, record }
   const tabItems = visibleTabs.map((tab) => ({
     label: (
       <Link
-        to={`/supplier/${id}/${tab.name}`}
+        to={`/sss/supplier/${id}/${tab.name}`}
         className={activeLink === tab.name ? "active" : ""}
       >
         {tab.label}

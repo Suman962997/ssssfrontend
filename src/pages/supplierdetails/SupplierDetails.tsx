@@ -9,7 +9,7 @@ const SupplierDetailsPage: React.FC = () => {
   const location = useLocation();
 
 
-  const currentPath = location.pathname.split("/")[3];
+  const currentPath = location.pathname.split("/")[4];
   const [activeLink, setActiveLink] = useState<string>(currentPath || "overview");
   const [record, setRecord] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);

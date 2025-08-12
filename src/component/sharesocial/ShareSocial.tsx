@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { FaCopy, FaCheck } from "react-icons/fa";
+import { IconType } from 'react-icons';
+
+
 import {
     EmailShareButton,
     EmailIcon,
@@ -9,6 +12,8 @@ import { ReactComponent as ShareIcon } from '../../assets/icons/ShareIcon.svg';
 import { bgColor } from '../../style/ColorCode';
 import './ShareSocial.scss';
 
+const FaCheckIcon = FaCheck as IconType;
+const FaCopyIcon = FaCopy as IconType;
 export const ShareComponent: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [copied, setCopied] = useState(false);
@@ -67,15 +72,15 @@ export const ShareComponent: React.FC = () => {
                                     onClick={handleCopy}
                                     aria-label="Copy link"
                                 >
-                                    {copied ? (
-                                        <>
-                                            <FaCheck className="icon" /> Copied
-                                        </>
-                                    ) : (
-                                        <>
-                                            <FaCopy className="icon" /> Copy Link
-                                        </>
-                                    )}
+                                   {copied ? (
+    <>
+        <FaCheckIcon className="icon" /> Copied
+    </>
+) : (
+    <>
+        <FaCopyIcon className="icon" /> Copy Link
+    </>
+)}
                                 </button>
                             </div>
                             <div className="share-options">

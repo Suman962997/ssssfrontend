@@ -155,7 +155,7 @@ const SupplierTable: React.FC = () => {
     const navigate = useNavigate();
 
     const handleRowClick = (id: string, record: any) => {
-        navigate(`/supplier/${id}/overview`);
+        navigate(`/sss/supplier/${id}/overview`);
         localStorage.setItem("record", JSON.stringify(record));
         dispatch(setSelectedRecord(record));
     };
@@ -169,7 +169,7 @@ const SupplierTable: React.FC = () => {
     };
 
     const handleDetails = (id: string, record: any) => {
-        navigate(`/supplier/${id}/overview`);
+        navigate(`/sss/supplier/${id}/overview`);
         localStorage.setItem("record", JSON.stringify(record));
         dispatch(setSelectedRecord(record));
 

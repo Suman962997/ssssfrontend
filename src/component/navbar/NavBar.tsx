@@ -11,6 +11,13 @@ import { userInfo } from '../../utils/Options';
 import { bgColor } from '../../style/ColorCode';
 import './NavBar.scss';
 
+// Extend the Window interface to include 'ethereum'
+declare global {
+    interface Window {
+        ethereum?: any;
+    }
+}
+
 interface SearchRoute {
     keys: string[];
     path: string;
@@ -29,18 +36,18 @@ const NavBar: React.FC = () => {
     const [processedRoutes, setProcessedRoutes] = useState<SearchRoute[]>([]);
 
     const searchConfig: SearchRoute[] = [
-        { keys: ['dashboard', 'home'], path: '/dashboard' },
-        { keys: ['reports', 'document'], path: '/reports' },
-        { keys: ['quality', 'standard'], path: '/quality' },
-        { keys: ['analytics', 'stats'], path: '/analytics' },
-        { keys: ['profile', 'account'], path: '/profile' },
-        { keys: ['supplier', 'vendor'], path: '/supplier-management' },
-        { keys: ['questionnaire', 'survey'], path: '/questionnaire' },
-        { keys: ['user', 'management', 'settings', 'role'], path: '/user-creation' },
-        { keys: ['company', 'organization'], path: '/company' },
+        { keys: ['dashboard', 'home'], path: '/sss/dashboard' },
+        { keys: ['reports', 'document'], path: '/sss/reports' },
+        { keys: ['quality', 'standard'], path: '/sss/quality' },
+        { keys: ['analytics', 'stats'], path: '/sss/analytics' },
+        { keys: ['profile', 'account'], path: '/sss/profile' },
+        { keys: ['supplier', 'vendor'], path: '/sss/supplier-management' },
+        { keys: ['questionnaire', 'survey'], path: '/sss/questionnaire' },
+        { keys: ['user', 'management', 'settings', 'role'], path: '/sss/user-creation' },
+        { keys: ['company', 'organization'], path: '/sss/company' },
         {
             keys: ['supplier details', 'supplier'],
-            path: '/supplier/:id',
+            path: '/sss/supplier/:id',
             children: [
                 { keys: ['overview', 'overall report'], path: 'overview' },
                 { keys: ['company governance'], path: 'company' },
@@ -109,7 +116,7 @@ const NavBar: React.FC = () => {
         });
 
         if (results.length > 0) {
-            navigate(results[0].path);
+            navigate(results[1].path);
             setSearchQuery('');
         }
     }, [searchQuery, processedRoutes, navigate]);
@@ -142,17 +149,34 @@ const NavBar: React.FC = () => {
     };
 
     useEffect(() => {
-        const path = location.pathname.split('/')[1];
+        const path = location.pathname.split('/')[2];
         setActiveLink(path || 'dashboard');
     }, [location.pathname]);
 
     const handleLinkClick = (linkName: string) => {
+        if(linkName === "home") {
+        localStorage.removeItem('record');
+        localStorage.removeItem('activeTab');
+        localStorage.removeItem('totalAnswered');
+        localStorage.removeItem('answeredQuestions');
+        }
         setActiveLink(linkName);
     };
-
+ const disconnectWallet = () => {
+        if (window.ethereum && window.ethereum.disconnect) {
+            window.ethereum.disconnect();
+        }
+        if (window.ethereum && window.ethereum.provider && window.ethereum.provider.disconnect) {
+            window.ethereum.provider.disconnect();
+        }
+        localStorage.removeItem('walletConnected');
+        localStorage.removeItem('walletAddress');
+        localStorage.removeItem('walletProvider');
+    };
     const handleLogout = () => {
+        disconnectWallet()
         setIsDropdownOpen(!isDropdownOpen);
-        navigate('/');
+        window.location.href = `http://localhost:3001/login`;
         localStorage.removeItem('record');
         localStorage.removeItem('activeTab');
         localStorage.removeItem('totalAnswered');
@@ -162,27 +186,27 @@ const NavBar: React.FC = () => {
     };
 
     const goToProfile = () => {
-        navigate('/profile');
+        navigate('/sss/profile');
     };
 
     const goToQuestionnaire = () => {
-        navigate('/questionnaire');
+        navigate('/sss/questionnaire');
     };
 
     const goToUserManagement = () => {
-        navigate('/user-creation');
+        navigate('/sss/user-creation');
     };
 
     const goToCompanyForm = () => {
-        navigate('/company');
+        navigate('/sss/company');
     };
 
     const goToHomePage = () => {
-        navigate('/dashboard');
+        window.location.href = `http://localhost:3001/landing_page`;
     };
 
     const goToSupplierManagement = () => {
-        navigate('/supplier-management');
+        navigate('/sss/supplier-management');
     };
 
     const setting = (
@@ -224,7 +248,6 @@ const NavBar: React.FC = () => {
             </div>
         </div>
     );
-
     return (
         <>
             <div className="navbar">
@@ -238,9 +261,18 @@ const NavBar: React.FC = () => {
                 </div>
                 <div className="flex">
                     <ul>
+                         <li>
+                            <Link
+                                to="http://localhost:3001/landing_page"
+                                className={activeLink === 'home' ? 'active' : ''}
+                                onClick={() => handleLinkClick('home')}
+                            >
+                                Home
+                            </Link>
+                        </li>
                         <li>
                             <Link
-                                to="/dashboard"
+                                to="/sss/dashboard"
                                 className={activeLink === 'dashboard' ? 'active' : ''}
                                 onClick={() => handleLinkClick('dashboard')}
                             >
@@ -249,7 +281,7 @@ const NavBar: React.FC = () => {
                         </li>
                         <li>
                             <Link
-                                to="/reports"
+                                to="/sss/reports"
                                 className={activeLink === 'reports' ? 'active' : ''}
                                 onClick={() => handleLinkClick('reports')}
                             >
@@ -258,7 +290,7 @@ const NavBar: React.FC = () => {
                         </li>
                         <li>
                             <Link
-                                to="/quality"
+                                to="/sss/quality"
                                 className={activeLink === 'quality' ? 'active' : ''}
                                 onClick={() => handleLinkClick('quality')}
                             >
@@ -267,7 +299,7 @@ const NavBar: React.FC = () => {
                         </li>
                         <li>
                             <Link
-                                to="/analytics"
+                                to="/sss/analytics"
                                 className={activeLink === 'analytics' ? 'active' : ''}
                                 onClick={() => handleLinkClick('analytics')}
                             >

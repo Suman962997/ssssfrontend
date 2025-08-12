@@ -28,7 +28,7 @@ const ProfilePage: React.FC = () => {
     };
 
     const handleLogout = () => {
-        navigate("/")
+        window.location.href = `http://localhost:3001/login`;
         localStorage.removeItem("record");
         localStorage.removeItem("activeTab");
         localStorage.removeItem('totalAnswered');
