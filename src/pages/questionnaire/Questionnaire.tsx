@@ -105,7 +105,7 @@ const Questionnaire: React.FC = () => {
             const formData = new FormData();
             formData.append('file', file.originFileObj || file);
 
-            const response = await fetch('http://192.168.2.75:1500/tester/', {
+            const response = await fetch('http://192.168.2.27:5000/tester/', {
                 method: 'POST',
                 body: formData,
             });
