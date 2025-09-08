@@ -1,12 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { Card, Input, List, Modal, Progress, Space, Table, Tooltip, Upload, message } from "antd";
 import { Radio } from "antd";
-import { ArrowLeftOutlined, CheckOutlined, CopyTwoTone, DeleteOutlined, FileAddTwoTone } from "@ant-design/icons";
+import { ArrowLeftOutlined, CheckOutlined, CopyTwoTone, DeleteOutlined, FileAddTwoTone,DownloadOutlined, UnorderedListOutlined, EditOutlined } from "@ant-design/icons";
 import CustomButton from "../../component/buttons/CustomButton";
 import { allCategories } from "../../utils/Options";
-import { primaryColor } from '../../style/ColorCode';
+import { bgColor, primaryColor } from '../../style/ColorCode';
 import "./Questionnaire.scss";
 import SelectDropDown from "../../component/select/SelectDropDown";
+
+
+
+
+const download_pdf_report = async (index: any) => {
+
+  try {
+    const response = await fetch(`http://127.0.0.1:5000/download_pdf_report/${encodeURIComponent(index.name)}`, {
+      method: "GET",
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP Status: ${response.status}`);
+    }
+    // Get the PDF blob
+    const blob = await response.blob();
+
+    // Extract filename from Content-Disposition header
+    const contentDisposition = response.headers.get("Content-Disposition");
+    let fileName = index.name+".pdf";
+    if (contentDisposition) {
+      const match = contentDisposition.match(/filename="?([^"]+)"?/);
+      if (match && match[1]) {
+        fileName = match[1];
+      }
+    }
+
+    // Create a blob link and click it to trigger download
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+
+    message.success(`${fileName} downloaded successfully!`);
+  } catch (error) {
+    console.error("Download error:", error);
+    message.error("Failed to download PDF.");
+  }
+};
+
+  
 
 const { TextArea } = Input;
 const columns: any = [
@@ -32,12 +77,57 @@ const columns: any = [
         align: "center",
         render: (percentComplete: number) => `${percentComplete}%`
     },
+
+        {
+      title: "Actions",
+      key: "actions",
+      render: (index: number, record: any) => (
+        <Tooltip
+          color={bgColor}
+          trigger={'click'}
+          placement="leftBottom"
+          className="custom-tooltip"
+          title={
+            <div className="menu-options">
+              <div className="menu-item" role="button" >
+                <UnorderedListOutlined className="list-icon" />
+                <div>View details</div>
+              </div>
+              <div className="menu-item" role="button" >
+                <EditOutlined className="edit-icon" />
+                <div>Edit item</div>
+              </div>
+              <div className="menu-item" role="button" >
+                <DeleteOutlined className="delete-icon" />
+                <div>Delete item </div>
+              </div>
+              <div className="menu-item" role="button" onClick={() => download_pdf_report(index)}>
+                <DownloadOutlined className="delete-icon" />
+                <div>Download pdf</div>
+              </div>
+            </div>
+          
+          }>
+
+          <div className="action-menu">
+            <span
+              className="three-dot-menu"
+            // onClick={() => handleMenuClick(record.key)}
+            >
+              •••
+            </span>
+          </div>
+        </Tooltip>
+      ),
+    },
+
 ];
 
 const Questionnaire: React.FC = () => {
     const [activeCategory, setActiveCategory] = useState<string>("general");
     const [showQuestions, setShowQuestions] = useState<boolean>(false);
     const [answers, setAnswers] = useState<{ [key: string]: any }>({});
+    const [kratos, setKratos] = useState<{ [key: string]: any }>({});
     const [uploadedFiles, setUploadedFiles] = useState<{ [key: string]: { name: string; size: string } | null }>({});
     const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
     const [isViewMode, setIsViewMode] = useState(false);
@@ -49,6 +139,8 @@ const Questionnaire: React.FC = () => {
     const [pendingAction, setPendingAction] = useState<() => void | null>();
     const [submittedAnswers, setSubmittedAnswers] = useState<Record<string, boolean>>({});
 
+
+    
 
     const handleRowClick = (record: any, sectionIndex: number) => {
         setShowQuestions(true);
@@ -87,13 +179,25 @@ const Questionnaire: React.FC = () => {
         setCurrentSectionIndex((prev) => Math.max(prev - 1, 0));
     };
 
-    const handleInputChange = (section: string, key: string, value: any, questionIndex: number) => {
+    const handleInputChange = (section: string, key: string, value: any, questionIndex: number,question:string) => {
+        console.log(value)
         const questionKey = `${section}-${key}-${questionIndex}`;
         setAnswers((prevAnswers) => ({
             ...prevAnswers,
             [questionKey]: value,
+            // [question]: value,
+
         }));
 
+        setKratos((prevKratos) => ({
+            ...prevKratos,
+            // [questionKey]: value,
+            [question]: value,
+
+        }));
+
+
+        console.log(question,value)
         setHasUnsavedChanges(answers[questionKey] === "" ? false : true);
     };
 
@@ -175,6 +279,7 @@ const Questionnaire: React.FC = () => {
     const hasNonEmptyValues = Object.values(answers).some(value => value !== "");
 
     const handleSubmitAll = (item: any) => {
+        console.log(item)
         setTrust(item?.isTrusted);
         setSubmittedAnswers((prev) => ({
             ...prev,
@@ -222,6 +327,57 @@ const Questionnaire: React.FC = () => {
             }
         }
     };
+
+
+const handlePost = async (item: any,activeCategory:string) => {
+    console.log(item)
+    console.log(activeCategory)
+    console.log(kratos)
+try {
+
+    // console.log(texts)
+    // console.log(rdata)
+    // const bodyData = {
+    // item:item
+    // texts: Object.keys(rdata).length > 0 ? rdata : texts,
+    // sectionfind: "section_c",  // Replace with your actual section identifier
+    // brsrfilename:brsrFilename,
+    // principle:principleKey
+// };
+    // console.log(bodyData)
+    const response = await fetch('http://127.0.0.1:5000/submit/', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    // body: JSON.stringify(output),
+   body: JSON.stringify({
+                item: item,
+                activeCategory: activeCategory,
+                kratos:kratos
+
+            }),
+});
+
+    if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Response:', data);
+    if (data!=null){
+        message.success(`${data} form submited sucessfully!`);
+        }
+        else{
+            message.warning("upload file!")
+        }
+} catch (error) {
+    console.error('Error posting data:', error);
+}
+};
+
+  
+
 
     const loadAnsweredData = (categoryKey: string, questions: any[]) => {
         const storedData = localStorage.getItem(`${categoryKey}-answeredData`);
@@ -305,6 +461,7 @@ const Questionnaire: React.FC = () => {
         if (isViewMode && !isAnswered) {
             return null;
         }
+        // console.log(question.text)
         return (
             <div>
                 <div className="question-text">
@@ -334,7 +491,7 @@ const Questionnaire: React.FC = () => {
                             placeholder="Type your answer here"
                             size="small"
                             onChange={(e) =>
-                                handleInputChange(section, key, e.target.value, questionIndex)
+                                handleInputChange(section, key, e.target.value, questionIndex,question.text)
                             }
                             value={answers[questionKey] || ""}
                         />
@@ -379,7 +536,7 @@ const Questionnaire: React.FC = () => {
                         placeholder="Select options"
                         value={answers[`${section}-${key}-${questionIndex}`] || []}
                         onChange={(value: any) =>
-                            handleInputChange(section, key, value, questionIndex)
+                            handleInputChange(section, key, value, questionIndex,question.text)
                         }
                     />
                 ) : (
@@ -399,6 +556,7 @@ const Questionnaire: React.FC = () => {
                                                 key,
                                                 option,
                                                 questionIndex
+                                                ,question.text
                                             )
                                         }
                                         className="radio-qbutton"
@@ -472,7 +630,11 @@ const Questionnaire: React.FC = () => {
     const progressPercent = singleSectionTextArea > 0
         ? Math.round((countNonEmptyAnswers() / singleSectionTextArea) * 100)
         : 0;
+console.log(activeCategory)
+console.log(questions)
+console.log(answers)
 
+// console.log(questionIndex)
     return (
         <div className="questionnaire-main">
             <div className="questionnaire-title">Questionnaire</div>
@@ -583,17 +745,17 @@ const Questionnaire: React.FC = () => {
                                         type="primary"
                                         onClick={() => setIsViewMode(prev => !prev)}
                                     />
-
                                     <CustomButton
                                         label="Submit Answers"
                                         type="primary"
-                                        onClick={(item: any) => handleSubmitAll(item)}
+                                        // onClick={(item: any) => handleSubmitAll(item)}
                                         disabled={allCategories.find((cat) => cat.key === activeCategory)?.questions.every(section =>
                                             section.question.every((_, questionIndex) => {
                                                 const questionKey = `${activeCategory}-${section.key}-${questionIndex}`;
                                                 return !answers[questionKey];
                                             })
                                         )}
+                                        onClick={(item: any) => handlePost(questions,activeCategory)}
                                     />
                                 </div>
                             </div>
