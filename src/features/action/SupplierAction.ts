@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { endpoint, json_url } from '../../api/Api';
+import { endpoint, json_url, local_endpoint } from '../../api/Api';
 
 interface FetchSupplierListDataProps {
   setData: React.Dispatch<React.SetStateAction<any>>;
+  setCardData: React.Dispatch<React.SetStateAction<any>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   calculateCompliancePercentages: () => void;
 }
@@ -10,13 +11,15 @@ interface FetchSupplierListDataProps {
 
 export const fetchSupplierListData = async ({
   setData,
+  setCardData,
   setLoading,
   calculateCompliancePercentages
 }: FetchSupplierListDataProps) => {
   try {
     setLoading(true);
-    const response = await axios.get(json_url);
-    setData(response.data);
+    const response = await axios.get(`${local_endpoint}dashboard/`);
+    setData(response.data.report_list);
+    setCardData(response.data.card_list)
     calculateCompliancePercentages();
   } catch (error) {
     console.error("Error fetching the data:", error);

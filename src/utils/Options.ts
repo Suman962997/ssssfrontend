@@ -61,6 +61,12 @@ export const allCategories = [
         questionsAnswer: "0/9",
         percentComplete: "0",
         question: [
+          { text: "Report name", choices: null, isMandatory: false },
+          { text: "Date", choices: null, isMandatory: false, type:"date"},
+          { text: "industry", choices: null, isMandatory: false },
+          { text: "Email", choices: null, isMandatory: false },
+          { text: "Contact No", choices: null, isMandatory: false },
+
           { text: "What is the legal name of the company?", choices: null, isMandatory: false },
           { text: "What year was the company founded?", choices: null, isMandatory: false },
           { text: "Where is the company headquartered?", choices: null, isMandatory: false },

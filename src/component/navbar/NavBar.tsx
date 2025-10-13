@@ -228,6 +228,8 @@ const NavBar: React.FC = () => {
         </div>
     );
 
+
+
     const profile = (
         <div className="dropdown-menu">
             <div className="dropdown-item">
