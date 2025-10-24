@@ -124,22 +124,16 @@ const edit_get_document = async (report: string) => {
   const handleEdit = (row: any, p0: string) => {
     setRowType(p0)
     setSingleDeleteData(row)
-    showModal()
+    // showModal()
 edit_get_document(row.key).then(result => {
     navigate('/sss/questionnaire', {
       state: { data: result,
                edit:true,
-               reportname:row.key
+               reportname:row.key,
+
        }
     });
   });
-    // navigate('/sss/questionnaire',{state:{
-    // data:singleDeleteData  
-    // }});
-    // console.log(reportEdit)
-
-
-
   };
 
   const handleStatus = (row: any, p0: string) => {
@@ -199,7 +193,7 @@ if (! response.ok){
     }
 
     const result = await response.json();
-    message.success(`Report "${index.name}" deleted successfully!`);
+    message.success(`"${result}" deleted successfully!`);
     console.log("Delete result:", result);
     fetchSupplierListData({ setData, setCardData,setLoading, calculateCompliancePercentages });
     return result;
@@ -208,6 +202,8 @@ if (! response.ok){
     message.error("Failed to delete report.");
   }
 };
+
+
 
   const handleDelete = (row: any, p0: string) => {
     setDeleteKey(row?.key)
